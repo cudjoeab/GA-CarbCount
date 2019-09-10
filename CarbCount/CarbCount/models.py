@@ -2,10 +2,10 @@
 from django.db import models
 from django.contrb.auth.models import User
 
-from django.core.validators import {
+from django.core.validators import 
     MinValueValidator,
     MaxValueValidator
-}
+
 
 class User(models.Model):
     first_name = models.CharField(max_length=255)
