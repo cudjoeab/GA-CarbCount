@@ -32,7 +32,7 @@ class Diabetic(models.Model):
     night_target = models.FloatField(validators=[MinValueValidator(0)], null=False)
     insulin_duration = models.FloatField()
     insulin_type = models.CharField(max_length=255)
-    practitioner_id = models.ForeignKey(Practitioner, on_delete=models.CASCADE, null=True, blank=True, related_name="practitioner")
+    practitioner_id = models.ForeignKey(Practitioner, on_delete=models.CASCADE, blank=True, null=True, related_name="practitioner")
 
     def __str__(self):
         return f'Diabetic: {self.first_name} - {self.last_name} - {self.email}'
@@ -41,7 +41,7 @@ class Recipe(models.Model):
     name = models.CharField(max_length=255)
     total_carbs = models.FloatField(validators=[MinValueValidator(0)], null=False)
     total_fibre = models.FloatField(validators=[MinValueValidator(0)], null=False)
-    ingredients = ArrayField(models.CharField(max_length=255, blank=True))
+    # ingredients =ArrayField(models.CharField(max_length=225),default=list)
     total_servings = models.IntegerField(validators=[MinValueValidator(1)])
     description = models.TextField(
         validators=[MinLengthValidator(10), MaxLengthValidator(500)]

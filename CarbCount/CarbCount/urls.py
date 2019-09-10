@@ -22,6 +22,6 @@ from . import views
 urlpatterns = [
     # ... the rest of the urlpatterns ...
     # must be catch-all for pushState to work
-    path('admin', admin.site.urls),
+    path('admin/', admin.site.urls),
     url(r'^', views.FrontendAppView.as_view())
 ]
