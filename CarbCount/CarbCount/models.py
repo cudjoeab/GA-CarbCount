@@ -9,7 +9,7 @@ class Practitioner(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     clinic_name = models.CharField(max_length=255)
-    license_id = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)])
+    license_id = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)], null=False)
 
     def __str__(self):
         return f'Practitioner: {self.first_name} - {self.last_name}'
@@ -17,16 +17,16 @@ class Practitioner(models.Model):
 class Diabetic(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
+    email = models.EmailField(max_length=200)
     morning_ratio = models.FloatField(validators=[MinValueValidator(0)], null=False)
     afternoon_ratio = models.FloatField(validators=[MinValueValidator(0)], null=False)
     evening_ratio = models.FloatField(validators=[MinValueValidator(0)], null=False)
     night_ratio = models.FloatField(validators=[MinValueValidator(0)], null=False)
-    moring_cor_factor = models.FloatField(validators=[MinValueValidator(0)], null=False)
+    morning_cor_factor = models.FloatField(validators=[MinValueValidator(0)], null=False)
     afternoon_cor_factor = models.FloatField(validators=[MinValueValidator(0)], null=False)
     evening_cor_factor = models.FloatField(validators=[MinValueValidator(0)], null=False)
     night_cor_factor = models.FloatField(validators=[MinValueValidator(0)], null=False)
-    moring_target = models.FloatField(validators=[MinValueValidator(0)], null=False)
+    morning_target = models.FloatField(validators=[MinValueValidator(0)], null=False)
     afternoon_target = models.FloatField(validators=[MinValueValidator(0)], null=False)
     evening_target = models.FloatField(validators=[MinValueValidator(0)], null=False)
     night_target = models.FloatField(validators=[MinValueValidator(0)], null=False)
@@ -47,7 +47,7 @@ class Recipe(models.Model):
         validators=[MinLengthValidator(10), MaxLengthValidator(500)]
     )
     tags = models.CharField(max_length=255)
-    image_link = models.CharField(max_length=255)
+    image_link = models.URLField(max_length=255)
     diabetic_id = models.ForeignKey(
         Diabetic, on_delete=models.CASCADE, related_name="Diabetics"
     )
