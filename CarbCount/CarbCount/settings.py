@@ -89,12 +89,16 @@ WSGI_APPLICATION = 'CarbCount.wsgi.application'
 
 PG_HOST = os.getenv("PG_HOST")
 PG_PORT = os.getenv("PG_PORT")
+UBUNTU_USER_ONLY = os.getenv("UBUNTU_USER_ONLY")
+UBUNTU_PASSWORD_ONLY = os.getenv("UBUNTU_PASSWORD_ONLY")
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'carbcount',
-        'HOST': PG_HOST,
+            'USER': UBUNTU_USER_ONLY,  # This is to get it working for Ubuntu - Adam.
+            'PASSWORD': UBUNTU_PASSWORD_ONLY,  # This is to get it working for Ubuntu - Adam.
+        'HOST': PG_HOST,  # This is causing the problems..
         'PORT': PG_PORT
     }
 }
