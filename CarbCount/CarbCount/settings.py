@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'CarbCount'
+    'CarbCount',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
