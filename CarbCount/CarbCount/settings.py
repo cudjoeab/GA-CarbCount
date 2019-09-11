@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+from dotenv import load_dotenv
+load_dotenv()
 import os
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -83,13 +87,15 @@ WSGI_APPLICATION = 'CarbCount.wsgi.application'
 #     }
 # }
 
+PG_HOST = os.getenv("PG_HOST")
+PG_PORT = os.getenv("PG_PORT")
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'carbcount',
-        'HOST': '127.0.0.1',
-        # 'USER': 'mark'
-        'PORT': '5432',
+        'HOST': PG_HOST,
+        'PORT': PG_PORT
     }
 }
 
