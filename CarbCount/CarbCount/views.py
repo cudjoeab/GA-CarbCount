@@ -2,9 +2,50 @@ import logging
 import os
 
 from django.views.generic import View
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.conf import settings
+from .models import *
+from django.contrib.auth.models import User, Group 
 
+from rest_framework import viewsets, permissions
+
+from .serializers import *
+
+
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+
+# class GroupViewSet(viewsets.ModelViewSet):
+#     queryset = Group.objects.all()
+#     serializer_class = GroupSerializer
+
+class PractitionerViewSet(viewsets.ModelViewSet):
+    querySet = Practitioner.objects.all()
+    serializer_class = PractitionerSerializer
+    permission_classes = [permissions.AllowAny]
+
+class DiabeticViewSet(viewsets.ModelViewSet):
+    querySet = Diabetic.objects.all()
+    serializer_class = DiabeticSerializer
+    permission_classes = [permissions.AllowAny]
+
+class MealViewSet(viewsets.ModelViewSet):
+    queryset = Meal.objects.all()
+    serializer_class = MealSerializer 
+    # define who is able to query the data 
+    permission_classes = [permissions.AllowAny]   
+    
+class RecipeViewSet(viewsets.ModelViewSet):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
+    permission_classes = [permissions.AllowAny]
+
+class LogViewSet(viewsets.ModelViewSet):
+    querySet = Log.objects.all()
+    serializer_class = LogSerializer
+    permission_classes = [permissions.AllowAny]
+      
 class FrontendAppView(View):
     """
     Serves the compiled frontend entry point (only works if you have run `yarn
@@ -25,8 +66,3 @@ class FrontendAppView(View):
                 """,
                 status=501,
             )
-    
-    # def signup(request):
-    #     form = UserCreationForm()
-    #     context = { 'form': form }
-    #     response = render(request, '') 

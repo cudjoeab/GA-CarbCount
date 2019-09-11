@@ -1,8 +1,20 @@
 from CarbCount.models import Practitioner, Diabetic, Recipe, Meal, Log 
 from rest_framework import serializers
+from django.contrib.auth.models import User, Group
 
 
-class PractitonerSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = "__all__"
+
+
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Group
+        fields = "__all__"
+
+class PractitionerSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Practitioner
@@ -35,3 +47,4 @@ class LogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Log
         fields = "__all__"
+
