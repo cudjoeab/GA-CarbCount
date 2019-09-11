@@ -13,15 +13,25 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
-from django.contrib import admin
+from django.urls import include, path  # Do we need to import path..?
+from django.contrib import admin  # We can remove this later on.
 from django.conf.urls import url
-from django.urls import path  # Do we need to import path..?
 from . import views
+from rest_framework import routers
+from .api import PractitionerViewSet # Add others here later.
+#name
 
+
+router = routers.DefaultRouter()  # Imports the class DefaultRouter from routers.
+router.register('api/carbcount', PractitionerViewSet, 'carbcount') # Registers the router; includes all CRUD operations.
+
+# Only use the registered url endpoints; no longer need old-timey Django routes.
 urlpatterns = [
     # ... the rest of the urlpatterns ...
     # must be catch-all for pushState to work
     path('admin/', admin.site.urls),
-    url(r'^', views.FrontendAppView.as_view())
+    path('api/', include(router.urls)),
+    url(r'^', views.FrontendAppView.as_view()) # This is a catch-all for React.
 ]
+
+
