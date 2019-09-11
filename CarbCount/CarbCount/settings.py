@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'CarbCount.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'CarbCount',
-        # 'HOST': '127.0.0.1',
-        'USER': 'mark'
-        # 'PORT': '5432',
+        'NAME': 'carbcount',
+        'HOST': '127.0.0.1',
+        # 'USER': 'mark'
+        'PORT': '5432',
     }
 }
 
