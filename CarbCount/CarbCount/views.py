@@ -5,6 +5,17 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.conf import settings
 
+
+
+from fatsecret import Fatsecret
+fs = Fatsecret(consumer_key, consumer_secret)
+
+
+def search_for_recipe(self, query):
+    # Search for recipe on remote api
+    return fs.foods_search(query) 
+
+
 class FrontendAppView(View):
     """
     Serves the compiled frontend entry point (only works if you have run `yarn
