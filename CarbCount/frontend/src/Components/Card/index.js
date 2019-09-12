@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+
+// Bootstrap-React components
+import Jumbotron from "react-bootstrap/Jumbotron";
+
 import './index.css';
 
 export class Card extends Component {

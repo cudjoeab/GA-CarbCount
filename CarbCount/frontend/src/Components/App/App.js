@@ -1,5 +1,7 @@
 import React from 'react';
 
+// import Jumbotron from "react-bootstrap/Jumbotron";
+
 import './App.css';
 
 // Components
@@ -10,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Main />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
