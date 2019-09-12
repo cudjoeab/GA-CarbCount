@@ -1,0 +1,6 @@
+.manyCards {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: beige;
+    justify-items: center;
+}
