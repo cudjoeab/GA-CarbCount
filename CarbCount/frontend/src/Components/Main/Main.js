@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { OurCard } from '../OurCard/OurCard';
+import { ProgressBar } from '../ProgressBar/ProgressBar';
 
 // Bootstrap-React components
 import Jumbotron from "react-bootstrap/Jumbotron";
@@ -12,6 +13,7 @@ export class Main extends Component {
         <Jumbotron>
             <h2>Title of page</h2>
             <p>Main content</p>
+            <ProgressBar />
             <article class='manyCards'>
                 <OurCard />
                 <OurCard />
