@@ -5,8 +5,8 @@ import React from 'react';
 import './App.css';
 
 // Components
-import { Main } from '../Main';
-import { Footer } from '../Footer';
+import { Main } from '../Main/Main.js';
+import { Footer } from '../Footer/Footer';
 
 function App() {
   return (

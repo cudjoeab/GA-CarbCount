@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Card } from '../Card';
+import { OurCard } from '../OurCard/OurCard';
 
 // Bootstrap-React components
 import Jumbotron from "react-bootstrap/Jumbotron";
 
-import './index.css';
+import './Main.css';
 
 export class Main extends Component {
   render() {
@@ -12,9 +12,9 @@ export class Main extends Component {
       <Jumbotron>
         <h1>Title of page</h1>
         <p>Main content</p>
-        <Card />
-        <Card />
-        <Card />
+        <OurCard />
+        <OurCard />
+        <OurCard />
       </Jumbotron>
     );
   }
