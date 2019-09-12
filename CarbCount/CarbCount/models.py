@@ -4,6 +4,7 @@ from django.contrib.postgres.fields import ArrayField
 
 from django.core.validators import ( MinLengthValidator, MaxLengthValidator,MinValueValidator, MaxValueValidator,  )
 
+import requests
 
 class Practitioner(models.Model):
     first_name = models.CharField(max_length=255)
@@ -72,16 +73,15 @@ class Meal(models.Model):
         meal_type: {self.meal_type} \n
         blood_glucose: Your blood sugar is {self.blood_glucose} mmol/L \n
         insulin_dose: Please take {self.insulin_dose} units of {Diabetic.insulin_type}\n 
+        Enjoy your {self.}
 
         '''    
-    def calculate_carb(self): 
-        pass
-
-    def calculate_fibre(self): 
+    def calculate_net_carb(self.food):
         pass 
 
-    def total_carb(self):
-        pass
+    def calculate_net_fibre(self): 
+
+        pass 
 
     def  total_meal_dose(self):
         pass
