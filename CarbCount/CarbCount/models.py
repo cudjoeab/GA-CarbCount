@@ -72,7 +72,26 @@ class Meal(models.Model):
         meal_type: {self.meal_type} \n
         blood_glucose: Your blood sugar is {self.blood_glucose} mmol/L \n
         insulin_dose: Please take {self.insulin_dose} units of {Diabetic.insulin_type}\n 
+
         '''    
+    def calculate_carb(self): 
+        pass
+
+    def calculate_fibre(self): 
+        pass 
+
+    def total_carb(self):
+        pass
+
+    def  total_meal_dose(self):
+        pass
+
+    def corr_insulin(self):
+        pass 
+
+    def  total_dose(self):
+        pass 
+
 
 class Log(models.Model):
     meal_id = models.ForeignKey(Meal, on_delete=models.CASCADE, related_name ="meal")
