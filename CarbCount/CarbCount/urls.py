@@ -22,11 +22,11 @@ from .api import PractitionerViewSet, DiabeticViewSet, MealViewSet, RecipeViewSe
 
 
 router = routers.DefaultRouter()  # Imports the class DefaultRouter from routers.
-router.register('api/carbcount', PractitionerViewSet, 'carbcount') # Registers the router; includes all CRUD operations.
-router.register('api/carbcount', DiabeticViewSet, 'carbcount')
-router.register('api/carbcount', MealViewSet, 'carbcount')
-router.register('api/carbcount', RecipeViewSet, 'carbcount')
-router.register('api/carbcount', LogViewSet, 'carbcount')
+router.register('practitioner', PractitionerViewSet, 'practitioner') # Registers the router; includes all CRUD operations.
+router.register('diabetic', DiabeticViewSet, 'diabetic')
+router.register('meal', MealViewSet, 'meal')
+router.register('recipe', RecipeViewSet, 'recipe')
+router.register('log', LogViewSet, 'log')
 
 # Only use the registered url endpoints; no longer need old-timey Django routes.
 urlpatterns = [
