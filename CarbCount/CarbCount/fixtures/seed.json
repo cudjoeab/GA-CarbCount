@@ -1,0 +1,12 @@
+// seed data for insulin types and their offset time(in minutes) 
+
+insulin_dict  =    {"insulin_type": {
+            "Fiasp": "4",
+            "Humalog": "10-15", 
+            "Apidra" : "10-15", 
+            "NovoRapid": "10-15",
+           
+
+
+            
+        } }
