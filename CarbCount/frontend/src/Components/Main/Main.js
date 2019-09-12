@@ -14,7 +14,7 @@ export class Main extends Component {
             <h2>Title of page</h2>
             <p>Main content</p>
             <ProgressBar />
-            <article class='manyCards'>
+            <article className='manyCards'>
                 <OurCard />
                 <OurCard />
                 <OurCard />
