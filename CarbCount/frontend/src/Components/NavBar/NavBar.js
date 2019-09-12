@@ -6,13 +6,7 @@ import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import NavBar from "react-bootstrap/NavBar";
 
-class NavBar extends Component {
-
-    state = {
-        user: '...',
-        logStatus: '...'
-    }
-    render() {
+const NavBar = () => {
         return (
             <Navbar className="nav" bg="light" expand="lg">
             <Navbar.Brand href="#home">CarbCount</Navbar.Brand>
@@ -35,6 +29,7 @@ class NavBar extends Component {
                 </Form>
             </Navbar.Collapse>
             </Navbar>
-        )
-    }
+        );
 }
+
+export default NavBar
