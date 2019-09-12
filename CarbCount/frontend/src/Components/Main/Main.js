@@ -15,6 +15,7 @@ export class Main extends Component {
         <OurCard />
         <OurCard />
         <OurCard />
+        <OurCard />
       </Jumbotron>
     );
   }
