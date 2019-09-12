@@ -7,9 +7,6 @@ from django.conf import settings
 
 
 
-from fatsecret import Fatsecret
-fs = Fatsecret(consumer_key, consumer_secret)
-
 
 def search_for_recipe(self, query):
     # Search for recipe on remote api
