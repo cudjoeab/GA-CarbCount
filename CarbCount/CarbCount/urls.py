@@ -34,7 +34,7 @@ urlpatterns = [
     # must be catch-all for pushState to work
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    # url(r'^', views.FrontendAppView.as_view()) # This is a catch-all for React.
+    url(r'^', views.FrontendAppView.as_view()) # This is a catch-all for React.
 ]
 
 
