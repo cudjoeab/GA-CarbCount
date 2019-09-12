@@ -1,0 +1,11 @@
+  
+.body {
+    position: absolute;
+    z-index: 1;
+  }
+  .nav {
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    z-index: 2;
+  }
