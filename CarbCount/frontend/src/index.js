@@ -7,8 +7,6 @@ import * as serviceWorker from './serviceWorker';
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-
 // ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(<App />, document.getElementById('root'));
 
