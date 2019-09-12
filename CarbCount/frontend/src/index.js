@@ -4,6 +4,8 @@ import './index.css';
 import App from './Components/App/App.js';
 import * as serviceWorker from './serviceWorker';
 
+// Importing the Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
