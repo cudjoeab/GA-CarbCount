@@ -2,8 +2,9 @@
 
 insulin_dict  =    {"insulin_type": {
             "Fiasp": "4",
+            "NovoLog": "10-20", 
             "Humalog": "10-15", 
-            "Apidra" : "10-15", 
+            "Apidra" : "10-15", //another source says 20-30mins
             "NovoRapid": "10-15",
            
 
