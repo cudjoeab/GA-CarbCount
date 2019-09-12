@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { OurCard } from '../OurCard/OurCard';
+import { ProgressBar } from '../ProgressBar/ProgressBar';
 
 // Bootstrap-React components
 import Jumbotron from "react-bootstrap/Jumbotron";
@@ -7,15 +8,18 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import './Main.css';
 
 export class Main extends Component {
-  render() {
-    return (
-      <Jumbotron>
-        <h1>Title of page</h1>
-        <p>Main content</p>
-        <OurCard />
-        <OurCard />
-        <OurCard />
-      </Jumbotron>
-    );
-  }
+    render() {
+        return (
+        <Jumbotron>
+            <h2>Title of page</h2>
+            <p>Main content</p>
+            <ProgressBar />
+            <article class='manyCards'>
+                <OurCard />
+                <OurCard />
+                <OurCard />
+            </article>
+        </Jumbotron>
+        );
+    }
 }

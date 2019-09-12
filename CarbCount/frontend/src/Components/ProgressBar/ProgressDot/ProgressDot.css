@@ -1,0 +1,16 @@
+.progressDot {
+    margin: auto 5px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid #000;
+}
+
+.toggleOff {
+    background-color: #bbb;
+}
+
+.toggleOn {
+    background-color: blue;
+}
