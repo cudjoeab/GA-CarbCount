@@ -12,11 +12,11 @@ export class Footer extends Component {
         return (
             <footer className="footer">
                 <ul>
-                    <li>Created By</li>
+                    <li>Powered By (Fat Secret Image)</li>
                     <li>Contact</li>
                     <li>About</li>
                     <li>FAQ</li>
-                    <li>2019</li>
+                    <li>©2019</li>
                 </ul>
             </footer>
             

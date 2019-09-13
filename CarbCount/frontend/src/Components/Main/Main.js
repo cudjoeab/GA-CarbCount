@@ -35,6 +35,9 @@ export class Main extends Component {
                 <li><Link to='/new_recipe'>New Recipe</Link></li>
                 <li><Link to='/food_logs'>Food Log</Link></li>
                 <li><Link to='/saved_recipes'>Saved Recipe</Link></li>
+                <li><Link to='/contact'>Contact</Link></li>
+                <li><Link to='/about'>About</Link></li>
+                <li><Link to='/FAQ'>FAQ</Link></li>
             </ul>
         </main>
         );

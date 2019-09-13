@@ -6,6 +6,10 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // import Jumbotron from "react-bootstrap/Jumbotron";
 
 // All pages:
+import About from '../Pages/About/About.js';
+import Contact from '../Pages/Contact/Contact.js';
+import FAQ from '../Pages/FAQ/FAQ.js';
+
 import FoodLogs from '../Pages/FoodLogs/FoodLogs.js';
 import Homepage from '../Pages/Homepage/Homepage.js';
 import LandingPage from '../Pages/LandingPage/LandingPage.js';
@@ -31,13 +35,16 @@ const App = () => {
                     <OurNavBar />
                     <Main />
                     
-                    <Route path="/sign_in" component={SignIn} />
-                    <Route path="/register" component={Register} />
-                    <Route path="/homepage" component={Homepage} />
+                    <Route path="/sign_in" component={SignIn} /> 
+                    <Route path="/register" component={Register} /> 
+                    <Route path="/homepage" component={Homepage} /> 
                     <Route path="/new_count" component={NewCount} /> 
                     <Route path="/new_recipe" component={NewRecipe} /> 
                     <Route path="/food_logs" component={FoodLogs} /> 
                     <Route path="/saved_recipes" component={SavedRecipes} /> 
+                    <Route path="/contact" component={Contact} /> 
+                    <Route path="/about" component={About} /> 
+                    <Route path="/FAQ" component={FAQ} /> 
 
                     <Route exact path="/" component={LandingPage} />
 
