@@ -5,7 +5,7 @@ from django.contrib.postgres.fields import ArrayField
 from django.core.validators import ( MinLengthValidator, MaxLengthValidator,MinValueValidator, MaxValueValidator,  )
 
 import requests
-
+import datetime
 class Practitioner(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
