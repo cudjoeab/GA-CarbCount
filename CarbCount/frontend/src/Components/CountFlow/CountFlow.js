@@ -1,6 +1,11 @@
+// Vanilla React:
 import React, { Component } from './node_modules/react';
+
+// Bootstrap-React components:
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+
+// Call stylesheet last:
 import './CountFlow.css';
 
 export class CountFlow extends Component {
@@ -12,24 +17,24 @@ export class CountFlow extends Component {
         if (state == 1) {
             return (
                 <Form>
-                <Form.Group controlId="formBasicIngredient">
-                    <Form.Label>Name:</Form.Label>
-                    <Form.Control type="text" placeholder="Enter ingredient" />
-                    <Form.Text className="text-muted">
-                    (Descriptive text here)
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group controlId="formBasicServing">
-                    <Form.Label>Serving:</Form.Label>
-                    <Form.Control type="text" placeholder="Enter serving" />
-                    <Form.Text className="text-muted">
-                    (Descriptive text here)
-                    </Form.Text>
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
+                    <Form.Group controlId="formBasicIngredient">
+                        <Form.Label>Name:</Form.Label>
+                        <Form.Control type="text" placeholder="Enter ingredient" />
+                        <Form.Text className="text-muted">
+                        (Descriptive text here)
+                        </Form.Text>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicServing">
+                        <Form.Label>Serving:</Form.Label>
+                        <Form.Control type="text" placeholder="Enter serving" />
+                        <Form.Text className="text-muted">
+                        (Descriptive text here)
+                        </Form.Text>
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
         )
             }
         else if (state == 2) {

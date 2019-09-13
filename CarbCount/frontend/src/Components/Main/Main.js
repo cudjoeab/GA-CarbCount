@@ -1,27 +1,45 @@
+// Vanilla React:
 import React, { Component } from 'react';
-import { Homepage } from '../Homepage/Homepage';
-import { OurCard } from '../OurCard/OurCard';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+
+// Bootstrap-React components:
+// none
+
+// Smaller components:
+import { OurCard } from '../Pages/Homepage/OurCard/OurCard';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 
-// Bootstrap-React components
-import Jumbotron from "react-bootstrap/Jumbotron";
-
+// Call stylesheet last:
 import './Main.css';
 
 export class Main extends Component {
     render() {
         return (
-        <Jumbotron>
-            <Homepage />
-            <h2>Title of page</h2>
-            <p>Main content</p>
+        <main class='jumbotron jumbotron-fluid'>
+
+            {/* <p>Main content</p>
             <ProgressBar />
             <article className='manyCards'>
                 <OurCard />
                 <OurCard />
                 <OurCard />
-            </article>
-        </Jumbotron>
+            </article> */}
+
+            <ul>
+                <li>These links are for testing only:</li>
+                <li><Link to='/'>Landing Page</Link></li>
+                <li><Link to='/homepage'>Homepage</Link></li>
+                <li><Link to='/register'>Register</Link></li>
+                <li><Link to='/sign_in'>Sign In</Link></li>
+                <li><Link to='/new_count'>NewCount</Link></li>
+                <li><Link to='/new_recipe'>New Recipe</Link></li>
+                <li><Link to='/food_logs'>Food Log</Link></li>
+                <li><Link to='/saved_recipes'>Saved Recipe</Link></li>
+                <li><Link to='/contact'>Contact</Link></li>
+                <li><Link to='/about'>About</Link></li>
+                <li><Link to='/FAQ'>FAQ</Link></li>
+            </ul>
+        </main>
         );
     }
 }

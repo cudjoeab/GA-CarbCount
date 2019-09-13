@@ -1,7 +1,13 @@
+// Vanilla React:
 import React, { Component } from 'react';
 
-// Bootstrap-React components
+// Bootstrap-React components:
+// none
 
+// Smaller components:
+// none
+
+// Call stylesheet last:
 import './ProgressDot.css';
 
 export class ProgressDot extends Component {

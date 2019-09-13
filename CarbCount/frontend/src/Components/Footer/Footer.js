@@ -1,9 +1,10 @@
+// Vanilla React:
 import React, { Component } from 'react';
 
 // Bootstrap-React components
-import Card from "react-bootstrap/Card";
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+// none
 
+// Call stylesheet last:
 import './Footer.css';
 
 export class Footer extends Component {
@@ -11,11 +12,11 @@ export class Footer extends Component {
         return (
             <footer className="footer">
                 <ul>
-                    <li>Created By</li>
+                    <li>Powered By (Fat Secret Image)</li>
                     <li>Contact</li>
                     <li>About</li>
                     <li>FAQ</li>
-                    <li>2019</li>
+                    <li>©2019</li>
                 </ul>
             </footer>
             

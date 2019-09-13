@@ -3,6 +3,7 @@ import { ProgressDot } from './ProgressDot/ProgressDot';
 
 // Bootstrap-React components
 
+// Call stylesheet last:
 import './ProgressBar.css';
 
 const temporaryState = 1;
