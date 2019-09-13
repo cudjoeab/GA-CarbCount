@@ -8,7 +8,7 @@ import './Homepage.css';
 const Homepage = () => {
     return (
         <>
-        <h2>Homepage</h2>
+        <h2>Homepage.js</h2>
         <article class='manyCards'>
             <OurCard cardTarget='new_count' />
             <OurCard cardTarget='new_recipe' />
