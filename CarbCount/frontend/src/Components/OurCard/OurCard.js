@@ -6,18 +6,34 @@ import Card from "react-bootstrap/Card";
 
 import './OurCard.css';
 
+let title = '';
+let text = '';
+let ourLink = '';
+
+
+
 export class OurCard extends Component {
+
+    state = {
+        cardTitle: 'New Count',
+        cardText: 'Add a new count to your log',
+        cardLink: 'new_count'
+    }
+
+    // if (this.props.cardTarget == "new_count") {
+
+    // }
+
     render() {
         return (
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" data-src="holder.js/100px180" />
                     <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
+                    <Card.Title>{this.state.cardTitle}</Card.Title>
                     <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
+                        {this.state.cardText}
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <a href="{this.state.cardLink}" variant="primary">Go somewhere</a>
                 </Card.Body>
             </Card>
         );
