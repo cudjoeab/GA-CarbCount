@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Homepage } from '../Homepage/Homepage';
 import { OurCard } from '../OurCard/OurCard';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 
@@ -10,16 +11,16 @@ import './Main.css';
 export class Main extends Component {
     render() {
         return (
-        <Jumbotron>
-            <h2>Title of page</h2>
-            <p>Main content</p>
-            <ProgressBar />
-            <article class='manyCards'>
-                <OurCard />
-                <OurCard />
-                <OurCard />
-            </article>
-        </Jumbotron>
+            <Jumbotron>
+                <Homepage />
+
+
+
+                <h2>Title of page</h2>
+                <p>Main content</p>
+                <ProgressBar />
+                
+            </Jumbotron>
         );
     }
 }

@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { Main } from '../Main/Main.js';
 import { Footer } from '../Footer/Footer';
 
-function App() {
+const App = () => {
     return (
         <Router>
             <div className="App">
