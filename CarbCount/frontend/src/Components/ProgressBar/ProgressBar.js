@@ -17,7 +17,7 @@ let dotElements = '';
 export class ProgressBar extends Component {
     render() {
         return (
-            <section class='progressBar'>
+            <section className='progressBar'>
                 { dotElements }
                 <ProgressDot toggle='toggleOn' />
                 <ProgressDot toggle='toggleOff' />

@@ -11,16 +11,17 @@ import './Main.css';
 export class Main extends Component {
     render() {
         return (
-            <Jumbotron>
-                <Homepage />
-
-
-
-                <h2>Title of page</h2>
-                <p>Main content</p>
-                <ProgressBar />
-                
-            </Jumbotron>
+        <Jumbotron>
+            <Homepage />
+            <h2>Title of page</h2>
+            <p>Main content</p>
+            <ProgressBar />
+            <article className='manyCards'>
+                <OurCard />
+                <OurCard />
+                <OurCard />
+            </article>
+        </Jumbotron>
         );
     }
 }

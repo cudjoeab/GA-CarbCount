@@ -9,3 +9,11 @@
     width: 100%;
     z-index: 2;
   }
+
+  .logo {
+    height: 20px;
+    zoom: 3;
+    margin-left: 5px;
+    margin-top: -8px;
+    margin-bottom: -10px;
+  }
