@@ -1,11 +1,17 @@
+// Vanilla React:
 import React from "react";
+
+// Bootstrap-React components:
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+
 import logo from './Logo/logo.jpg';
+
+// Call stylesheet last:
 import "./NavBar.css"
 
 const OurNavBar = () => {

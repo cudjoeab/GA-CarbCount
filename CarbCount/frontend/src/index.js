@@ -1,11 +1,14 @@
+// Vanilla React:
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './Components/App/App.js';
 import * as serviceWorker from './serviceWorker';
 
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Call stylesheet last:
+import './index.css';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,7 +1,9 @@
+// Vanilla React:
 import React from 'react';
 
-// Bootstrap-React components
+// Bootstrap-React components:
 
+// Call stylesheet last:
 import './LandingPage.css';
 
 const LandingPage = () => {

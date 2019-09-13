@@ -1,13 +1,16 @@
+// Vanilla React:
 import React from 'react';
 
-// Bootstrap-React components
+// Bootstrap-React components:
+// none
 
+// Call stylesheet last:
 import './FoodLogs.css';
 
 const FoodLogs = () => {
     return (
         <>
-        <h3>Food Logs</h3>
+        <h2>Food Logs</h2>
         <p>New Logs</p>
         </>
     );

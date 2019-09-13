@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-// Bootstrap-React components
+// Bootstrap-React components:
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+// Call stylesheet last:
 import './OurCard.css';
 
 let title = '';
@@ -26,10 +27,10 @@ export class OurCard extends Component {
 
     render() {
         return (
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" data-src="holder.js/100px180" />
-                    <Card.Body>
-                    <Card.Title>{this.state.cardTitle}</Card.Title>
+            <Card bg="light" style={{ width: '18rem' }}>
+                <Card.Header>{this.state.cardTitle}</Card.Header>
+                <Card.Body>
+                    <Card.Title>Lorem Ipsum</Card.Title>
                     <Card.Text>
                         {this.state.cardText}
                     </Card.Text>

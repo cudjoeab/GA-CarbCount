@@ -3,6 +3,7 @@ import { OurCard } from './OurCard/OurCard.js'
 
 // Bootstrap-React components
 
+// Call stylesheet last:
 import './Homepage.css';
 
 const Homepage = () => {

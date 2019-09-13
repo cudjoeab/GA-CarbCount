@@ -1,7 +1,13 @@
+// Vanilla React:
 import React from 'react';
 
-// Bootstrap-React components
+// Bootstrap-React components:
+// none
 
+// Smaller components:
+// none
+
+// Call stylesheet last:
 import './NewRecipe.css';
 
 const NewRecipe = () => {

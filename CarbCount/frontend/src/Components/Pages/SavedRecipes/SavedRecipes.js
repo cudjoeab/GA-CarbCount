@@ -2,12 +2,13 @@ import React from 'react';
 
 // Bootstrap-React components
 
+// Call stylesheet last:
 import './SavedRecipes.css';
 
 const SavedRecipes = () => {
     return (
         <>
-        <h3>Saved Recipes</h3>
+        <h2>Saved Recipes</h2>
         <p>Saved Recipes</p>
         </>
     );
