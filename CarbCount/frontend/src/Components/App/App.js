@@ -17,9 +17,11 @@ const App = () => {
     return (
         <Router>
             <Switch>
-                <div className="App">
-                    <OurNavBar />
-                    <Main />
+                <div id="App">
+                    <div id='page-container'>
+                        <OurNavBar />
+                        <Main />
+                    </div>
                     <Footer />
                 </div>
             </Switch>

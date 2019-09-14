@@ -1,3 +1,7 @@
+main {
+    
+}
+
 .manyCards {
     display: grid;
     grid-template-columns: auto auto;

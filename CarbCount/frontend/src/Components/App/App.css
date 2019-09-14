@@ -1,19 +1,25 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0 auto;
   text-align: center;
-  height: 100% !important;
-  position: relative !important;
-  background-color: orange !important;
 }
 
-#root {
-  background-color: red !important;
-  position: relative !important;
-  min-height: 100vh !important;
+#App {
+    position: relative !important; /* Pushes footer to bottom of long page. */
 }
 
-.App {
-  background-color: pink !important;
-  position: relative !important;
-  min-height: 100vh !important;
+#page-container {
+    margin: 0 auto;
+    min-height: 100vh !important;  /* Keeps footer at bottom of short page. */
+    padding-bottom: 2rem !important;  /* Keeps footer at very bottom of long page. */
 }
