@@ -10,7 +10,7 @@ import './Footer.css';
 export class Footer extends Component {
     render() {
         return (
-            <footer className="footer">
+            <footer>
                 <ul>
                     <li>Powered By (Fat Secret Image)</li>
                     <li>Contact</li>
