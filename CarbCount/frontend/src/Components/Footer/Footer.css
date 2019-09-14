@@ -1,8 +1,16 @@
 footer {
     text-align: center;
+    position: relative;
+    bottom: 0;
 }
 
 footer li {
     padding: 0 20px;
     display: inline-block;
+
+}
+
+.row {
+    margin: 0px;
+    height: 100px;
 }
