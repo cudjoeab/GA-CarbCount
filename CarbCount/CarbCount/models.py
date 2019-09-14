@@ -73,15 +73,13 @@ class Meal(models.Model):
         meal_type: {self.meal_type} \n
         blood_glucose: Your blood sugar is {self.blood_glucose} mmol/L \n
         insulin_dose: Please take {self.insulin_dose} units of {Diabetic.insulin_type}\n 
-        Enjoy your {self.}
-
+        Enjoy your {self.}! 
         '''    
     def calculate_net_carb(self.food):
         net_carb = 0
         for f in food:
             net_carb += f["carb"] 
         return net_carb  
-
 
     def calculate_net_fibre(food):
         net_fibre = 0
@@ -113,11 +111,25 @@ class Meal(models.Model):
     def total_meal_dose(total_carb):
         return carbs / dose_meal_ratio()
 
-    def corr_insulin(self):
-        pass 
+    def corr_ratio():
+        cor_factor = 0 
+        current_hour = datetime.datetime.now().hour
+        if current_hour in range(4, 11): 
+            cor_factor = 1.3
+        elif current_hour in range(10, 17):
+            cor_factor = 1.3 
+        elif current_hour in range(16, 23): 
+            cor_factor = 1.3 
+        elif current_hour in [22, 23, 24, 0, 1, 2, 3, 4]: 
+            cor_factor = 1.3  
+        return cor_factor
+
+    def total_cor_dose(glucose):
+        target = 5.6 
+        return glucose - target / dose_meal_ratio()
 
     def  total_dose(self):
-        pass 
+        return total_meal_dose + total_cor_dose 
 
 
 class Log(models.Model):
