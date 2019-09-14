@@ -34,12 +34,6 @@ print('Total carb:')
 print(total_carb(food)) 
 
 
-# need to define range 
-time_range = DateTimeRange("T10:00:00+0900", "T10:10:00+0900")
-print("T10:05:00+0900" in time_range)
-print("T10:15:00+0900" in time_range)
-
-
 def  dose_meal_ratio():
     ratio = 5
     current_hour = datetime.datetime.now().hour
@@ -60,22 +54,9 @@ def total_meal_dose(carbs):
     return carbs / dose_meal_ratio()
 
 print(f'Take {total_meal_dose(500)} units of insulin')
+print(f'Take {total_meal_dose(56.6)} units of insulin') 
 
 
-
-#         total_meal_dose = total_carb / morning_ratio 
-#     elif now >= 1001 and now <= 1600: 
-#         total_meal_dose = total_carb / afternoon_ratio
-#     elif now >= 1601 and now <= 2200: 
-#         total_meal_dose = total_carb / evening_ratio 
-#     elif now >= 2201 and now <= 400: 
-#         total_meal_dose = total_carb / night_ratio
-    
-    
-    
-#     return total_meal_dose
-
-# print(total_meal_dose(food))
 
 
 
