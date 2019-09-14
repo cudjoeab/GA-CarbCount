@@ -16,13 +16,13 @@ import './App.css';
 const App = () => {
     return (
         <Router>
-            <Switch>
-                <div className="App">
+            <div id="App">
+                <div id='page-container'>
                     <OurNavBar />
                     <Main />
-                    <Footer />
                 </div>
-            </Switch>
+                <Footer />
+            </div>
         </Router>
     );
 }

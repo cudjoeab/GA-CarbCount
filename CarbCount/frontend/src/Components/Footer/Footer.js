@@ -27,12 +27,12 @@ export class Footer extends Component {
     render() {
         return (
             <>
-            {/* <footer>
+            <footer>
                 <ul>
                     <li>CarbCount</li>
                     <li>
-                        <a href="https://platform.fatsecret.com">
-                            <img src={fat_secret_logo} border="0"/>
+                        <a href="https://platform.fatsecret.com" target="_blank">
+                            <img src={fat_secret_logo} border="0" alt="Our app powered by FatSecret API." />
                         </a>
                     </li>
                     <li>
@@ -48,29 +48,27 @@ export class Footer extends Component {
                             FAQ
                         </Link>
                     </li>
-                    <li>Terms &amp; Policy Copyright</li>
-                    <li>A.M.O.A. ©2019</li>
+                    <li>Terms &amp; Policy</li>
+                    <li>A.M.O.A.L. ©2019</li>
                 </ul>
-            </footer> */}
+            </footer>
 
-            <br/><br/><br/>
-
-
+            {/* <br/><br/><br/> */}
             
-            <footer class="page-footer font-small cyan darken-3">
+            {/* <footer class="page-footer font-small cyan darken-3">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-2">
-                            <Link to='/'>
-                                Home
-                            </Link>
-                        </div>
-                        <div class="col-2">
+                                <div class="col-2">
+                                    <Link to='/'>
+                                        Home -- Remove this
+                                    </Link>
+                                </div>
+                        <div class="col-1">
                             <Link to='/about'>
                                 About
                             </Link>
                         </div>
-                        <div class="col-2">
+                        <div class="col-1">
                             <Link to='/contact'>
                                 Contact
                             </Link>
@@ -97,8 +95,8 @@ export class Footer extends Component {
                     <ul>
                         <li>CarbCount</li>
                         <li>
-                            <a href="https://platform.fatsecret.com">
-                                <img src={fat_secret_logo} border="0"/>
+                            <a href="https://platform.fatsecret.com" target="_blank">
+                                <img src={fat_secret_logo} border="0" alt="Our app powered by FatSecret API." />
                             </a>
                         </li>
                         <li>
@@ -107,10 +105,10 @@ export class Footer extends Component {
                             </Link>
                         </li>
                         <li>Terms &amp; Policy</li>
-                        <li>A.M.O.A. ©2019</li>
+                        <li>A.M.O.A.L. ©2019</li>
                     </ul>
                 </div>
-            </footer>
+            </footer> */}
             </>
         );
     }
