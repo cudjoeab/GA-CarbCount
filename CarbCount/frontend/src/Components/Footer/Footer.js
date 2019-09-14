@@ -31,8 +31,8 @@ export class Footer extends Component {
                 <ul>
                     <li>CarbCount</li>
                     <li>
-                        <a href="https://platform.fatsecret.com">
-                            <img src={fat_secret_logo} border="0"/>
+                        <a href="https://platform.fatsecret.com" target="_blank">
+                            <img src={fat_secret_logo} border="0" alt="Our app powered by FatSecret API." />
                         </a>
                     </li>
                     <li>
@@ -49,7 +49,7 @@ export class Footer extends Component {
                         </Link>
                     </li>
                     <li>Terms &amp; Policy</li>
-                    <li>A.M.O.A. ©2019</li>
+                    <li>A.M.O.A.L. ©2019</li>
                 </ul>
             </footer>
 
@@ -95,8 +95,8 @@ export class Footer extends Component {
                     <ul>
                         <li>CarbCount</li>
                         <li>
-                            <a href="https://platform.fatsecret.com">
-                                <img src={fat_secret_logo} border="0"/>
+                            <a href="https://platform.fatsecret.com" target="_blank">
+                                <img src={fat_secret_logo} border="0" alt="Our app powered by FatSecret API." />
                             </a>
                         </li>
                         <li>
@@ -105,7 +105,7 @@ export class Footer extends Component {
                             </Link>
                         </li>
                         <li>Terms &amp; Policy</li>
-                        <li>A.M.O.A. ©2019</li>
+                        <li>A.M.O.A.L. ©2019</li>
                     </ul>
                 </div>
             </footer> */}

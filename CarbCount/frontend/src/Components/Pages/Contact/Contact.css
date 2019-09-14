@@ -1,0 +1,7 @@
+.profile_photo {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    display: inline-block;
+    background-color: beige;
+}

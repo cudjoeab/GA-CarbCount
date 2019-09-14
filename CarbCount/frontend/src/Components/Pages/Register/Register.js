@@ -1,8 +1,13 @@
+// Vanilla React:
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 // Bootstrap-React components:
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+
+// Smaller components:
+// none
 
 // Call stylesheet last:
 import './Register.css';
@@ -36,7 +41,7 @@ const Register = () => {
                 </Button>
 
                 <p>By selecting Continue, you agree to the <a href=''>Terms of Service</a> and <a href=''>Privacy Policy</a>.</p>
-                <p>Already have an account? <a href=''>Log in here</a></p>
+                <p>Already have an account? <li><Link to='/sign_in'>Log in here</Link></li></p>
             </Form>
         </>
     );

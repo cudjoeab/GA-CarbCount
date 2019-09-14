@@ -31,25 +31,25 @@ import "./NavBar.css"
 const OurNavBar = () => {
     return (
         <Navbar className="nav" bg="light" expand="lg">
-            <Link to='/' class="navbar-brand">
-                <img className="logo" src={logo} alt="CarbCount logo resembles a Glucose molecule." />CarbCount
+            <Link to='/' className="navbar-brand">
+                <img className="logo" src={logo} alt="The CarbCount logo which resembles a glucose molecule." />CarbCount
             </Link>
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                     <NavDropdown title="Site" id="basic-nav-dropdown">
-                        <Link to='/new_count' class="dropdown-item">
+                        <Link to='/new_count' className="dropdown-item">
                             New Count
                         </Link>
-                        <Link to='/new_recipe' class="dropdown-item">
+                        <Link to='/new_recipe' className="dropdown-item">
                             New Recipe
                         </Link>
-                        <Link to='/saved_recipes' class="dropdown-item">
+                        <Link to='/saved_recipes' className="dropdown-item">
                             Saved Recipes
                         </Link>
                         <NavDropdown.Divider />
-                        <Link to='/food_logs' class="dropdown-item">
+                        <Link to='/food_logs' className="dropdown-item">
                             Food Logs
                         </Link>
                     </NavDropdown>

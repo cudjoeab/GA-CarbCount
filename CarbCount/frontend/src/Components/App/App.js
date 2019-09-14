@@ -17,6 +17,7 @@ const App = () => {
     return (
         <Router>
             <Switch>
+            </Switch>
                 <div id="App">
                     <div id='page-container'>
                         <OurNavBar />
@@ -24,7 +25,7 @@ const App = () => {
                     </div>
                     <Footer />
                 </div>
-            </Switch>
+            
         </Router>
     );
 }
