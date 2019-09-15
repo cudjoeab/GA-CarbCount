@@ -5,6 +5,11 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // Bootstrap-React components:
 import FoodLog from './FoodLog/FoodLog.js';
 
+// Font Awesome:
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSyringe, faTint } from '@fortawesome/fontawesome-free-solid';
+import { faAppleAlt } from '@fortawesome/free-solid-svg-icons';
+
 // Call stylesheet last:
 import './FoodLogs.css';
 
@@ -35,6 +40,9 @@ class FoodLogs extends Component {
         return (
             <article>
                 <h2>Food Logs</h2>
+                <FontAwesomeIcon icon={faAppleAlt} />
+                <FontAwesomeIcon icon={faSyringe} />
+                <FontAwesomeIcon icon={faTint} />
                 {/* {logElements} */}
                 {mealElements}
                 {/* <FoodLog /> */}
