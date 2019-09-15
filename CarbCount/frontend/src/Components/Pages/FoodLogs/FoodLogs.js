@@ -28,6 +28,11 @@ class FoodLogs extends Component {
         console.log('Component will mount!');
     }
 
+    componentDidMount() {
+        console.log('Component did mount!');
+        window.scrollTo(0, 0); //Brings user to top of page.
+    }
+
     render() {
         // const logElements = this.state.logs.map(
         //     (log, id) => <p>{log.date} - {log.food} - {log.carbs} carbs - {log.fibre} fibre - {log.meal_type} - {log.blood_glucose} blood glucose</p>
