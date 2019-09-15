@@ -1,0 +1,5 @@
+.card-deck {
+    margin: 0 auto;
+    position: relative;
+    max-width: 800px;
+}

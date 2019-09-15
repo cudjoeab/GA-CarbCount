@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Bootstrap-React components:
-// none
+import CardDeck from "react-bootstrap/CardDeck";
 
 // Smaller components:
 import { OurCard } from './OurCard/OurCard.js';
@@ -14,12 +14,14 @@ const Homepage = () => {
     return (
         <>
         <h2>Homepage.js</h2>
-        <article className='manyCards'>
+        <CardDeck>
             <OurCard cardTarget='new_count' />
             <OurCard cardTarget='new_recipe' />
+        </CardDeck>
+        <CardDeck>
             <OurCard cardTarget='food_log' />
             <OurCard cardTarget='saved_recipes' />
-        </article>
+        </CardDeck>
         </>
     );
 }

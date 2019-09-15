@@ -1,3 +1,4 @@
+// Vanilla React:
 import React, { Component } from 'react';
 
 // Bootstrap-React components:

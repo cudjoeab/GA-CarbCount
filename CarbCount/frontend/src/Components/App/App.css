@@ -1,17 +1,17 @@
 html {
-  height: 100%;
-  box-sizing: border-box;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 body {
-  margin: 0 auto;
-  text-align: center;
+    margin: 0 auto;
+    text-align: center;
 }
 
 #App {
@@ -22,4 +22,6 @@ body {
     margin: 0 auto;
     min-height: 100vh !important;  /* Keeps footer at bottom of short page. */
     padding-bottom: 2rem !important;  /* Keeps footer at very bottom of long page. */
+    text-align: center;
+    background-color: #f4f4f4;
 }
