@@ -75,7 +75,7 @@ class Meal(models.Model):
         insulin_dose: Please take {self.insulin_dose} units of {Diabetic.insulin_type}\n 
         Enjoy your {self.}! 
         '''    
-    def calculate_net_carb(self.food):
+    def calculate_net_carb(food):
         net_carb = 0
         for f in food:
             net_carb += f["carb"] 
