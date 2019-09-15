@@ -1,0 +1,7 @@
+.card-deck {
+    margin: 0 auto;
+    /* margin: 50px; */
+    padding: 25px;
+    position: relative;
+    /* max-width: 800px; */
+}

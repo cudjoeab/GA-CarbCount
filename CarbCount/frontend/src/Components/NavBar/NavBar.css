@@ -3,17 +3,19 @@
     position: absolute;
     z-index: 1;
   }
-  .nav {
+
+.nav {
     position: fixed;
     height: 80px;
     width: 100%;
     z-index: 2;
-  }
+    background-color: #4dccbd;
+}
 
-  .logo {
+.logo {
     height: 20px;
     zoom: 3;
     margin-left: 5px;
     margin-top: -8px;
     margin-bottom: -10px;
-  }
+}

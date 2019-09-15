@@ -30,36 +30,38 @@ import "./NavBar.css"
 
 const OurNavBar = () => {
     return (
-        <Navbar className="nav" bg="light" expand="lg">
-            <Link to='/' className="navbar-brand">
-                <img className="logo" src={logo} alt="The CarbCount logo which resembles a glucose molecule." />CarbCount
-            </Link>
+        <header>
+            <Navbar className="nav" expand="lg">
+                <Link to='/' className="navbar-brand">
+                    <img className="logo" src={logo} alt="The CarbCount logo which resembles a glucose molecule." />CarbCount
+                </Link>
 
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                    <NavDropdown title="Site" id="basic-nav-dropdown">
-                        <Link to='/new_count' className="dropdown-item">
-                            New Count
-                        </Link>
-                        <Link to='/new_recipe' className="dropdown-item">
-                            New Recipe
-                        </Link>
-                        <Link to='/saved_recipes' className="dropdown-item">
-                            Saved Recipes
-                        </Link>
-                        <NavDropdown.Divider />
-                        <Link to='/food_logs' className="dropdown-item">
-                            Food Logs
-                        </Link>
-                    </NavDropdown>
-                </Nav>
-                <Form inline>
-                    <FormControl type="text" placeholder="Ingredient..." className="mr-sm-2" />
-                        <Button variant="outline-success">Search</Button>
-                </Form>
-            </Navbar.Collapse>
-        </Navbar>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                        <NavDropdown title="Site" id="basic-nav-dropdown">
+                            <Link to='/new_count' className="dropdown-item">
+                                New Count
+                            </Link>
+                            <Link to='/new_recipe' className="dropdown-item">
+                                New Recipe
+                            </Link>
+                            <Link to='/saved_recipes' className="dropdown-item">
+                                Saved Recipes
+                            </Link>
+                            <NavDropdown.Divider />
+                            <Link to='/food_logs' className="dropdown-item">
+                                Food Logs
+                            </Link>
+                        </NavDropdown>
+                    </Nav>
+                    <Form inline>
+                        <FormControl type="text" placeholder="Ingredient..." className="mr-sm-2" />
+                            <Button variant="outline-success">Search</Button>
+                    </Form>
+                </Navbar.Collapse>
+            </Navbar>
+        </header>
     );
 };
 

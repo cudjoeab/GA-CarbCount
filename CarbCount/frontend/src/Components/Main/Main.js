@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 // Bootstrap-React components:
-// none
+import Jumbotron from "react-bootstrap/Jumbotron";
 
 // All pages:
 import About from '../Pages/About/About.js';
@@ -26,10 +26,10 @@ import Register from '../Pages/Register/Register.js';
 // Call stylesheet last:
 import './Main.css';
 
-export class Main extends Component {
-    render() {
-        return (
-        <main className='jumbotron jumbotron-fluid'>
+const Main = () => {
+    return (
+        <main>
+            <Jumbotron className='jumbotron-fluid'>
             <Switch> 
                 <Route path="/sign_in" component={SignIn} /> 
                 <Route path="/register" component={Register} /> 
@@ -73,7 +73,9 @@ export class Main extends Component {
                 <li><Link to='/about'>About</Link></li>
                 <li><Link to='/FAQ'>FAQ</Link></li>
             </ul>
+            </Jumbotron>
         </main>
-        );
-    }
+    );
 }
+
+export default Main;

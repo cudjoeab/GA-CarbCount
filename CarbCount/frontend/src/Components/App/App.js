@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // import Jumbotron from "react-bootstrap/Jumbotron";
 
 // Smaller components:
-import { Main } from '../Main/Main.js';
-import { Footer } from '../Footer/Footer';
+import Main from '../Main/Main.js';
+import Footer from '../Footer/Footer';
 import OurNavBar from '../NavBar/NavBar';
 
 // Call stylesheet last:
