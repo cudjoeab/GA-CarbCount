@@ -8,3 +8,7 @@ from django.test import TestCase
 # import models that are needed for testing 
 from . import models
 from .models import Meal 
+
+# define test case class with TestCase as argument 
+class MealCalulationsTestCase(TestCase):
+    
