@@ -13,11 +13,18 @@ class CarbTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
         # Set up non-modified objects used by all test methods
-        Meal.objects.create()
-        pass
+        Meal.objects.create(apple = {"carb" : 14, "fibre" : 2.4 }, 
+                            burger = {"carb" : 47, "fibre" : 2 }) 
+        food = [apple, burger]
+        
 
     def test_calculate_net_carb(self):
-        pass
+        
+        net_carb=0
+        for f in food:
+            net_carb += f["carb"] 
+        self.assertEqual(net_carb, 56.6)
+
 
     def test_calculate_net_fibre(self):
         pass
@@ -26,7 +33,7 @@ class CarbTestCase(TestCase):
         pass 
         
 
-class MealRatioTestCase(TestCase):
+# class MealRatioTestCase(TestCase):
 
 
-class CorectionRatioTestCase(TestCase):
+# class CorectionRatioTestCase(TestCase):
