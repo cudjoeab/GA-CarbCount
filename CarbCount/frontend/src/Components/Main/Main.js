@@ -29,51 +29,51 @@ import './Main.css';
 const Main = () => {
     return (
         <main>
-            <Jumbotron className='jumbotron-fluid'>
-            <Switch> 
-                <Route path="/sign_in" component={SignIn} /> 
-                <Route path="/register" component={Register} /> 
-                <Route path="/homepage" component={Homepage} /> 
-                <Route path="/new_count" component={NewCount} /> 
-                <Route path="/new_recipe" component={NewRecipe} /> 
+            <section className='jumbotron jumbotron-fluid'>
+                <Switch> 
+                    <Route path="/sign_in" component={SignIn} /> 
+                    <Route path="/register" component={Register} /> 
+                    <Route path="/homepage" component={Homepage} /> 
+                    <Route path="/new_count" component={NewCount} /> 
+                    <Route path="/new_recipe" component={NewRecipe} /> 
 
-                <Route path="/food_logs/:id" component={FoodLog} /> 
-                <Route path="/food_logs" component={FoodLogs} /> 
+                    <Route path="/food_logs/:id" component={FoodLog} /> 
+                    <Route path="/food_logs" component={FoodLogs} /> 
 
-                <Route path="/saved_recipes" component={SavedRecipes} /> 
-                <Route path="/contact" component={Contact} /> 
-                <Route path="/about" component={About} /> 
-                <Route path="/FAQ" component={FAQ} /> 
+                    <Route path="/saved_recipes" component={SavedRecipes} /> 
+                    <Route path="/contact" component={Contact} /> 
+                    <Route path="/about" component={About} /> 
+                    <Route path="/FAQ" component={FAQ} /> 
 
-                <Route exact path="/" component={LandingPage} />
-            </Switch>
+                    <Route exact path="/" component={LandingPage} />
+                </Switch>
 
-            {/* <p>Main content</p>
-            <ProgressBar />
-            <article className='manyCards'>
-                <OurCard />
-                <OurCard />
-                <OurCard />
-            </article> */}
+                {/* <p>Main content</p>
+                <ProgressBar />
+                <article className='manyCards'>
+                    <OurCard />
+                    <OurCard />
+                    <OurCard />
+                </article> */}
 
-            <ul>
-                <li>These links are for testing only:</li>
-                <li><Link to='/'>Landing Page</Link></li>
-                <li><Link to='/homepage'>Homepage</Link></li>
-                <li><Link to='/register'>Register</Link></li>
-                <li><Link to='/sign_in'>Sign In</Link></li>
-                <li><Link to='/new_count'>NewCount</Link></li>
-                <li><Link to='/new_recipe'>New Recipe</Link></li>
+                <ul>
+                    <li>These links are for testing only:</li>
+                    <li><Link to='/'>Landing Page</Link></li>
+                    <li><Link to='/homepage'>Homepage</Link></li>
+                    <li><Link to='/register'>Register</Link></li>
+                    <li><Link to='/sign_in'>Sign In</Link></li>
+                    <li><Link to='/new_count'>NewCount</Link></li>
+                    <li><Link to='/new_recipe'>New Recipe</Link></li>
 
-                <li><Link to='/food_logs/3'>One specific Food Log</Link></li>
-                <li><Link to='/food_logs'>Food Logs</Link></li>
+                    <li><Link to='/food_logs/3'>One specific Food Log</Link></li>
+                    <li><Link to='/food_logs'>Food Logs</Link></li>
 
-                <li><Link to='/saved_recipes'>Saved Recipes</Link></li>
-                <li><Link to='/contact'>Contact</Link></li>
-                <li><Link to='/about'>About</Link></li>
-                <li><Link to='/FAQ'>FAQ</Link></li>
-            </ul>
-            </Jumbotron>
+                    <li><Link to='/saved_recipes'>Saved Recipes</Link></li>
+                    <li><Link to='/contact'>Contact</Link></li>
+                    <li><Link to='/about'>About</Link></li>
+                    <li><Link to='/FAQ'>FAQ</Link></li>
+                </ul>
+            </section>
         </main>
     );
 }

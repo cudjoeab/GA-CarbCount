@@ -19,10 +19,10 @@ class About extends Component {
 
     render() {
         return (
-            <>
-            <h3>About</h3>
-            <p>About Info</p>
-            </>
+            <section className='borderBox'>
+                <h3>About</h3>
+                <p>About Info</p>
+            </section>
         );
     }
 }

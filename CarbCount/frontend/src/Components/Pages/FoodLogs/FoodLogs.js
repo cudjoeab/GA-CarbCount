@@ -39,7 +39,7 @@ class FoodLogs extends Component {
         )
 
         return (
-            <article>
+            <section className='borderBox'>
                 <h2>Food Logs</h2>
                 <FontAwesomeIcon icon={faAppleAlt} />
                 <FontAwesomeIcon icon={faSyringe} />
@@ -47,7 +47,7 @@ class FoodLogs extends Component {
                 {/* {logElements} */}
                 {mealElements}
                 {/* <FoodLog /> */}
-            </article>
+            </section>
         );
     }
 }

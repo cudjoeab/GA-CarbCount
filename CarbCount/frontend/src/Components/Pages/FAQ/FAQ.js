@@ -19,10 +19,10 @@ class FAQ extends Component {
 
     render() {
         return (
-            <>
-            <h3>FAQ</h3>
-            <p>FAQ Info</p>
-            </>
+            <section className='borderBox'>
+                <h3>FAQ</h3>
+                <p>FAQ Info</p>
+            </section>
         );
     }
 }

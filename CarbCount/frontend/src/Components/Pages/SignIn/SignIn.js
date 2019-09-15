@@ -16,7 +16,7 @@ class SignIn extends Component {
 
     render() {
         return (
-            <>
+            <section className='borderBox'>
                 <h2>SignIn.js</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nunc sed nisl fringilla venenatis.</p>
                 <Form>
@@ -37,7 +37,7 @@ class SignIn extends Component {
                         Sign In
                     </Button>
                 </Form>
-            </>
+            </section>
         );
     }
 }

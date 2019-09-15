@@ -28,11 +28,19 @@ body {
 
 .jumbotron {
     margin: 0 auto;
-    padding: 15px !important;
-    /* margin-top: 150px; */
-    max-width: 900px;
+    
+    /* max-width: 900px; */
     text-align: left;
+    background-color: transparent !important;
+}
+
+.borderBox {
+    /* margin-top: 150px; */
+    margin: 0 auto;
+    padding: 15px !important;
+    max-width: 900px;
     background-color: #fff !important;
     border: 1px solid #ddd;
     /* background-color: grey !important; */
+    border-radius: 10px;
 }

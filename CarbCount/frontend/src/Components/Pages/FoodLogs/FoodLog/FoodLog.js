@@ -32,10 +32,10 @@ class FoodLog extends Component {
 
     render() {
         return (
-            <article>
+            <section className='borderBox'>
                 <h4>September 8th 2019</h4>
                 <p>A single food log.</p>
-            </article>
+            </section>
         );
     }
 }

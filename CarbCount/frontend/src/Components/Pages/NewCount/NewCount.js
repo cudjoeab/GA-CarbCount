@@ -73,7 +73,7 @@ class NewCount extends Component {
         //   }
 
         return (
-            <>
+            <section className='borderBox'>
                 <h2>New Count</h2>
                 <h6>Step 1:</h6>
                 <Form>
@@ -161,7 +161,7 @@ class NewCount extends Component {
                         Enter Log
                     </Button>
                 </Form>
-            </>
+            </section>
         );
     }
 }

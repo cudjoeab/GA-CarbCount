@@ -21,7 +21,7 @@ class Register extends Component {
 
     render() {
         return (
-            <>
+            <section className='borderBox'>
                 <h2>Get Started with Carb Count</h2>
                 <p>Welcome to Carb Count!  Let's start by creating a free account.  Next, we'll define your goals and create your custom diet plan.</p>
                 <Form>
@@ -50,7 +50,7 @@ class Register extends Component {
                     <p>By selecting Continue, you agree to the <a href=''>Terms of Service</a> and <a href=''>Privacy Policy</a>.</p>
                     <p>Already have an account? <li><Link to='/sign_in'>Log in here</Link></li></p>
                 </Form>
-            </>
+            </section>
         );
     }
 }

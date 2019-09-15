@@ -32,7 +32,7 @@ class Homepage extends Component {
         )
 
         return (
-            <>
+            <section className='borderBox'>
                 <h2>Homepage.js</h2>
                 {/* <CardDeck>
                     <OurCard cardTarget='new_count' />
@@ -61,7 +61,7 @@ class Homepage extends Component {
                     </Card> */}
                
                 </CardColumns>
-            </>
+            </section>
         );
     }
 }

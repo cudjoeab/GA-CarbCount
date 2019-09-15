@@ -19,7 +19,7 @@ class Contact extends Component {
 
     render() {
         return (
-            <>
+            <section className='borderBox'>
                 <article>
                     <h3>The Web Developers</h3>
                     <section>
@@ -85,7 +85,7 @@ class Contact extends Component {
                         </ul>
                     </section>
                 </article>
-            </>
+            </section>
         );
     }
 }

@@ -22,7 +22,7 @@ class NewRecipe extends Component {
 
     render() {
         return (
-            <>
+            <section className='borderBox'>
                 <h3>New Recipe</h3>
                 <h6>Step 1:</h6>
                 <Form>
@@ -86,7 +86,7 @@ class NewRecipe extends Component {
                         Submit
                     </Button>
                 </Form>
-            </>
+            </section>
         );
     }
 }

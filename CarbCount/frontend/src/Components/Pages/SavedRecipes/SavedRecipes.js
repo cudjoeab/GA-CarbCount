@@ -19,10 +19,10 @@ class SavedRecipes extends Component {
 
     render() {
         return (
-            <>
-            <h2>Saved Recipes</h2>
-            <p>Saved Recipes</p>
-            </>
+            <section className='borderBox'>
+                <h2>Saved Recipes</h2>
+                <p>Saved Recipes</p>
+            </section>
         );
     }
 }
