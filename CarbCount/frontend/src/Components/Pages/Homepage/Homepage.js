@@ -14,7 +14,6 @@ import './Homepage.css';
 
 
 class Homepage extends Component {
-
     cardDetails = [
         { title: 'New Count', text: 'Add a New Count to your Log.', link: 'new_count' }, 
         { title: 'New Recipe', text: 'Add a New Recipe.', link: 'new_recipe' }, 
@@ -29,7 +28,7 @@ class Homepage extends Component {
 
     render() {
         const cardElements = this.cardDetails.map(
-            (card, id) => <OurCard cardTitle={card.title} cardText={card.text} cardLink={card.link} />
+            (card, id) => <OurCard cardTitle={card.title} cardText={card.text} cardLink={card.link} key={id} />
         )
 
         return (

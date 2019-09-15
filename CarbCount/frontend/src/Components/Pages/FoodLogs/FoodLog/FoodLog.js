@@ -25,6 +25,11 @@ class FoodLog extends Component {
         meal: this.JSONresponse
     }
 
+    componentDidMount() {
+        console.log('Component did mount!');
+        window.scrollTo(0, 0); //Brings user to top of page.
+    }
+
     render() {
         return (
             <article>
