@@ -12,7 +12,7 @@ import { faSyringe, faTint } from '@fortawesome/fontawesome-free-solid';
 import { faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 
 // Smaller components:
-import FoodLog from './FoodLog/FoodLog.js';
+// import FoodLog from './FoodLog/FoodLog.js';
 
 // Call stylesheet last:
 import './FoodLogs.css';
