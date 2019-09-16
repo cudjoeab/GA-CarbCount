@@ -4,6 +4,7 @@ from django.contrib.postgres.fields import ArrayField
 
 from django.core.validators import ( MinLengthValidator, MaxLengthValidator,MinValueValidator, MaxValueValidator,  )
 
+from rest_framework.authtoken.models import Token  # Adding this - Adam
 
 class Practitioner(models.Model):
     first_name = models.CharField(max_length=255)
@@ -51,7 +52,7 @@ class Recipe(models.Model):
     diabetic_id = models.ForeignKey(
         Diabetic, on_delete=models.CASCADE, related_name="Diabetics"
     )
-    
+
     def __str__(self):
         return f'{self.name} - {self.total_carbs} carbs - {self.total_fibre} fibre'
 
@@ -63,7 +64,7 @@ class Meal(models.Model):
     meal_type = models.CharField(max_length=255)
     blood_glucose = models.FloatField(validators=[MinValueValidator(0)], null=True)
     insulin_dose = models.FloatField(validators=[MinValueValidator(0)], null=False) 
-    
+
     def __str__(self):
         return f'''
         date: {self.date} \n
@@ -80,4 +81,8 @@ class Log(models.Model):
 
     def __str__(self):
         return f'Log: {self.meal_id} - {self.diabetic_id}'
-    
+
+
+def token_request(request):  # Adding this - Adam
+    if user_requested_token() and token_request_is_warranted():
+        new_token = Token.objects.create(user=request.user)
