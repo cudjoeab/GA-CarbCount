@@ -10,11 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-from dotenv import load_dotenv
-load_dotenv()
 import os
 
-
+# from dotenv import load_dotenv
+# load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,8 +31,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,18 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'oauth2_provider',
     'django_extensions',
     'rest_framework',
-    'rest_framework.authtoken',  # Adding this - Adam
     'CarbCount',
-    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,17 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'CarbCount.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 PG_HOST = os.getenv("PG_HOST")
 PG_PORT = os.getenv("PG_PORT")
 UBUNTU_USER_ONLY = os.getenv("UBUNTU_USER_ONLY")
@@ -100,9 +82,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'carbcount',
-            'USER': UBUNTU_USER_ONLY,  # This is to get it working for Ubuntu - Adam.
-            'PASSWORD': UBUNTU_PASSWORD_ONLY,  # This is to get it working for Ubuntu - Adam.
-        'HOST': PG_HOST,  # This is causing the problems..
+            'USER': UBUNTU_USER_ONLY,
+            'PASSWORD': UBUNTU_PASSWORD_ONLY,
+        'HOST': PG_HOST,
         'PORT': PG_PORT
     }
 }
@@ -186,3 +168,5 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated', )
 }
+
+CSRF_COOKIE_NAME = "csrftoken"

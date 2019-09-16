@@ -1,6 +1,6 @@
 import requests 
 import datetime 
-from datetimerange import DateTimeRange
+# # from datetimerange import DateTimeRange
 
 
 apple = {"carb" : 14, "fibre" : 2.4 }
@@ -52,7 +52,7 @@ def  dose_meal_ratio():
 def total_meal_dose(carbs):
     return carbs / dose_meal_ratio()
 
-print(f'Take {total_meal_dose(56.6)} units of insulin') 
+print(f"Take {total_meal_dose(56.6)} units of insulin") 
 
 
 def corr_ratio():
@@ -75,7 +75,7 @@ def total_cor_dose(glucose):
 def  total_dose(self):
     return total_meal_dose + total_cor_dose 
 
-print(f'Take {total_cor_dose(5.6)} units of insulin')
+print(f"Take {total_cor_dose(5.6)} units of insulin")
 
 
 
