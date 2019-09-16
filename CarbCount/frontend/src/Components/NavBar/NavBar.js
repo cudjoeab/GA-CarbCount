@@ -39,7 +39,7 @@ const OurNavBar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <NavDropdown title="Site" id="basic-nav-dropdown">
+                        <NavDropdown title="Menu" id="basic-nav-dropdown">
                             <Link to='/new_count' className="dropdown-item">
                                 New Count
                             </Link>
@@ -51,12 +51,12 @@ const OurNavBar = () => {
                             </Link>
                             <NavDropdown.Divider />
                             <Link to='/food_logs' className="dropdown-item">
-                                Food Logs
+                                Food Log
                             </Link>
                         </NavDropdown>
                     </Nav>
                     <Form inline>
-                        <FormControl type="text" placeholder="Ingredient..." className="mr-sm-2" />
+                        <FormControl type="text" placeholder="Search for any food!" className="mr-sm-2" />
                             <Button variant="outline-success">Search</Button>
                     </Form>
                 </Navbar.Collapse>
