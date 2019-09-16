@@ -20,12 +20,6 @@ const initialState = {
 }
 
 class App extends Component {
-    // const checkUserAuthentication = () => {
-    //     let loggedIn = true;
-    //     console.log(loggedIn)
-    //     return loggedIn;
-    // }
-
     constructor() {
         super();
         this.state = {
@@ -38,32 +32,24 @@ class App extends Component {
         if (route === 'signout') {
             this.setState(initialState);
         } else if (route === 'home') {
-            this.setState({isSignedIn: true});
+            this.setState({
+                isSignedIn: true 
+            });
         }
-        this.setState({route: route});
+        this.setState({ 
+            route: route 
+        });
     }
 
     render() {
-        // const isAuthenticated = null;
-        // const isAuthenticated = true;
-        // console.log('App is authenticated')
-
         const { isSignedIn, route } = this.state;
     
         return (
             <Router>
                 <div id="App">
                     <div id='page-container'>
-                        {/* <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} /> */}
                         <OurNavBar />
-                        {/* <Main isLoggedIn={isAuthenticated} /> */}
-                        
-                        {/* { route === 'home'
-                            ? // User is logged in. */}
-                            <Main route={route} />
-                            {/* : // User is not logged in.
-                              <div>Not home</div>
-                        } */}
+                        <Main route={route} />
                     </div>
                     <Footer />
                 </div>

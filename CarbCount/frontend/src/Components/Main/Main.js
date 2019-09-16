@@ -27,80 +27,15 @@ import Register from '../Pages/Register/Register.js';
 import './Main.css';
 
 class Main extends Component {
-    // checkLoggedIn = () => {
-    //     console.log('hey')
-    //     return 'yes';
-    // }
-
-    // authenticatedRoutes = () => {
-    //     return (
-    //         <>
-    //             <Route path="/new_recipe" component={NewRecipe} /> 
-    //             <Route path="/food_logs/:id" component={FoodLog} /> 
-    //             <Route path="/food_logs" component={FoodLogs} /> 
-    //             <Route path="/saved_recipes" component={SavedRecipes} /> 
-    //         </>
-    //     );
-    // }
-
-    // nonAuthenticatedRoutes = () => {
-    //     return (
-    //         <>
-    //             <Route path="/sign_in" component={SignIn} /> 
-    //             <Route path="/register" component={Register} /> 
-    //         </>
-    //     );
-    // }
-
-    // otherRoutes = () => {
-    //     return (
-    //         <>
-    //             <Route path="/homepage" component={Homepage} /> 
-    //             <Route path="/new_count" component={NewCount} /> 
-    //             <Route path="/contact" component={Contact} /> 
-    //             <Route path="/about" component={About} /> 
-    //             <Route path="/FAQ" component={FAQ} /> 
-    //             <Route exact path="/" component={LandingPage} />
-    //         </>
-    //     );
-    // }
-
-    // state = {
-    //     loggedIn: this.props.route,
-    //     activeRoutes: this.checkLoggedIn()
-    // }
-
     render() {
         const { route } = this.props;
-        // console.log(route)
-        console.log('Main is authenticated', route)
-        // console.log('Main is loggedin', this.state.loggedIn)
-        // console.log('Main has active routes', this.state.activeRoutes)
+        console.log('Main, route is:', route)
 
         return (
             <main>
                 <section className='jumbotron jumbotron-fluid'>
 
                     <Switch>
-                        { route === 'home'
-                            ? // User is logged in. They can access these routes.
-                                <>
-                                    <Route path="/food_logs/:id" component={FoodLog} /> 
-                                    <Route path="/food_logs" component={FoodLogs} /> 
-                                    <Route path="/saved_recipes" component={SavedRecipes} /> 
-                                </>
-                            : // User is not logged in.
-                                <>
-                                    <Route path="/register" component={Register} /> 
-                                    <Route path="/sign_in" component={SignIn} /> 
-                                </>
-                        }
-                    
-                    
-                        {/* { this.nonAuthenticatedRoutes }
-                        { this.otherRoutes }
-                        { this.authenticatedRoutes } */}
-
                         {/* These routes are always available when user is logged in or not. */}
                         <Route path="/about" component={About} /> 
                         <Route path="/contact" component={Contact} /> 
@@ -109,15 +44,26 @@ class Main extends Component {
                         <Route path="/new_count" component={NewCount} /> 
                         <Route path="/new_recipe" component={NewRecipe} /> 
                         <Route exact path="/" component={LandingPage} />
+
+                        {/* Uncomment these 8 lines when Authentication is working: */}
+                        {/* { route === 'home' */}
+                            {/* ? // User is logged in. They can access these routes. */}
+                                {/* <> */}
+                                    <Route path="/food_logs/:id" component={FoodLog} /> 
+                                    <Route path="/food_logs" component={FoodLogs} /> 
+                                    <Route path="/saved_recipes" component={SavedRecipes} /> 
+                                {/* </> */}
+                            {/* : // User is not logged in. */}
+                                {/* <> */}
+                                    <Route path="/register" component={Register} /> 
+                                    <Route path="/sign_in" component={SignIn} /> 
+                                {/* </> */}
+                        {/* } */}
                     </Switch>
 
                     {/* <p>Main content</p>
                     <ProgressBar />
-                    <article className='manyCards'>
-                        <OurCard />
-                        <OurCard />
-                        <OurCard />
-                    </article> */}
+                    */}
 
                     <ul>
                         <li>These links are for testing only:</li>
@@ -136,7 +82,6 @@ class Main extends Component {
                         <li><Link to='/about'>About</Link></li>
                         <li><Link to='/FAQ'>FAQ</Link></li>
                     </ul>
-                    <p>{route}</p>
                 </section>
             </main>
         );
