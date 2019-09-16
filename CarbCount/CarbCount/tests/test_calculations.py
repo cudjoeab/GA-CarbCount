@@ -1,9 +1,20 @@
-import unittest 
+# To run this test, enter in terminal:
+# pytest test_calculations.py
 
-class TestMealMethods(unittest.TestCase): 
+import requests 
+import datetime 
+# from datetimerange import DateTimeRange
+
+
+from ..calculations import Calculations
+from unittest import TestCase, skip
+
+class TestMealMethods(TestCase): 
 
     def test_calculate_net_carb(self):
-        pass
+        self.assertEqual('foo'.upper(), 'FOO')
+        self.assertEqual(calculate_net_carb)
+
 
     def test_calculate_net_fibre(self):
         pass
@@ -11,5 +22,3 @@ class TestMealMethods(unittest.TestCase):
     def total_carb(self):
         pass 
 
-if __name__ == '__main__':
-    unittest.main() 
