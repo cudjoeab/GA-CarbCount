@@ -9,7 +9,7 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import About from '../Pages/About/About.js';
 import Contact from '../Pages/Contact/Contact.js';
 import FAQ from '../Pages/FAQ/FAQ.js';
-import FoodLog from '../Pages/FoodLogs/FoodLog/FoodLog.js';
+// import FoodLog from '../Pages/FoodLogs/FoodLog/FoodLog.js';
 import FoodLogs from '../Pages/FoodLogs/FoodLogs.js';
 import Homepage from '../Pages/Homepage/Homepage.js';
 import LandingPage from '../Pages/LandingPage/LandingPage.js';
@@ -49,7 +49,7 @@ class Main extends Component {
                         {/* { route === 'home' */}
                             {/* ? // User is logged in. They can access these routes. */}
                                 {/* <> */}
-                                    <Route path="/food_logs/:id" component={FoodLog} /> 
+                                    {/* <Route path="/food_logs/:id" component={FoodLog} />  */}
                                     <Route path="/food_logs" component={FoodLogs} /> 
                                     <Route path="/saved_recipes" component={SavedRecipes} /> 
                                 {/* </> */}
