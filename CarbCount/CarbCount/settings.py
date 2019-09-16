@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'oauth2_provider',
+    'django_extensions',
     'rest_framework',
+    'rest_framework.authtoken',  # Adding this - Adam
     'CarbCount',
     
 ]
@@ -166,3 +168,21 @@ STATICFILES_DIRS = [
 #     'django.contrib.auth.backends.ModelBackend',
 #     'oauth2_provider.backends.OAuth2Backend',
 # )
+
+
+# Adding this - Adam
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.BasicAuthentication',
+#         'rest_framework.authentication.SessionAuthentication',
+#     ]
+# }
+
+# Trying this one - Adam
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated', )
+}
