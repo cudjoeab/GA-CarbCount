@@ -23,7 +23,8 @@ urlpatterns = [
     # must be catch-all for pushState to work
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    url(r'^login/$', views.api_login),
+    path('login/', views.api_login),
+    # url(r'^login/$', views.api_login),
     path('api/search_recipes/', views.search_recipes), 
     url(r'^', views.FrontendAppView.as_view()) # This is a catch-all for React.
 ]
