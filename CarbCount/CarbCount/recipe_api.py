@@ -1,13 +1,15 @@
-from fatsecret import Fatsecret
-from dotenv import load_dotenv
-import os
-load_dotenv()
-
-consumer_key = os.getenv("FATSECRETS_CONSUMER_KEY")
-consumer_secret = os.getenv("FATSECRETS_CONSUMER_SECRET")
 
 
-fs = Fatsecret(consumer_key, consumer_secret)
+
+# from fatsecret import Fatsecret
+# import os
+
+
+# consumer_key = os.getenv("FATSECRETS_CONSUMER_KEY")
+# consumer_secret = os.getenv("FATSECRETS_CONSUMER_SECRET")
+
+
+# fs = Fatsecret(consumer_key, consumer_secret)
 
 
 # food_item = input("Enter the food item you going to stuff into your mouth: ")

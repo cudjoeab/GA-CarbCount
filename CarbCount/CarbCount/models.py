@@ -1,15 +1,18 @@
-from django.db import models
+
+
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
+from django.db import models
 
-from django.core.validators import ( MinLengthValidator, MaxLengthValidator,MinValueValidator, MaxValueValidator,  )
+from django.core.validators import (
+    MinLengthValidator, 
+    MaxLengthValidator, 
+    MinValueValidator, 
+    MaxValueValidator
+)
 
-
-from rest_framework.authtoken.models import Token  # Adding this - Adam
-
-
-import requests
 import datetime
+
 
 class Practitioner(models.Model):
     first_name = models.CharField(max_length=255)
@@ -18,7 +21,7 @@ class Practitioner(models.Model):
     license_id = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)], null=False)
 
     def __str__(self):
-        return f'Practitioner: {self.first_name} - {self.last_name}'
+        return f"Practitioner: {self.first_name} - {self.last_name}"
 
 class Diabetic(models.Model):
     first_name = models.CharField(max_length=255)
@@ -41,7 +44,7 @@ class Diabetic(models.Model):
     practitioner_id = models.ForeignKey(Practitioner, on_delete=models.CASCADE, blank=True, null=True, related_name="practitioner")
 
     def __str__(self):
-        return f'Diabetic: {self.first_name} - {self.last_name} - {self.email}'
+        return f"Diabetic: {self.first_name} - {self.last_name} - {self.email}"
 
 class Recipe(models.Model):
     name = models.CharField(max_length=255)
@@ -59,7 +62,7 @@ class Recipe(models.Model):
     )
 
     def __str__(self):
-        return f'{self.name} - {self.total_carbs} carbs - {self.total_fibre} fibre'
+        return f"{self.name} - {self.total_carbs} carbs - {self.total_fibre} fibre"
 
 class Meal(models.Model): 
     date = models.DateField()
@@ -71,15 +74,8 @@ class Meal(models.Model):
     insulin_dose = models.FloatField(validators=[MinValueValidator(0)], null=False) 
 
     def __str__(self):
-        return f'''
-        date: {self.date} \n
-        food: {self.food} \n
-        total carbs: {self.carbs} grams of carb \n
-        meal_type: {self.meal_type} \n
-        blood_glucose: Your blood sugar is {self.blood_glucose} mmol/L \n
-        insulin_dose: Please take {self.insulin_dose} units of {Diabetic.insulin_type}\n 
-        Enjoy your {self.}! 
-        '''    
+        return 'TODO: fix - tripple f-strings are wonky?'
+
     def calculate_net_carb(food):
         net_carb = 0
         for f in food:
@@ -95,8 +91,7 @@ class Meal(models.Model):
     def total_carb(food): 
         net_carb = calculate_net_carb(food)
         net_fibre = calculate_net_fibre(food)
-        total_carb = net_carb - net_fibre
-    return total_carb  
+        return net_carb - net_fibre  
 
     def  dose_meal_ratio():
         ratio = 5
@@ -142,8 +137,7 @@ class Log(models.Model):
     diabetic_id = models.ForeignKey(Diabetic, on_delete=models.CASCADE, related_name="diabetic")
 
     def __str__(self):
-        return f'Log: {self.meal_id} - {self.diabetic_id}'
-
+        return f"Log: {self.meal_id} - {self.diabetic_id}"
 
 def token_request(request):  # Adding this - Adam
     if user_requested_token() and token_request_is_warranted():

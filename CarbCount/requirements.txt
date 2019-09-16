@@ -1,1 +1,7 @@
+django
+django-extensions
 fatsecret
+pylint
+django-rest-framework
+psycopg2
+datetimerange
