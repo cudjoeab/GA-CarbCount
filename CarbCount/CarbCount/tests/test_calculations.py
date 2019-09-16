@@ -6,7 +6,7 @@ import datetime
 # from datetimerange import DateTimeRange
 
 
-from ..calculations import Calculations
+from CarbCount.calculations import Calculations
 from unittest import TestCase, skip
 
 class TestMealMethods(TestCase): 
