@@ -2,23 +2,29 @@
 # import libraries for the date and formatting
 import datetime
 
+# import models that are needed for testing 
+from CarbCount.models import Meal
+
 # import test library 
 from django.test import TestCase
-
-# import models that are needed for testing 
-from CarbCount.models import Meal 
 
 # define test case class with TestCase as argument 
 class CarbTestCase(TestCase): 
     @classmethod
     def setUpTestData(cls):
-        print("setUpTestData: Run once to set up non-modified data for all class methods.")
-        # will need to set up the object (food item name, carb and fibre) to be used 
-        # for the methods 
-        pass
+        # Set up non-modified objects used by all test methods
+        Meal.objects.create(apple = {"carb" : 14, "fibre" : 2.4 }, 
+                            burger = {"carb" : 47, "fibre" : 2 }) 
+        food = [apple, burger]
+        
 
     def test_calculate_net_carb(self):
-        pass
+        
+        net_carb=0
+        for f in food:
+            net_carb += f["carb"] 
+        self.assertEqual(net_carb, 56.6)
+
 
     def test_calculate_net_fibre(self):
         pass
@@ -27,7 +33,7 @@ class CarbTestCase(TestCase):
         pass 
         
 
-class MealRatioTestCase(TestCase):
+# class MealRatioTestCase(TestCase):
 
 
-class CorectionRatioTestCase(TestCase):
+# class CorectionRatioTestCase(TestCase):
