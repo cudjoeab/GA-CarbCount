@@ -24,7 +24,8 @@ class Contact extends Component {
                     <h3>The Web Developers</h3>
                     <section>
                         <h4>Abigail Cudjoe</h4>
-                        <p><img src=''className='profile_photo' alt='Abigail Cudjoe.' align='left' />Brand statement? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet venenatis nisi in luctus. Vivamus pretium volutpat eleifend. Sed et hendrerit est. Quisque eget vulputate erat. Sed aliquet purus non dui mollis tincidunt. Phasellus urna tellus, suscipit nec facilisis pretium, congue eget lectus. Sed venenatis condimentum nibh quis pulvinar. Aliquam lacinia, metus posuere tempor mollis, orci lorem mattis libero, nec mollis purus magna id ante. Nullam id tristique odio, sit amet viverra dolor. Nam cursus placerat felis, non ullamcorper tortor pharetra eget. Donec facilisis molestie arcu vel aliquet.</p>
+                        <p><img src=''className='profile_photo' alt='Abigail Cudjoe.' align='left' />Brand statement?
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet venenatis nisi in luctus. Vivamus pretium volutpat eleifend. Sed et hendrerit est. Quisque eget vulputate erat. Sed aliquet purus non dui mollis tincidunt. Phasellus urna tellus, suscipit nec facilisis pretium, congue eget lectus. Sed venenatis condimentum nibh quis pulvinar. Aliquam lacinia, metus posuere tempor mollis, orci lorem mattis libero, nec mollis purus magna id ante. Nullam id tristique odio, sit amet viverra dolor. Nam cursus placerat felis, non ullamcorper tortor pharetra eget. Donec facilisis molestie arcu vel aliquet.</p>
                         <ul>
                             <li>LinkedIn: </li>
                             <li>GitHub: </li>
