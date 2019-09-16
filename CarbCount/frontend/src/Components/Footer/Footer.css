@@ -1,8 +1,18 @@
 footer {
+    bottom: 0;
+    height: 4rem;
+    width: 100%;
+    position: absolute;
     text-align: center;
+    border-top: 1px solid black;   
 }
 
 footer li {
     padding: 0 20px;
     display: inline-block;
+}
+
+.row {
+    margin: 0px;
+    height: 100px;
 }

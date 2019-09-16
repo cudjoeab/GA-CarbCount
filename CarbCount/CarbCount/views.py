@@ -62,8 +62,6 @@ class FrontendAppView(View):
                 """,
                 status=501,
             )
+
+
     
-    # def signup(request):
-    #     form = UserCreationForm()
-    #     context = { 'form': form }
-    #     response = render(request, '') 

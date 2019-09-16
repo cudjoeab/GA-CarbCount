@@ -1,4 +1,46 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 body {
-  margin: 0 auto;
-  text-align: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#App {
+    position: relative !important; /* Pushes footer to bottom of long page. */
+}
+
+#page-container {
+    margin: 0 auto;
+    min-height: 100vh !important;  /* Keeps footer at bottom of short page. */
+    padding-bottom: 2rem !important;  /* Keeps footer at very bottom of long page. */
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+.jumbotron {
+    margin: 0 auto;
+    
+    /* max-width: 900px; */
+    text-align: left;
+    background-color: transparent !important;
+}
+
+.borderBox {
+    /* margin-top: 150px; */
+    margin: 0 auto;
+    padding: 15px !important;
+    max-width: 900px;
+    background-color: #fff !important;
+    border: 1px solid #ddd;
+    /* background-color: grey !important; */
+    border-radius: 10px;
 }

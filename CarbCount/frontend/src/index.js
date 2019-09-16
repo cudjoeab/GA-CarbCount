@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './Components/App/App.js';
 import * as serviceWorker from './serviceWorker';
 
-// Importing the Bootstrap CSS
+// Importing the Bootstrap CSS:
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Call stylesheet last:
