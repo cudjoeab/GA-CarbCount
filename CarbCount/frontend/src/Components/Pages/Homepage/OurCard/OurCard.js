@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // Bootstrap-React components:
 import Card from "react-bootstrap/Card";
 
+// Smaller components:
+// none
+
 // Call stylesheet last:
 import './OurCard.css';
 
