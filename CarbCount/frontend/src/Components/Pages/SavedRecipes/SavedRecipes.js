@@ -1,17 +1,30 @@
-import React from 'react';
+// Vanilla React:
+import React, { Component } from 'react';
 
-// Bootstrap-React components
+// Bootstrap-React components:
+// none
+
+// Smaller components:
+// none
 
 // Call stylesheet last:
 import './SavedRecipes.css';
 
-const SavedRecipes = () => {
-    return (
-        <>
-        <h2>Saved Recipes</h2>
-        <p>Saved Recipes</p>
-        </>
-    );
+
+class SavedRecipes extends Component {
+    componentDidMount() {
+        console.log('Component did mount!');
+        window.scrollTo(0, 0); //Brings user to top of page.
+    }
+
+    render() {
+        return (
+            <section className='borderBox'>
+                <h2>Saved Recipes</h2>
+                <p>Saved Recipes</p>
+            </section>
+        );
+    }
 }
 
 export default SavedRecipes;

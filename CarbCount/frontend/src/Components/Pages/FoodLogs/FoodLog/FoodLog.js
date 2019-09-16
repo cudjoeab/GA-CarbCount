@@ -25,12 +25,17 @@ class FoodLog extends Component {
         meal: this.JSONresponse
     }
 
+    componentDidMount() {
+        console.log('Component did mount!');
+        window.scrollTo(0, 0); //Brings user to top of page.
+    }
+
     render() {
         return (
-            <article>
+            <section className='borderBox'>
                 <h4>September 8th 2019</h4>
                 <p>A single food log.</p>
-            </article>
+            </section>
         );
     }
 }

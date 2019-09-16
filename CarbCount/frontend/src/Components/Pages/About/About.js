@@ -1,5 +1,5 @@
 // Vanilla React:
-import React from 'react';
+import React, { Component } from 'react';
 
 // Bootstrap-React components:
 // none
@@ -10,13 +10,21 @@ import React from 'react';
 // Call stylesheet last:
 import './About.css';
 
-const About = () => {
-    return (
-        <>
-        <h3>About</h3>
-        <p>About Info</p>
-        </>
-    );
+
+class About extends Component {
+    componentDidMount() {
+        console.log('Component did mount!');
+        window.scrollTo(0, 0); //Brings user to top of page.
+    }
+
+    render() {
+        return (
+            <section className='borderBox'>
+                <h3>About</h3>
+                <p>About Info</p>
+            </section>
+        );
+    }
 }
 
 export default About;

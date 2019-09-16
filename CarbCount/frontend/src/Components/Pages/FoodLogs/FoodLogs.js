@@ -24,10 +24,6 @@ class FoodLogs extends Component {
         meals: this.JSONresponse
     }
 
-    componentWillMount = () => {
-        console.log('Component will mount!');
-    }
-
     componentDidMount() {
         console.log('Component did mount!');
         window.scrollTo(0, 0); //Brings user to top of page.
@@ -39,11 +35,11 @@ class FoodLogs extends Component {
         // )
 
         const mealElements = this.state.meals.map(
-            (log, id) => <p>{log.date} - {log.food} - <Link to={`/food_logs/${id}`}>More Details</Link></p>
+            (log, id) => <p key={id}>{log.date} - {log.food} - <Link to={`/food_logs/${id}`} key={`food_logs/${id}`}>More Details</Link></p>
         )
 
         return (
-            <article>
+            <section className='borderBox'>
                 <h2>Food Logs</h2>
                 <FontAwesomeIcon icon={faAppleAlt} />
                 <FontAwesomeIcon icon={faSyringe} />
@@ -51,7 +47,7 @@ class FoodLogs extends Component {
                 {/* {logElements} */}
                 {mealElements}
                 {/* <FoodLog /> */}
-            </article>
+            </section>
         );
     }
 }
