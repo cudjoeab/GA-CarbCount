@@ -22,7 +22,7 @@ class Register extends Component {
     render() {
         return (
             <section className='borderBox'>
-                <h2>Get Started with Carb Count</h2>
+                <h1>Get Started with Carb Count</h1>
                 <p>Welcome to Carb Count!  Let's start by creating a free account.  Next, we'll define your goals and create your custom diet plan.</p>
                 <Form>
                     <Form.Group controlId="formBasicEmail">

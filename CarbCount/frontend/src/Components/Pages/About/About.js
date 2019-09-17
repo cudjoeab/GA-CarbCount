@@ -20,7 +20,7 @@ class About extends Component {
     render() {
         return (
             <section className='borderBox'>
-                <h3>About</h3>
+                <h1>About</h1>
                 <p>About Info</p>
             </section>
         );
