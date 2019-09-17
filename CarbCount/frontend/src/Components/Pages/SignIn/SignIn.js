@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import {  } from "react-router";
 
 // Bootstrap-React components:
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -24,6 +25,7 @@ class SignIn extends Component {
         this.state = {
             username: '',
             password: '',
+            errorMessage: '',
             redirectToReferrer: false
         };
       }
@@ -35,13 +37,13 @@ class SignIn extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const form = event.currentTarget;
+        const form = event.currentTarget.elements;
 
         axios.post("/login/", {
-            username: form.elements.username.value,
-            password: form.elements.password.value
-        }).then((e)=> {
-            console.log('Then:', e)
+            username: form.username.value,
+            password: form.password.value
+        }).then((response)=> {
+            console.log('Then:', response)
             // console.log(this.props)
             // redirect etc
             
@@ -58,11 +60,16 @@ class SignIn extends Component {
             // return <Redirect to='/FAQ' />
 
             this.setState({
+                errorMessage: '',
                 redirectToReferrer: true
             });
-        }).catch((e)=> {
-            console.log('Error:', e)
+        }).catch((error)=> {
+            console.log('Error:', error)
             // this.history.pushState(null, 'homepage');
+
+            this.setState({
+                errorMessage: <Alert variant="danger">Invalid credentials</Alert>
+            });
         });
     }
 
@@ -70,7 +77,7 @@ class SignIn extends Component {
             const { redirectToReferrer } = this.state
 
             if (redirectToReferrer === true) {
-                return <Redirect to='/homepage' />
+                return <Redirect to='/homepage?login=success' />
             }
 
             return (
@@ -96,6 +103,7 @@ class SignIn extends Component {
                             placeholder="Password" 
                         />
                     </Form.Group>
+                    {this.state.errorMessage}
 
                     <Button variant="primary" type="submit">
                         Sign In

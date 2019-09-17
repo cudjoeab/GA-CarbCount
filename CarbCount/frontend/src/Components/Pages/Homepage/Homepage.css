@@ -5,3 +5,8 @@
     position: relative;
             max-width: 800px;
 } */
+
+.card {
+    min-width: 200px;
+    height: 200px;
+}
