@@ -1,5 +1,5 @@
 // Vanilla React:
-import React from "react";
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 // Bootstrap-React components:
@@ -28,14 +28,31 @@ import logo from './Logo/logo-03.png';
 // Call stylesheet last:
 import "./NavBar.css"
 
-const OurNavBar = () => {
+class OurNavBar extends Component {
+    render() {
+        // const getUser = 7;
+
+        let getUser;
+
+        if (localStorage.getItem('user')) {
+            console.log(localStorage.getItem('user'))
+            getUser = JSON.parse(localStorage.getItem('user'));
+            console.log('a', getUser.userId)
+            console.log('a', getUser.userName)
+        } else {
+            getUser = '';
+            console.log('b')
+        }
+    
+
     return (
         <header>
             <Navbar className="nav" expand="lg">
                 <Link to='/' className="navbar-brand">
-                    <img className="logo" src={logo} alt="The CarbCount logo which resembles a glucose molecule." />CarbCount
+                    <img className="logo" src={logo} alt="The CarbCount logo which resembles a glucose molecule." />
+                    CarbCount
+                    
                 </Link>
-
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
@@ -55,14 +72,41 @@ const OurNavBar = () => {
                             </Link>
                         </NavDropdown>
                     </Nav>
+
+                    
+
                     <Form inline>
                         <FormControl type="text" placeholder="Search for any food!" className="mr-sm-2" />
                             <Button variant="outline-success">Search</Button>
                     </Form>
                 </Navbar.Collapse>
+                <Form inline>
+
+                    { getUser === ''
+                    ?
+                        <>
+                            <p>
+                                <Link to='/sign_in'>Sign In</Link> -- <Link to='/register'>Register</Link>
+                            </p>
+
+                        </>
+                    :
+                    <>
+                        <p>Id:{getUser.userId} --</p>
+                        <p>Name: {getUser.userName} --</p>
+                        <p>Logout</p>
+                        {/* <p>UserName saved: {getUser.userName}</p> */}
+                    </>
+                    
+                }
+                    
+
+
+                </Form>
             </Navbar>
         </header>
     );
 };
+}
 
 export default OurNavBar
