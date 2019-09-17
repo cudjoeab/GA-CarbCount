@@ -8,8 +8,8 @@ import Modal from "react-bootstrap/Modal";
 
 // Font Awesome:
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSyringe, faTint } from '@fortawesome/fontawesome-free-solid';
-import { faAppleAlt } from '@fortawesome/free-solid-svg-icons';
+import {  faSyringe, faTint } from '@fortawesome/fontawesome-free-solid';
+import { faBreadSlice, faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 
 // Smaller components:
 // import FoodLog from './FoodLog/FoodLog.js';
@@ -73,7 +73,9 @@ class FoodLogs extends Component {
 
         return (
             <section className='borderBox'>
-                <h2>Food Logs</h2>          
+                <h1>Food Logs</h1>
+                <p>See all your Food Logs.</p>
+
                 {mealElements}
 
                 {/* This only appears when user clicks on one of the links. */}
@@ -85,10 +87,10 @@ class FoodLogs extends Component {
                         <ul>
                             <li>{this.state.currItem.food} <FontAwesomeIcon icon={faAppleAlt} /></li>
                             <li>{this.state.currItem.meal_type}</li>
-                            <li>{this.state.currItem.carbs} carbs</li>
+                            <li>{this.state.currItem.carbs} carbs <FontAwesomeIcon icon={faBreadSlice} /></li>
                             <li>{this.state.currItem.fibre} fibre</li>
-                            <li>{this.state.currItem.blood_glucose} <FontAwesomeIcon icon={faTint} /></li>
-                            <li>{this.state.currItem.insulin_dose} <FontAwesomeIcon icon={faSyringe} /></li>
+                            <li>{this.state.currItem.blood_glucose} blood glucose <FontAwesomeIcon icon={faTint} /></li>
+                            <li>{this.state.currItem.insulin_dose} insulin <FontAwesomeIcon icon={faSyringe} /></li>
                         </ul>
                     </Modal.Body>
                     <Modal.Footer>

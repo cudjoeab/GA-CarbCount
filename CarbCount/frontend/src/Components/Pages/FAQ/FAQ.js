@@ -20,7 +20,7 @@ class FAQ extends Component {
     render() {
         return (
             <section className='borderBox'>
-                <h3>FAQ</h3>
+                <h1>Frequently Asked Questions</h1>
                 <p>FAQ Info</p>
             </section>
         );
