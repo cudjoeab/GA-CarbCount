@@ -53,10 +53,24 @@ def api_register(request):
     # then save the user
     # then return the user  
 
-    user = User.objects.create_user(username=username, password=password);
+    user = User.objects.create_user(username=username, password=password)
 
     if user is not None:
-        return Response(status=status.HTTP_200_OK)
+        # return Response(status=status.HTTP_200_OK, 
+        # {
+        #     'greeting': 'Hello World!'
+        # })
+        data = {
+            # 'greeting': 'Hello World!',
+            'userId': user.id,
+            'userName': user.username
+            # 'auth': request.auth
+            # "models_to_return": list(queryset),
+            # 'user id': user.id
+
+        }
+
+        return JsonResponse(data, status=HTTP_200_OK)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 

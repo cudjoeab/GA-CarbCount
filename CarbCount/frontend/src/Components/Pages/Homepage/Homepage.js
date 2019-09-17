@@ -38,9 +38,22 @@ class Homepage extends Component {
             (card, id) => <OurCard cardTitle={card.title} cardText={card.text} cardLink={card.link} key={id} />
         )
 
+        if (localStorage.getItem('user')) {
+            var getUser = JSON.parse(localStorage.getItem('userId'));
+        } else {
+            getUser = '';
+        }
+        
+
         return (
             <section className='borderBox'>
                 <h1>Enter a New Meal or Review Past Meals</h1>
+                
+                
+                <p>UserId saved: {getUser.userId}</p>
+                <p>UserName saved: {getUser.userName}</p>
+                
+                
                 {/* <CardDeck>
                     <OurCard cardTarget='new_count' />
                     <OurCard cardTarget='new_recipe' />
