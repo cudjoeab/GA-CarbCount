@@ -16,13 +16,21 @@ import Table from "react-bootstrap/Table";
 import './NewCount.css';
 
 
-const ourJSON = {
-    'Heirloom oranges':1342, 'Florida Orange':34553, 'Tasty Oranges': 34153
-}
-
-
-
 class NewCount extends Component {
+    ourJSON = {
+        'Heirloom oranges':1342, 'Florida Orange':34553, 'Tasty Oranges': 34153
+    }
+
+    constructor() {
+        super();
+        this.state = {
+            stageOfProcess: 1,
+            userGlucose: 0,
+            userSearch: '', 
+            foodList: []
+        }
+    }
+
     componentDidMount() {
         console.log('Component did mount!');
         window.scrollTo(0, 0); //Brings user to top of page.
@@ -31,47 +39,6 @@ class NewCount extends Component {
     render() {
         const id = 7;
 
-        // let [procedureData, setProcedureData] = useState({ title: '...', description: '...', items: '...'});
-
-                //A combination of componentDidMount AND componentDidUpdate.
-                // useEffect ( () => {  //This runs once on page load.
-                //     console.log(`Fetching id: ${ id }`);
-
-                //     setTimeout( () => {
-                //     setProcedureData({
-                //         title: 'Hello',
-                //         description: 'World!'
-                //     })
-                //     }, 1000)
-                // }, [id]); //This empty array is a list of things to watch. It will rerender for each item in the array.
-
-        // useEffect( () => {  //This runs three times when the title & description update.
-        //     console.log('Updating!');
-
-        //     // procedureData.items = ourJSON.map
-
-        //     console.log(procedureData.title);
-        //     console.log(procedureData.description);
-        //   }, [procedureData.title, procedureData.description, procedureData.items]);
-
-
-
-        //   const updateItemsList = () => {
-        //     setProcedureData(
-        //       (prevListings) => {
-        //         const newListings = ourJSON.map(
-        //           (l) => ({
-        //             title: l.title,
-        //             description: l.description,
-        //             views: l.views + 1
-        //           })
-        //         );
-        //         console.log(updateItemsList);
-        //         return newListings
-        //       }
-        //     )
-        //   }
-
         return (
             <section className='borderBox'>
                 <h2>New Count</h2>
@@ -79,7 +46,7 @@ class NewCount extends Component {
                 <Form>
                     <Form.Group controlId="formBasicGlucose">
                         <Form.Label>Blood Glucose:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter glucose (optional)" />
+                        <Form.Control type="number" placeholder="Enter glucose (optional)" />
                         <Form.Text className="text-muted">
                         (Descriptive text here)
                         </Form.Text>
@@ -106,15 +73,7 @@ class NewCount extends Component {
                     </DropdownButton>
 
                     <br/><br/>
-                    <h6>Step 1B - only appears after search:</h6>
-                    <Form.Group controlId="formBasicServing">
-                        <Form.Label>Serving:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter serving" />
-                        <Form.Text className="text-muted">
-                        (Descriptive text here)
-                        </Form.Text>
-                    </Form.Group>
-
+                    <h6>Step 1C - only appears clicking on item:</h6>
                     <Form.Group controlId="formBasicQuantity">
                         <Form.Label>Quantity:</Form.Label>
                         <Form.Control type="text" placeholder="Enter quantity" />
