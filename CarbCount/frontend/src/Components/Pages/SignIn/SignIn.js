@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import { Redirect, Route } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
+import {  } from "react-router";
 
 // Bootstrap-React components:
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+
+// All pages:
+import FAQ from '../FAQ/FAQ.js'
 
 // Call stylesheet last:
 import './SignIn.css';
@@ -15,40 +22,67 @@ import axios from '../../../axiosConfig'
 
 
 class SignIn extends Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            errorMessage: '',
+            redirectToReferrer: false
         };
       }
-
 
     componentDidMount() {
         console.log('Component did mount!');
         window.scrollTo(0, 0); //Brings user to top of page.
     }
 
- 
-
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
-        const form = event.currentTarget;
+        const form = event.currentTarget.elements;
 
         axios.post("/login/", {
-            username: form.elements.username.value,
-            password: form.elements.password.value
-        }).then((e)=> {
+            username: form.username.value,
+            password: form.password.value
+        }).then((response)=> {
+            console.log('Then:', response)
+            // console.log(this.props)
             // redirect etc
-        }).catch((e)=> {
+            
+            // browserHistory.push("/path-to-link");
+            // <Route path="/FAQ" component={FAQ} />
 
-        })
+            // window.location
 
+            // this.props.history.push("/");
+            // render (
+            //     <Redirect push to="/FAQ"/>
+            // )
+
+            // return <Redirect to='/FAQ' />
+
+            this.setState({
+                errorMessage: '',
+                redirectToReferrer: true
+            });
+        }).catch((error)=> {
+            console.log('Error:', error)
+            // this.history.pushState(null, 'homepage');
+
+            this.setState({
+                errorMessage: <Alert variant="danger">Invalid credentials</Alert>
+            });
+        });
     }
 
     render() {
+            const { redirectToReferrer } = this.state
 
-        return (
+            if (redirectToReferrer === true) {
+                return <Redirect to='/homepage?login=success' />
+            }
+
+            return (
             <section className='borderBox'>
                 <h1>SignIn.js</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nunc sed nisl fringilla venenatis.</p>
@@ -71,6 +105,7 @@ class SignIn extends Component {
                             placeholder="Password" 
                         />
                     </Form.Group>
+                    {this.state.errorMessage}
 
                     <Button variant="primary" type="submit">
                         Sign In

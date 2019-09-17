@@ -29,6 +29,9 @@ from rest_framework.permissions import AllowAny
 
 
 
+from django.contrib.auth.models import User
+
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def api_login(request):
@@ -39,6 +42,23 @@ def api_login(request):
         login(request, user)
         return Response(status=status.HTTP_200_OK)
     return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def api_register(request):
+    username = request.data['username']
+    password = request.data['password']
+    # Create a new User in your App
+    # then save the user
+    # then return the user  
+
+    user = User.objects.create_user(username=username, password=password);
+
+    if user is not None:
+        return Response(status=status.HTTP_200_OK)
+    return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
 
 def search_recipes(request):

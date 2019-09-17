@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('login/', views.api_login),
+    path('register/', views.api_register),
     # url(r'^login/$', views.api_login),
     path('api/search_recipes/', views.search_recipes), 
     url(r'^', views.FrontendAppView.as_view()) # This is a catch-all for React.
