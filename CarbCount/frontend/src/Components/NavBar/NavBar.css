@@ -9,7 +9,8 @@
     height: 80px;
     width: 100%;
     z-index: 2;
-    background-color: #4DCCBD;
+    background-color: #4DCCBD; 
+    opacity: .7;
 }
 
 .logo {
@@ -23,3 +24,4 @@
 .navbar-brand {
     font-weight: 900; 
 }
+
