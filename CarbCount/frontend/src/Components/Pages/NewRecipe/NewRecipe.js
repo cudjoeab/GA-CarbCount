@@ -23,8 +23,10 @@ class NewRecipe extends Component {
     render() {
         return (
             <section className='borderBox'>
-                <h3>New Recipe</h3>
-                <h6>Step 1:</h6>
+                <h1>New Recipe</h1>
+                <p>Add a New Recipe.</p>
+
+                <h2>Step 1:</h2>
                 <Form>
                     <Form.Group controlId="formBasicRecipe">
                         <Form.Label>Name:</Form.Label>
@@ -48,7 +50,7 @@ class NewRecipe extends Component {
                 </Form>
                 <br/><br/>
                 
-                <h6>Step 2:</h6>
+                <h2>Step 2:</h2>
                 <Form>
                     <Form.Group controlId="formBasicIngredients">
                         <Form.Label>Ingredients:</Form.Label>

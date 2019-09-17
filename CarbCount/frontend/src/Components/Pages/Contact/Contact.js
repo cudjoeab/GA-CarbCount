@@ -27,9 +27,9 @@ class Contact extends Component {
         return (
             <section className='borderBox'>
                 <article>
-                    <h3>The Web Developers</h3>
+                    <h1>The Web Developers</h1>
                     <section>
-                        <h4>Abigail Cudjoe</h4>
+                        <h2>Abigail Cudjoe</h2>
                         <p>
                             <img src={abigail} className='profile_photo rounded-circle' alt='Abigail Cudjoe' align='left' />
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet venenatis nisi in luctus. Vivamus pretium volutpat eleifend. Sed et hendrerit est. Quisque eget vulputate erat. Sed aliquet purus non dui mollis tincidunt. Phasellus urna tellus, suscipit nec facilisis pretium, congue eget lectus.
@@ -39,13 +39,12 @@ class Contact extends Component {
                             <li>GitHub: </li>
                             <li>Personal Portfolio: </li>
                             <li>Email: </li>
-                            <li>Phone Number: </li>
                         </ul>
                     </section>
                     <hr/>
 
                     <section>
-                        <h4>Mark Jarvis</h4>
+                        <h2>Mark Jarvis</h2>
                         <p>
                             <img src={mark} className='profile_photo rounded-circle' alt='Mark Jarvis.' align='right' />
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet venenatis nisi in luctus. Vivamus pretium volutpat eleifend. Sed et hendrerit est. Quisque eget vulputate erat. Sed aliquet purus non dui mollis tincidunt. Phasellus urna tellus, suscipit nec facilisis pretium, congue eget lectus.</p>
@@ -54,13 +53,12 @@ class Contact extends Component {
                             <li>GitHub: </li>
                             <li>Personal Portfolio: </li>
                             <li>Email: </li>
-                            <li>Phone Number: </li>
                         </ul>
                     </section>
                     <hr/>
 
                     <section>
-                        <h4>Osemeke Nwaka</h4>
+                        <h2>Osemeke Nwaka</h2>
                         <p>
                             <img src={osemeke} className='profile_photo rounded-circle' alt='Osemeke Nwaka.' align='left' />
                             Brand statement? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet venenatis nisi in luctus. Vivamus pretium volutpat eleifend. Sed et hendrerit est. Quisque eget vulputate erat.</p>
@@ -69,13 +67,12 @@ class Contact extends Component {
                             <li>GitHub: </li>
                             <li>Personal Portfolio: </li>
                             <li>Email: </li>
-                            <li>Phone Number: </li>
                         </ul>
                     </section>
                     <hr/>
 
                     <section>
-                        <h4>Adam Weiler</h4>
+                        <h2>Adam Weiler</h2>
                         <p>
                             <img src={adam} className='profile_photo rounded-circle' alt='Adam Weiler.' align='right' />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet venenatis nisi in luctus. Vivamus pretium volutpat eleifend. Sed et hendrerit est. Quisque eget vulputate erat. Sed aliquet purus non dui mollis tincidunt. Phasellus urna tellus, suscipit nec facilisis pretium, congue eget lectus. Sed venenatis condimentum nibh quis pulvinar. Aliquam lacinia, metus posuere tempor mollis, orci lorem mattis libero, nec mollis purus magna id ante. Nullam id tristique odio, sit amet viverra dolor. Nam cursus placerat felis, non ullamcorper tortor pharetra eget.</p>
                         <ul>
@@ -83,16 +80,15 @@ class Contact extends Component {
                             <li>GitHub: </li>
                             <li>Personal Portfolio: </li>
                             <li>Email: </li>
-                            <li>Phone Number: </li>
                         </ul>
                     </section>
                 </article>
                 <hr/>
                 
                 <article>
-                    <h3>The UX Designer</h3>
+                    <h2>The UX Designer</h2>
                     <section>
-                        <h4>Larry Medina</h4>
+                        <h2>Larry Medina</h2>
                         <p>
                             <img src={larry} className='profile_photo rounded-circle' alt='Larry Medina.' align='left' />Brand statement? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet venenatis nisi in luctus. Vivamus pretium volutpat eleifend. Sed et hendrerit est. Quisque eget vulputate erat. Sed aliquet purus non dui mollis tincidunt. Phasellus urna tellus, suscipit nec facilisis pretium, congue eget lectus. Sed venenatis condimentum nibh quis pulvinar. Aliquam lacinia, metus posuere tempor mollis, orci lorem mattis libero, nec mollis purus magna id ante. Nullam id tristique odio, sit amet viverra dolor. Nam cursus placerat felis, non ullamcorper tortor pharetra eget. Donec facilisis molestie arcu vel aliquet.</p>
                         <ul>
@@ -100,7 +96,6 @@ class Contact extends Component {
                             <li>GitHub: </li>
                             <li>Personal Portfolio: </li>
                             <li>Email: </li>
-                            <li>Phone Number: </li>
                         </ul>
                     </section>
                 </article>

@@ -29,11 +29,11 @@ class LandingPage extends Component {
         <section className = 'landingPage'>
             
             <section className='landingPageInfo'>
-                <h2>Carb Counting Made Easy</h2>
+                <h1>Carb Counting Made Easy</h1>
                 <p>Description</p>
                 
                 <h3>Carbohydrate Information for a Large Variety of Foods</h3>
-                <p>Carb Count uses the Fat Secret API, a comprehensive database of foods and their nuritional values.</p>
+                <p>Carb Count uses the <a href="https://platform.fatsecret.com" target="_blank">Fat Secret API</a>, a comprehensive database of foods and their nuritional values.</p>
                 
                 <h3>Rapid Insulin Calculator</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nunc sed nisl fringilla venenatis.</p>

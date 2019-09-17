@@ -1,0 +1,32 @@
+.carousel {
+    height: auto !important;
+    background-color: red;
+    display: block;
+    min-height: 500px !important;
+    position: absolute;
+}
+
+.carousel-indicators {
+    top: 0px;
+}
+
+.carousel-inner {
+    top: 0px;
+    height: 550px;
+    min-height: 50px !important;
+    background-color: blue;
+    position: absolute;
+    display: block;
+}
+
+.carousel-caption {
+    top: 0px;
+    left: 0px !important;
+    height: 400px;
+    width: 100%;
+    padding: 5px;
+    text-align: left !important;
+    background-color: orange;
+    display: block;
+    
+}

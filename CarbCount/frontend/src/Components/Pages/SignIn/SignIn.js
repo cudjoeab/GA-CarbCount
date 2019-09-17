@@ -48,7 +48,7 @@ class SignIn extends Component {
 
         return (
             <section className='borderBox'>
-                <h2>SignIn.js</h2>
+                <h1>SignIn.js</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nunc sed nisl fringilla venenatis.</p>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="username">
