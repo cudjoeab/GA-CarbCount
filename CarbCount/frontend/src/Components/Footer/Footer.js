@@ -29,13 +29,9 @@ const Footer = () => {
         <footer>
             <ul>
                 <li>
-                    <Link to='/' className="navbar-brand">CarbCount</Link>
+                    <Link to='/'>CarbCount</Link>
                 </li>
-                <li>
-                    <a href="https://platform.fatsecret.com" target="_blank">
-                        <img src={fat_secret_logo} border="0" alt="Our app powered by FatSecret API." />
-                    </a>
-                </li>
+
                 <li>
                     <Link to='/contact'>Contact</Link>
                 </li>
@@ -51,6 +47,11 @@ const Footer = () => {
                 </li>
                 <li>Terms &amp; Policy</li>
                 <li>A.M.O.A.L. ©2019</li>
+                <li>
+                    <a href="https://platform.fatsecret.com" target="_blank">
+                        <img src={fat_secret_logo} border="0" alt="Our app powered by FatSecret API." />
+                    </a>
+                </li>
             </ul>
         </footer>
 
