@@ -42,6 +42,8 @@ class NewCount extends Component {
         return (
             <section className='borderBox'>
                 <h2>New Count</h2>
+
+
                 <h6>Step 1:</h6>
                 <Form>
                     <Form.Group controlId="formBasicGlucose">
@@ -64,6 +66,8 @@ class NewCount extends Component {
                         Search for Food
                     </Button>
 
+
+
                     <br/><br/>
                     <h6>Step 1B - only appears after search:</h6>
                     <DropdownButton variant="info" id="dropdown-item-button" title={'Please choose an Item'}>
@@ -71,6 +75,8 @@ class NewCount extends Component {
                         <Dropdown.Item as="button">Green Apple</Dropdown.Item>
                         <Dropdown.Item as="button">Yellow Apple</Dropdown.Item>
                     </DropdownButton>
+
+
 
                     <br/><br/>
                     <h6>Step 1C - only appears clicking on item:</h6>
@@ -96,6 +102,8 @@ class NewCount extends Component {
                         Calculate
                     </Button>
                 </Form>
+
+
 
                 <br/><br/><br/>
                 <h6>Step 2 - Show results:</h6>
