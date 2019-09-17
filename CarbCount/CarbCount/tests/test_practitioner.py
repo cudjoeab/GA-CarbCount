@@ -1,57 +1,19 @@
-# followed MDN docs for testing in Django https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing
-# import libraries for the date and formatting
-import datetime
-
-# import models that are needed for testing 
-from CarbCount.models import Meal, Practitioner
-
-# import test library 
-from django.test import TestCase
-
-# define test case class with TestCase as argument 
-# class CarbTestCase(TestCase): 
-#     @classmethod
-    # def setUpTestData(cls):
-    #     # Set up non-modified objects used by all test methods
-    #     Meal.objects.create(apple = {"carb" : 14, "fibre" : 2.4 }, 
-    #                         burger = {"carb" : 47, "fibre" : 2 }) 
-    #     food = [apple, burger]
-        
-
-    # def test_calculate_net_carb(self):
-        
-    #     net_carb=0
-    #     for f in food:
-    #         net_carb += f["carb"] 
-    #     self.assertEqual(net_carb, 56.6)
-
-
-    # def test_calculate_net_fibre(self):
-    #     pass
-
-    # def test_total_carb(self):
-    #     pass 
-        
-
-# class MealRatioTestCase(TestCase):
-
-
-# class CorectionRatioTestCase(TestCase):
+# from django.test import TestCase
+# from CarbCount.models import Practitioner
 
 # class PractitionerTest(TestCase):
 #     @classmethod
 #     def test_practitioner_is_invalid_without_a_license_id(self):
-#         p1 = Practitioner.objects.create()
-#         # self.assertEquals(p1.save, False)
-#         self.assertFalse(isinstance(p1, Practitioner))
+#         p1 = Practitioner.objects.create(license_id=null)
+#         self.assertEquals(p1.save, false)
 
-    # def test_practitioner_is_valid_with_a_license_id(self):
-    #     p2 = Practitioner.objects.create(license_id=4)
-    #     self.assertEquals(p2.save, True)
+#     def test_practitioner_is_valid_with_a_license_id(self):
+#         p2 = Practitioner.objects.create(license_id=4)
+#         self.assertEquals(p2.save, true)
 
-    # def test_practitioner_is_valid_when_all_fields_are_filled_out(self):
-    #     p3 = Practitioner.objects.create(first_name='John', last_name='Smith', clinic_name='Smith Medical', license_id=7)
-    #     self.assertEquals(p3.save, True)
+#     def test_practitioner_is_valid_when_all_fields_are_filled_out(self):
+#         p3 = Practitioner.objects.create(first_name='John', last_name='Smith', clinic_name='Smith Medical', license_id=7)
+#         self.assertEquals(p3.save, true)
 
 # class DiabeticTest(TestCase):
 #     @classmethod
