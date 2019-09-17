@@ -29,7 +29,7 @@ const Footer = () => {
         <footer>
             <ul>
                 <li>
-                    <Link to='/'>CarbCount</Link>
+                    <Link class name = 'footer-link' to='/'>CarbCount</Link>
                 </li>
 
                 <li>
