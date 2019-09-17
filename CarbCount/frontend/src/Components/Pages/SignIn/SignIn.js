@@ -7,9 +7,11 @@ import Form from "react-bootstrap/Form";
 // Call stylesheet last:
 import './SignIn.css';
 
-import axios from 'axios'
-axios.defaults.xsrfHeaderName = "X-CSRFToken"
-axios.defaults.xsrfCookieName = 'csrftoken'
+// import axios from 'axios'
+import axios from '../../../axiosConfig'
+
+// axios.defaults.xsrfHeaderName = "X-CSRFToken"
+// axios.defaults.xsrfCookieName = 'csrftoken'
 
 
 class SignIn extends Component {
