@@ -29,14 +29,14 @@ class LandingPage extends Component {
         <section className = 'landingPage'>
             
             <section className='landingPageInfo'>
-                <h2>Carb Counting Made Easy (LandingPage.js)</h2>
-                <p>Description</p>
+                <h2>Carb Counting Made Easy</h2>
+                <br></br>
                 <h3> Carbohydrate info for numerous foods</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nunc sed nisl fringilla venenatis.</p>
+                <p>Access to thousands of foods including brand name and from restaurant chains! </p>
                 <h3>Rapid Insulin Calculator</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nunc sed nisl fringilla venenatis.</p>
+                <p>Get immediate calculations for your meal time doses without having to use multiple devices! </p>
                 <h3>Keep track of meal history</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nunc sed nisl fringilla venenatis.</p>
+                <p>Have easy access to your food log to keep track of your favorite meals and share data with your Diabetes Team!</p>
                 
             </section>
         <BackgroundSlideshow images={[ image1, image2, image3 ]} />
