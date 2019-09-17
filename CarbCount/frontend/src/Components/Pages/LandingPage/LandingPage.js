@@ -1,5 +1,6 @@
 // Vanilla React:
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 // Bootstrap-React components:
 // none
@@ -22,6 +23,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faCalculator, faBook } from '@fortawesome/fontawesome-free-solid';
 import { faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 
+//Pages: 
+// import SignIn from '../Pages/SignIn/SignIn.js';
+// import Register from '../Pages/Register/Register.js';
 
 class LandingPage extends Component {
     componentDidMount() {
@@ -43,7 +47,7 @@ class LandingPage extends Component {
                 <h3><FontAwesomeIcon icon={faBook} /> Keep track of meal history</h3>
                 <p>Have easy access to your food log, keep track of your favorite meals and share data with your Diabetes Team</p>
                 <section className = 'landingPageCTA'>
-                <h4> SIGN UP </h4> 
+                <h4>SIGN UP</h4> 
                 <h4> LOG IN </h4>  
                 </section>
                 
