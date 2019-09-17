@@ -17,6 +17,11 @@ import image1 from './Images/1.png'
 import image2 from './Images/2.png'
 import image3 from './Images/3.png'
 
+// Font Awesome:
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faCalculator, faBook } from '@fortawesome/fontawesome-free-solid';
+import { faAppleAlt } from '@fortawesome/free-solid-svg-icons';
+
 
 class LandingPage extends Component {
     componentDidMount() {
@@ -29,14 +34,20 @@ class LandingPage extends Component {
         <section className = 'landingPage'>
             
             <section className='landingPageInfo'>
-                <h2>Carb Counting Made Easy</h2>
+                <h2>Carb Counting Made Easy:</h2>
                 <br></br>
-                <h3> Carbohydrate info for numerous foods</h3>
-                <p>Access to thousands of foods including brand name and from restaurant chains! </p>
-                <h3>Rapid Insulin Calculator</h3>
-                <p>Get immediate calculations for your meal time doses without having to use multiple devices! </p>
-                <h3>Keep track of meal history</h3>
-                <p>Have easy access to your food log to keep track of your favorite meals and share data with your Diabetes Team!</p>
+                <h3> <FontAwesomeIcon icon={faAppleAlt} />  Carbohydrate info for numerous foods</h3>
+                <p>Access to thousands of foods including brand name and from restaurant chains </p>
+                <h3><FontAwesomeIcon icon={faCalculator} /> Rapid Insulin Calculator</h3>
+                <p>Get immediate calculations for your meal time doses without having to use multiple devices </p>
+                <h3><FontAwesomeIcon icon={faBook} /> Keep track of meal history</h3>
+                <p>Have easy access to your food log, keep track of your favorite meals and share data with your Diabetes Team</p>
+                <section className = 'landingPageCTA'>
+                <h4> SIGN UP </h4> 
+                <h4> LOG IN </h4>  
+                </section>
+                
+                
                 
             </section>
         <BackgroundSlideshow images={[ image1, image2, image3 ]} />

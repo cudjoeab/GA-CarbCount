@@ -10,12 +10,41 @@
     left: 0;
     right: 0;
     margin: auto;
-    max-width: 80%; 
-    height: 600px; 
-    background-color: rgba(255, 231, 251, 0.3);
+    max-width: 60%; 
+    background-color: rgba(255, 231, 251, 0.5);
     z-index: 1;
     padding: 30px; 
     border-radius: 10px; 
 }
 
+.landingPageInfo > h2 {
+    font-size: 60px; 
+    font-weight: 900; 
+}
 
+.landingPageInfo > h3 {
+    font-size: 40px; 
+    font-weight: 700; 
+}
+
+p { 
+    font-weight: 300;
+    font-size: 25px; 
+}
+
+.landingPageCTA {
+    margin: 0 auto; 
+    text-align: center;
+}
+.landingPageCTA > h4 {
+    display: inline-block;
+    padding: 10px; 
+    text-align: center;
+    margin: 0 20px;  
+    border: 5px solid #4DCCBD;
+    border-radius: 5px;  
+    font-weight: 900;
+    color: #ffffff;
+    background-color: #4DCCBD;
+    
+}
