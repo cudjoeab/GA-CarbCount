@@ -1,9 +1,10 @@
 .carousel {
     height: auto !important;
-    background-color: red;
+    /* background-color: red; */
     display: block;
     min-height: 500px !important;
     position: absolute;
+    /* background-color: light-grey; */
 }
 
 .carousel-indicators {
@@ -14,9 +15,10 @@
     top: 0px;
     height: 550px;
     min-height: 50px !important;
-    background-color: blue;
+    /* background-color: blue; */
     position: absolute;
     display: block;
+    /* background-color: light-grey; */
 }
 
 .carousel-caption {
@@ -26,7 +28,7 @@
     width: 100%;
     padding: 5px;
     text-align: left !important;
-    background-color: orange;
+    /* background-color: orange; */
     display: block;
-    
+    background-color: gray;
 }
