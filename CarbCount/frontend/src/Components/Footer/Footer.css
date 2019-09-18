@@ -6,6 +6,7 @@ footer {
     text-align: center;
     border-top: 1px solid black;
     background-color: #4DCCBD;
+    opacity: 0.8;
 }
 
 footer li {
@@ -14,7 +15,9 @@ footer li {
     display: inline-block;
     font-weight: bold;
     color: #FFF;
+
 }
+
 
 .row {
     margin: 0px;
