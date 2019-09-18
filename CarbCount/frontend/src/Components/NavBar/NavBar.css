@@ -23,3 +23,22 @@
 .navbar-brand {
     font-weight: 900; 
 }
+
+.nav .dropdown-item a {
+    color: red !important;
+    color: #fff;
+}
+
+
+.nav p a {
+    /* color: #FFF; */
+}
+
+.nav p a:hover {
+    /* color: #FFF; */
+}
+
+.nav p a {
+    /* background-color: red; */
+    color: blue;
+}
