@@ -74,7 +74,7 @@ class Main extends Component {
                     <ProgressBar />
                     */}
 
-                    <ul>
+                    {/* <ul>
                         <li>These links are for testing only:</li>
                         <li><Link to='/'>Landing Page</Link></li>
                         <li><Link to='/homepage'>Homepage</Link></li>
@@ -90,7 +90,7 @@ class Main extends Component {
                         <li><Link to='/contact'>Contact</Link></li>
                         <li><Link to='/about'>About</Link></li>
                         <li><Link to='/FAQ'>FAQ</Link></li>
-                    </ul>
+                    </ul> */}
                 </section>
             </main>
         );
