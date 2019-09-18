@@ -1,22 +1,31 @@
 import logging
 import os
 
+from django.conf import settings
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.forms import UserCreationForm 
+from django.contrib.auth.models import User
+from rest_framework.decorators import api_view, permission_classes
+
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from rest_framework.response import Response
+from rest_framework import permissions, status, viewsets
 
 from django.shortcuts import render, reverse, redirect, get_object_or_404
-from django.contrib.auth import authenticate, login
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
-from rest_framework import viewsets, permissions
-from rest_framework import status
+
+
+
+
+
+
 from .models import *
 from .serializers import *
 
-from django.views.generic import View
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
-from django.conf import settings
 
-from rest_framework.response import Response
+
+from django.views.generic import View
+from rest_framework import status, viewsets
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
     HTTP_404_NOT_FOUND,
@@ -26,7 +35,13 @@ from rest_framework.status import (
 # Adding these - Adam
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
+
+
+
+from rest_framework.permissions import AllowAny, IsAuthenticated
+
+
+
 
 class DiabeticViewSet(viewsets.ModelViewSet):
     '''Api endpoint for Diabetic Profile'''
@@ -74,21 +89,51 @@ class RecipeViewSet(viewsets.ModelViewSet):
         return super(RecipeViewSet, self).get_permissions()
 
 
-from django.contrib.auth.models import User
 
 
+# Also adding these - Adam
+from rest_framework.views import APIView
+from rest_framework.authtoken.models import Token
+
+
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def api_login(request):
     username = request.data['username']
     password = request.data['password']
     user = authenticate(request, username=username, password=password)
+
+    # if username is None or password is None:
+    #     return Response({'error': 'Please provide both username and password'}, 
+    #                     status=HTTP_400_BAD_REQUEST)
+
+    # user = authenticate(username=username, password=password)
+
+    # if not user:
+    #     return Response({'error': 'Invalid Credentials'},
+    #                     status=HTTP_404_NOT_FOUND)
+
+    # token, _ = Token.objects.get_or_create(user=user)
+    # return Response({'token': token.key},
+    #                     status=HTTP_200_OK)
+
     if user is not None:
         login(request, user)
         return Response(status=status.HTTP_200_OK)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def api_logout(request):
+    # username = request.data['username']
+    # password = request.data['password']
+    logout(request)
+    return Response(status=status.HTTP_200_OK)
+
+
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def api_register(request):
@@ -98,10 +143,24 @@ def api_register(request):
     # then save the user
     # then return the user  
 
-    user = User.objects.create_user(username=username, password=password);
+    user = User.objects.create_user(username=username, password=password)
 
     if user is not None:
-        return Response(status=status.HTTP_200_OK)
+        # return Response(status=status.HTTP_200_OK, 
+        # {
+        #     'greeting': 'Hello World!'
+        # })
+        data = {
+            # 'greeting': 'Hello World!',
+            'userId': user.id,
+            'userName': user.username
+            # 'auth': request.auth
+            # "models_to_return": list(queryset),
+            # 'user id': user.id
+
+        }
+
+        return JsonResponse(data, status=HTTP_200_OK)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 

@@ -8,7 +8,7 @@ import Carousel from "react-bootstrap/Carousel";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Form from "react-bootstrap/Form";
-import Table from "react-bootstrap/Table";
+// import Table from "react-bootstrap/Table";
 
 // Smaller components:
 // none
@@ -18,8 +18,12 @@ import './NewCount.css';
 
 
 class NewCount extends Component {
+    // ourJSON = {
+    //     'Heirloom oranges':1342, 'Florida Orange':34553, 'Tasty Oranges': 34153
+    // }
+
     ourJSON = {
-        'Heirloom oranges':1342, 'Florida Orange':34553, 'Tasty Oranges': 34153
+        ['Oranges':1342], ['Navels Oranges':34553], ['California Navel Oranges': 34153], ['Clementines': 34153], ['Navel Orange': 34153], ['Mandarin Orange': 34153], ['Tangerines (Mandarin Oranges)': 34153], ['Halos Mandarin Oranges': 34153], ['Valencias California Oranges': 34153], ['Florida Oranges': 34153], ['Cara Cara Oranges': 34153], ['Minneola Tangelo Orange': 34153], ['Cara Cara Navel Oranges': 34153], ['Mandarin Oranges': 34153], ['Orange Lemon Drink': 34153], ['Orange Juice': 34153], ['Orange Strawberry Banana Juice': 34153], ['Madarin Orange (Canned or Frozen)': 34153], ['Freshly Squeezed Orange Juice': 34153]
     }
 
     constructor() {
@@ -37,11 +41,29 @@ class NewCount extends Component {
         window.scrollTo(0, 0); //Brings user to top of page.
     }
 
-    displayCurrentStep(step) {
-        if (this.state.stageOfProcess === 1) {
+    // displayCurrentStep(step) {
+    //     if (this.state.stageOfProcess === 1) {
 
 
-        }
+    //     }
+    // }
+
+    handleBackClick = (event) => {
+        event.preventDefault();
+        console.log('Go back!');
+
+        this.setState({
+            stageOfProcess: this.state.stageOfProcess-1
+        });
+    }
+
+    handleForwardClick = (event) => {
+        event.preventDefault();
+        console.log('Go forwards!');
+
+        this.setState({
+            stageOfProcess: this.state.stageOfProcess+1
+        });
     }
 
     render() {
@@ -50,11 +72,7 @@ class NewCount extends Component {
                 <h1>New Count</h1>
                 <p>Add a New Count to your Log.</p>
 
-                {/* <>
-                <div class="carousel slide"><ol class="carousel-indicators"><li class="active"></li> <li></li> <li></li> </ol><div class="carousel-inner"><div class="carousel-item active carousel-item"><div class="carousel-caption"><h2>Step 1:</h2><form class=""><div class="form-group"><label class="form-label" for="formBasicGlucose">Blood Glucose:</label><input placeholder="Enter glucose (optional)" type="number" id="formBasicGlucose" class="form-control" />><small class="text-muted form-text">(Descriptive text here)</small></div><div class="form-group"><label class="form-label" for="formBasicSearch">Search:</label><input placeholder="Enter search" type="text" id="formBasicSearch" class="form-control" />><small class="text-muted form-text">(Descriptive text here)</small></div><button type="submit" class="btn btn-primary">Search for Food</button></form></div></div><div class="carousel-item carousel-item"><div class="carousel-caption"><h2>Step 2 - only appears after search:</h2><form class=""><div class="dropdown"><button aria-haspopup="true" aria-expanded="false" id="dropdown-item-button" type="button" class="dropdown-toggle btn btn-info">Please choose an Item</button></div><h2>Step 2b - only appears clicking on item:</h2><div class="form-group"><label class="form-label" for="formBasicQuantity">Quantity:</label><input placeholder="Enter quantity" type="text" id="formBasicQuantity" class="form-control" />><small class="text-muted form-text">(Descriptive text here)</small></div><h3>List:</h3><ul><li>apple <a href="">(minus sign)</a></li><li>bread <a href="">(minus sign)</a></li><li>bread <a href="">(minus sign)</a></li><li>bread <a href="">(minus sign)</a></li></ul><button type="submit" class="btn btn-secondary">Back</button><button type="submit" class="btn btn-primary">Calculate</button></form></div></div><div class="carousel-item carousel-item"><div class="carousel-caption"><h3>Third slide label</h3><p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p></div></div></div></div>
-                </> */}
-
-                <Carousel controls={false} interval={null} wrap={false}>
+                <Carousel activeIndex={this.state.stageOfProcess} controls={false} interval={null} wrap={false} >
                     <Carousel.Item>
                         <Carousel.Caption>
                             <h2>Step 1:</h2>
@@ -73,7 +91,7 @@ class NewCount extends Component {
                                     (Descriptive text here)
                                     </Form.Text>
                                 </Form.Group>
-                                <Button variant="primary" type="submit">
+                                <Button variant="primary" type="submit" onClick={this.handleForwardClick}>
                                     Search for Food
                                 </Button>
                             </Form>
@@ -86,7 +104,7 @@ class NewCount extends Component {
                             <Form>    
                                 <DropdownButton variant="info" id="dropdown-item-button" title={'Please choose an Item'}>
                                     {/* <Dropdown.Item as="button">{procedureData.title}</Dropdown.Item> */}
-                                    <Dropdown.Item as="button">Green Apple</Dropdown.Item>
+                                    <Dropdown.Item as="button">Oranges</Dropdown.Item>
                                     <Dropdown.Item as="button">Yellow Apple</Dropdown.Item>
                                 </DropdownButton>
                                 <h2>Step 2b - only appears clicking on item:</h2>
@@ -102,15 +120,15 @@ class NewCount extends Component {
                                 <ul>
                                     <li>apple <a href=''>(minus sign)</a></li>
                                     <li>bread <a href=''>(minus sign)</a></li>
-                                    <li>bread <a href=''>(minus sign)</a></li>
-                                    <li>bread <a href=''>(minus sign)</a></li>
+                                    <li>pizza <a href=''>(minus sign)</a></li>
+                                    <li>orange <a href=''>(minus sign)</a></li>
                                 </ul>
 
-                                <Button variant="secondary" type="submit">
+                                <Button variant="secondary" type="submit" onClick={this.handleBackClick}>
                                     Back
                                 </Button>
 
-                                <Button variant="primary" type="submit">
+                                <Button variant="primary" type="submit" onClick={this.handleForwardClick}>
                                     Calculate
                                 </Button>
 
