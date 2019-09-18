@@ -25,8 +25,6 @@ class NewRecipe extends Component {
             <section className='borderBox'>
                 <h1>New Recipe</h1>
                 <p>Add a New Recipe.</p>
-
-                <h2>Step 1:</h2>
                 <Form>
                     <Form.Group controlId="formBasicRecipe">
                         <Form.Label>Name:</Form.Label>
@@ -44,14 +42,9 @@ class NewRecipe extends Component {
                         </Form.Text>
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                </Form>
-                <br/><br/>
+                    <br/><br/>
                 
-                <h2>Step 2:</h2>
-                <Form>
+                    <h2>Add ingredient:</h2>
                     <Form.Group controlId="formBasicIngredients">
                         <Form.Label>Ingredients:</Form.Label>
                         <Form.Control type="text" placeholder="Enter ingredient" />
@@ -73,16 +66,13 @@ class NewRecipe extends Component {
                         (Descriptive text here)
                         </Form.Text>
                     </Form.Group>
-                    <p><a href=''>(Plus sign)</a></p>
+                    <p><a href=''>Add ingredient</a></p>
 
+                    <h2>Your Recipe's Ingredients:</h2>
                     <ul>
                         <li>Flour - <a href=''>Remove</a></li> 
                         <li>Flour - <a href=''>Remove</a></li> 
                     </ul>
-
-                    <Button variant="primary" type="submit">
-                        Back
-                    </Button>
 
                     <Button variant="primary" type="submit">
                         Submit
