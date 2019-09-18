@@ -23,6 +23,7 @@ urlpatterns = [
     # must be catch-all for pushState to work
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/food_search/', views.food_search),
     path('api/calculate_dosages/', views.calculate_dosages),
     url(r'^rest-auth/', include('rest_auth.urls')),
     path('login/', views.api_login),
