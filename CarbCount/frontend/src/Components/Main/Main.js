@@ -27,6 +27,15 @@ import Register from '../Pages/Register/Register.js';
 import './Main.css';
 
 class Main extends Component {
+
+    handleLogin = (event) => {
+        console.log('Lets login!')
+
+
+    }
+
+
+
     render() {
         const { route } = this.props;
         console.log('Main, route is:', route)

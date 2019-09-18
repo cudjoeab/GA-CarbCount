@@ -59,6 +59,8 @@ class SignIn extends Component {
 
             // return <Redirect to='/FAQ' />
 
+            localStorage.setItem('user', JSON.stringify(response.data)); // Is this right?
+
             this.setState({
                 errorMessage: '',
                 redirectToReferrer: true
