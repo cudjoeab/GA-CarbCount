@@ -32,7 +32,7 @@ urlpatterns = [
     path('api/search_recipes/', views.search_recipes), 
 
 
-    path(r'^api-token-auth/', auth_views.obtain_auth_token, name='api-token-auth'),
+    url(r'^api-token-auth/', auth_views.obtain_auth_token, name='api-token-auth'),
 
     url(r'^', views.FrontendAppView.as_view()) # This is a catch-all for React.
 ]

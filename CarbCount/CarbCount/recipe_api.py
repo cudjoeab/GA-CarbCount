@@ -14,7 +14,7 @@ def search_recipes(query):
 
 
 
-food_item = input("Enter the food item you going to stuff into your mouth: ")
+# food_item = input("Enter the food item you going to stuff into your mouth: ")
 
 
 def food_search(food_item):
