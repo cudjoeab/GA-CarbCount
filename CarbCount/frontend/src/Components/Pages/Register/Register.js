@@ -216,8 +216,8 @@ class Register extends Component {
                         Create My Account
                     </Button>
 
-                    <p>By selecting Continue, you agree to the <a href=''>Terms of Service</a> and <a href=''>Privacy Policy</a>.</p>
-                    <p>Already have an account? <li><Link to='/sign_in'>Log in here</Link></li></p>
+                    <p>By selecting Continue, you agree to the <Link to='/terms'>Terms of Service</Link> and <a href=''>Privacy Policy</a>.</p>
+                    <p>Already have an account? <Link to='/sign_in'>Log in here</Link></p>
                 </Form>
             </section>
         );

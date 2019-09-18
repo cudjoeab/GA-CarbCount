@@ -45,7 +45,7 @@ const Footer = () => {
                         FAQ
                     </Link>
                 </li>
-                <li>Terms &amp; Policy</li>
+                <li><Link to='/Terms'>Terms &amp; Policy</Link></li>
                 <li>A.M.O.A.L. ©2019</li>
                 <li>
                     <a href="https://platform.fatsecret.com" target="_blank">

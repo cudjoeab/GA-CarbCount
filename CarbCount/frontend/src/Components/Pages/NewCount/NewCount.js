@@ -87,7 +87,7 @@ class NewCount extends Component {
                             <Form>
                                 <Form.Group controlId="formBasicGlucose">
                                     <Form.Label>Blood Glucose:</Form.Label>
-                                    <Form.Control type="number" placeholder="Enter glucose (optional)" />
+                                    <Form.Control type="number" placeholder="Enter glucose (optional)" step='0.001' />
                                     <Form.Text className="text-muted">
                                     (Descriptive text here)
                                     </Form.Text>
@@ -99,7 +99,7 @@ class NewCount extends Component {
                                     (Descriptive text here)
                                     </Form.Text>
                                 </Form.Group>
-                                <Button variant="primary" type="submit">
+                                <Button variant="primary" type="submit"  onClick={this.handleForwardClick}>
                                     Search for Food
                                 </Button>
                             </Form>
@@ -108,16 +108,15 @@ class NewCount extends Component {
 
                     <Carousel.Item>
                         <Carousel.Caption>
-                            <h2>Step 2 - only appears after search:</h2>
+                            <h2>Step 2:</h2>
                             <Form>    
                                 <DropdownButton variant="info" id="dropdown-item-button" title={'Please choose an Item'}>
                                     {/* <Dropdown.Item as="button">{procedureData.title}</Dropdown.Item> */}
                                     {jsonElements}
                                 </DropdownButton>
-                                <h2>Step 2b - only appears clicking on item:</h2>
                                 <Form.Group controlId="formBasicQuantity">
                                     <Form.Label>Quantity:</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter quantity" />
+                                    <Form.Control type="number" placeholder="Enter quantity" />
                                     <Form.Text className="text-muted">
                                     (Descriptive text here)
                                     </Form.Text>
@@ -145,14 +144,12 @@ class NewCount extends Component {
                     <Carousel.Item>
                         <Carousel.Caption>
                             <h2>Step 3 - Results:</h2>
-                            <ul>
-                                <li>Valencias California Oranges <FontAwesomeIcon icon={faAppleAlt} /></li>
-                                <li>Snack</li>
-                                <li>14.39g carbs <FontAwesomeIcon icon={faBreadSlice} /></li>
-                                <li>3g fibre</li>
-                                <li>88 blood glucose <FontAwesomeIcon icon={faTint} /></li>
-                                <li>3.3 insulin <FontAwesomeIcon icon={faSyringe} /></li>
-                            </ul>
+                            <p>1 Valencia California Orange</p>
+                            <p>Snack</p>
+                            <p><FontAwesomeIcon icon={faBreadSlice} /> Carbs: 14.39g</p>
+                            <p>Fibre: 3g</p>
+                            <p><FontAwesomeIcon icon={faTint} /> Blood sugar: 5.6mmol/L</p>
+                            <p><FontAwesomeIcon icon={faSyringe} /> Suggested dose: 2.3 units</p>
                             <Form>    
                                 <Button variant="secondary" type="submit" onClick={this.handleBackClick}>
                                     Back

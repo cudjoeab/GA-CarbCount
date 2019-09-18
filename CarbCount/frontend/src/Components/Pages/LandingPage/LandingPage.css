@@ -56,3 +56,11 @@ p {
 }
 
 
+
+.landingPageInfo a {
+    color: #FFF;
+}
+
+.landingPageInfo a:hover {
+    color: #FFF;
+}

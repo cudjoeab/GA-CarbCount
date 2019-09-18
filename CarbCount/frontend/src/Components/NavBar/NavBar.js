@@ -157,7 +157,7 @@ class OurNavBar extends Component {
                     ?
                         <>
                             <p>
-                                <Link to='/sign_in'>Sign In</Link> -- <Link to='/register'>Register</Link>
+                                <Link to='/sign_in'>Login</Link> -- <Link to='/register'>Sign Up</Link>
                             </p>
 
                         </>
