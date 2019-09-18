@@ -3,5 +3,6 @@ django-extensions
 fatsecret
 pylint
 django-rest-framework
+django-rest-auth
 psycopg2
 datetimerange
