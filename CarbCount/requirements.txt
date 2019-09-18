@@ -1,7 +1,9 @@
 django
-django-extensions
-fatsecret
-pylint
-django-rest-framework
-psycopg2
 datetimerange
+django-extensions
+django-rest-auth
+django-rest-framework
+fatsecret
+psycopg2
+pylint
+python-dotenv

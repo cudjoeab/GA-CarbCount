@@ -6,12 +6,15 @@ consumer_secret = os.getenv("FATSECRETS_CONSUMER_SECRET")
 fs = Fatsecret(consumer_key, consumer_secret)
 
 
+def search_recipes(query):
+    results = fs.foods_search(query)
+    return json.dumps(results)
 
 
 
 
 
-food_item = input("Enter the food item you going to stuff into your mouth: ")
+# food_item = input("Enter the food item you going to stuff into your mouth: ")
 
 
 def food_search(food_item):
