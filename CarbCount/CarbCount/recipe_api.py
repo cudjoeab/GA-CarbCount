@@ -16,7 +16,8 @@ def food_search(food_item):
 def find_id(search_id):
     # TODO: turn for with append into map
     for i, food_id in enumerate(d['food_id'] for d in search_id):
-        id_num.append(food_id)
+        id_num.append(food_id) 
+    return id_num 
 
 
 def find_name(search_name):

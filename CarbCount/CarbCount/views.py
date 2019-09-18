@@ -24,9 +24,9 @@ from rest_framework.status import (
 )
 
 # Adding these - Adam
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
+# from django.views.decorators.csrf import csrf_exempt
+# from rest_framework.decorators import api_view, permission_classes
+# from rest_framework.permissions import AllowAny
 
 class DiabeticViewSet(viewsets.ModelViewSet):
     '''Api endpoint for Diabetic Profile'''
