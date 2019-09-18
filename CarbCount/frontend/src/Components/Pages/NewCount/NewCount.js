@@ -99,7 +99,7 @@ class NewCount extends Component {
                                     (Descriptive text here)
                                     </Form.Text>
                                 </Form.Group>
-                                <Button variant="primary" type="submit".>
+                                <Button variant="primary" type="submit">
                                     Search for Food
                                 </Button>
                             </Form>
