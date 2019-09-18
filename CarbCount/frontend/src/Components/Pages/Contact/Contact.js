@@ -10,7 +10,7 @@ import abigail from './Images/abigail_cudjoe.jpeg';
 import mark from './Images/mark_jarvis.jpeg';
 import osemeke from './Images/osemke_nwaak.jpeg';
 import adam from './Images/placeholder.jpg';
-import larry from './Images/placeholder.jpg';
+import larry from './Images/larry_medina.jpeg';
 
 
 // Call stylesheet last:
@@ -47,7 +47,7 @@ class Contact extends Component {
                         <h2>Mark Jarvis</h2>
                         <p>
                             <img src={mark} className='profile_photo rounded-circle' alt='Mark Jarvis.' align='right' />
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet venenatis nisi in luctus. Vivamus pretium volutpat eleifend. Sed et hendrerit est. Quisque eget vulputate erat. Sed aliquet purus non dui mollis tincidunt. Phasellus urna tellus, suscipit nec facilisis pretium, congue eget lectus.</p>
+                            I’m an adventurous seeker of life in all its myriad forms.  From running my own business to travelling off the beaten path, I relish in overcoming challenges both individually and as a team. I am excited to apply my passionate attitude and hard won skills in the field of full stack web development.</p>
                         <ul>
                             <li>LinkedIn: <a href="https://www.linkedin.com/in/mtgjarvis/" target="_blank">Mark's LinkedIn</a></li>
                             <li>GitHub: <a href="https://github.com/mtgjarvis" target="_blank">Mark's GitHub</a></li>
