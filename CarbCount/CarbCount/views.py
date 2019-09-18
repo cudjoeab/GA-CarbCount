@@ -28,6 +28,22 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 
+
+@api_view(['POST'])
+def calculate_dosages(request):
+
+    # result = CalculateDosage.run(request)
+    glucose = request.POST.get("glucose", "didn't get post body")
+
+    return JsonResponse({
+        "test": "testing",
+        "glucose": glucose
+        })
+
+
+
+
+
 class DiabeticViewSet(viewsets.ModelViewSet):
     '''Api endpoint for Diabetic Profile'''
     queryset = Diabetic.objects.all().order_by('id')
