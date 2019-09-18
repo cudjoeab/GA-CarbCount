@@ -6,7 +6,11 @@
 }
 
 .landingPageInfo {
+
+    /* font-family:  */
+
     position: absolute; 
+
     left: 0;
     right: 0;
     margin: auto;
@@ -15,6 +19,7 @@
     z-index: 1;
     padding: 30px; 
     border-radius: 10px; 
+
 }
 
 .landingPageInfo > h2 {
@@ -47,6 +52,15 @@ p {
     color: #ffffff;
     background-color: #4DCCBD;
     text-decoration: none;   
+
 }
 
 
+
+.landingPageInfo a {
+    color: #FFF;
+}
+
+.landingPageInfo a:hover {
+    color: #FFF;
+}

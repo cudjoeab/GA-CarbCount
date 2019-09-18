@@ -8,7 +8,12 @@ import Carousel from "react-bootstrap/Carousel";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Form from "react-bootstrap/Form";
-import Table from "react-bootstrap/Table";
+// import Table from "react-bootstrap/Table";
+
+// Font Awesome:
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faSyringe, faTint } from '@fortawesome/fontawesome-free-solid';
+import { faBreadSlice, faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 
 // Smaller components:
 // none
@@ -18,14 +23,18 @@ import './NewCount.css';
 
 
 class NewCount extends Component {
-    ourJSON = {
-        'Heirloom oranges':1342, 'Florida Orange':34553, 'Tasty Oranges': 34153
-    }
+    // ourJSON = {
+    //     'Heirloom oranges':1342, 'Florida Orange':34553, 'Tasty Oranges': 34153
+    // }
+
+    ourJSON = [
+        {name:'Valencias California Oranges'}, {name:'Florida Oranges'}, {name:'Cara Cara Oranges'}, {name:'Minneola Tangelo Orange'}, {name:'Cara Cara Navel Oranges'}, {name:'Mandarin Oranges'}, {name:'Orange Lemon Drink'}, {name:'Orange Juice'}, {name:'Orange Strawberry Banana Juice'}, {name:'Madarin Orange (Canned or Frozen)'}, {name:'Freshly Squeezed Orange Juice'}
+    ]
 
     constructor() {
         super();
         this.state = {
-            stageOfProcess: 1,
+            stageOfProcess: 0,
             userGlucose: 0,
             userSearch: '', 
             foodList: []
@@ -37,31 +46,48 @@ class NewCount extends Component {
         window.scrollTo(0, 0); //Brings user to top of page.
     }
 
-    displayCurrentStep(step) {
-        if (this.state.stageOfProcess === 1) {
+    // displayCurrentStep(step) {
+    //     if (this.state.stageOfProcess === 1) {
 
 
-        }
+    //     }
+    // }
+
+    handleBackClick = (event) => {
+        event.preventDefault();
+        console.log('Go back!');
+
+        this.setState({
+            stageOfProcess: this.state.stageOfProcess-1
+        });
+    }
+
+    handleForwardClick = (event) => {
+        event.preventDefault();
+        console.log('Go forwards!');
+
+        this.setState({
+            stageOfProcess: this.state.stageOfProcess+1
+        });
     }
 
     render() {
+        const jsonElements = this.ourJSON.map(
+            (elem, id) => <Dropdown.Item as="button">{elem.name}</Dropdown.Item>
+        )
         return (
             <section className='borderBox'>
                 <h1>New Count</h1>
                 <p>Add a New Count to your Log.</p>
 
-                {/* <>
-                <div class="carousel slide"><ol class="carousel-indicators"><li class="active"></li> <li></li> <li></li> </ol><div class="carousel-inner"><div class="carousel-item active carousel-item"><div class="carousel-caption"><h2>Step 1:</h2><form class=""><div class="form-group"><label class="form-label" for="formBasicGlucose">Blood Glucose:</label><input placeholder="Enter glucose (optional)" type="number" id="formBasicGlucose" class="form-control" />><small class="text-muted form-text">(Descriptive text here)</small></div><div class="form-group"><label class="form-label" for="formBasicSearch">Search:</label><input placeholder="Enter search" type="text" id="formBasicSearch" class="form-control" />><small class="text-muted form-text">(Descriptive text here)</small></div><button type="submit" class="btn btn-primary">Search for Food</button></form></div></div><div class="carousel-item carousel-item"><div class="carousel-caption"><h2>Step 2 - only appears after search:</h2><form class=""><div class="dropdown"><button aria-haspopup="true" aria-expanded="false" id="dropdown-item-button" type="button" class="dropdown-toggle btn btn-info">Please choose an Item</button></div><h2>Step 2b - only appears clicking on item:</h2><div class="form-group"><label class="form-label" for="formBasicQuantity">Quantity:</label><input placeholder="Enter quantity" type="text" id="formBasicQuantity" class="form-control" />><small class="text-muted form-text">(Descriptive text here)</small></div><h3>List:</h3><ul><li>apple <a href="">(minus sign)</a></li><li>bread <a href="">(minus sign)</a></li><li>bread <a href="">(minus sign)</a></li><li>bread <a href="">(minus sign)</a></li></ul><button type="submit" class="btn btn-secondary">Back</button><button type="submit" class="btn btn-primary">Calculate</button></form></div></div><div class="carousel-item carousel-item"><div class="carousel-caption"><h3>Third slide label</h3><p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p></div></div></div></div>
-                </> */}
-
-                <Carousel controls={false} interval={null} wrap={false}>
+                <Carousel activeIndex={this.state.stageOfProcess} controls={false} interval={null} wrap={false} >
                     <Carousel.Item>
                         <Carousel.Caption>
                             <h2>Step 1:</h2>
                             <Form>
                                 <Form.Group controlId="formBasicGlucose">
                                     <Form.Label>Blood Glucose:</Form.Label>
-                                    <Form.Control type="number" placeholder="Enter glucose (optional)" />
+                                    <Form.Control type="number" placeholder="Enter glucose (optional)" step='0.001' />
                                     <Form.Text className="text-muted">
                                     (Descriptive text here)
                                     </Form.Text>
@@ -73,7 +99,7 @@ class NewCount extends Component {
                                     (Descriptive text here)
                                     </Form.Text>
                                 </Form.Group>
-                                <Button variant="primary" type="submit">
+                                <Button variant="primary" type="submit"  onClick={this.handleForwardClick}>
                                     Search for Food
                                 </Button>
                             </Form>
@@ -82,17 +108,15 @@ class NewCount extends Component {
 
                     <Carousel.Item>
                         <Carousel.Caption>
-                            <h2>Step 2 - only appears after search:</h2>
+                            <h2>Step 2:</h2>
                             <Form>    
                                 <DropdownButton variant="info" id="dropdown-item-button" title={'Please choose an Item'}>
                                     {/* <Dropdown.Item as="button">{procedureData.title}</Dropdown.Item> */}
-                                    <Dropdown.Item as="button">Green Apple</Dropdown.Item>
-                                    <Dropdown.Item as="button">Yellow Apple</Dropdown.Item>
+                                    {jsonElements}
                                 </DropdownButton>
-                                <h2>Step 2b - only appears clicking on item:</h2>
                                 <Form.Group controlId="formBasicQuantity">
                                     <Form.Label>Quantity:</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter quantity" />
+                                    <Form.Control type="number" placeholder="Enter quantity" />
                                     <Form.Text className="text-muted">
                                     (Descriptive text here)
                                     </Form.Text>
@@ -100,28 +124,37 @@ class NewCount extends Component {
 
                                 <h3>List:</h3>
                                 <ul>
-                                    <li>apple <a href=''>(minus sign)</a></li>
-                                    <li>bread <a href=''>(minus sign)</a></li>
-                                    <li>bread <a href=''>(minus sign)</a></li>
-                                    <li>bread <a href=''>(minus sign)</a></li>
+                                    <li>apple <a href='/'>+</a> <a href='/'>-</a></li>
+                                    <li>bread <a href='/'>+</a> <a href='/'>-</a></li>
+                                    <li>pizza <a href='/'>+</a> <a href='/'>-</a></li>
+                                    <li>orange <a href='/'>+</a> <a href='/'>-</a></li>
                                 </ul>
 
-                                <Button variant="secondary" type="submit">
+                                <Button variant="secondary" type="submit" onClick={this.handleBackClick}>
                                     Back
                                 </Button>
 
-                                <Button variant="primary" type="submit">
+                                <Button variant="primary" type="submit" onClick={this.handleForwardClick}>
                                     Calculate
                                 </Button>
-
                             </Form>
                         </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
                         <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            <h2>Step 3 - Results:</h2>
+                            <p>1 Valencia California Orange</p>
+                            <p>Snack</p>
+                            <p><FontAwesomeIcon icon={faBreadSlice} /> Carbs: 14.39g</p>
+                            <p>Fibre: 3g</p>
+                            <p><FontAwesomeIcon icon={faTint} /> Blood sugar: 5.6mmol/L</p>
+                            <p><FontAwesomeIcon icon={faSyringe} /> Suggested dose: 2.3 units</p>
+                            <Form>    
+                                <Button variant="secondary" type="submit" onClick={this.handleBackClick}>
+                                    Back
+                                </Button>
+                            </Form>
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>

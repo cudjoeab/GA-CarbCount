@@ -61,6 +61,8 @@ class SignIn extends Component {
 
             // return <Redirect to='/FAQ' />
 
+            localStorage.setItem('user', JSON.stringify(response.data)); // Is this right?
+
             this.setState({
                 errorMessage: '',
                 redirectToReferrer: true
@@ -84,8 +86,8 @@ class SignIn extends Component {
 
             return (
             <section className='borderBox'>
-                <h1>SignIn.js</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nunc sed nisl fringilla venenatis.</p>
+                <h1>Login</h1>
+                <p>Please enter your user and password to login.</p>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="username">
                         <Form.Label>Username</Form.Label>

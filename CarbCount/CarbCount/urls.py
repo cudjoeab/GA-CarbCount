@@ -1,11 +1,10 @@
-
-from django.urls import include, path  # Do we need to import path..?
-from django.contrib import admin  # We can remove this later on.
-from django.conf.urls import url
 from . import views
-from rest_framework import routers
 from .api import PractitionerViewSet, DiabeticViewSet, MealViewSet, RecipeViewSet, LogViewSet 
-
+from django.conf.urls import url
+from django.contrib import admin  # We can remove this later on.
+from django.urls import include, path  # Do we need to import path..?
+from rest_framework import routers
+from rest_framework.authtoken import views as auth_views
 
 # Imports the class DefaultRouter from routers.
 router = routers.DefaultRouter()  
@@ -27,9 +26,14 @@ urlpatterns = [
     path('api/calculate_dosages/', views.calculate_dosages),
     url(r'^rest-auth/', include('rest_auth.urls')),
     path('login/', views.api_login),
+    path('logout/', views.api_logout),
     path('register/', views.api_register),
     # url(r'^login/$', views.api_login),
     path('api/search_recipes/', views.search_recipes), 
+
+
+    path(r'^api-token-auth/', auth_views.obtain_auth_token, name='api-token-auth'),
+
     url(r'^', views.FrontendAppView.as_view()) # This is a catch-all for React.
 ]
 
