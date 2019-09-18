@@ -87,7 +87,7 @@ class NewCount extends Component {
                             <Form>
                                 <Form.Group controlId="formBasicGlucose">
                                     <Form.Label>Blood Glucose:</Form.Label>
-                                    <Form.Control type="number" placeholder="Enter glucose (optional)" />
+                                    <Form.Control type="number" placeholder="Enter glucose (optional)" step='0.001' />
                                     <Form.Text className="text-muted">
                                     (Descriptive text here)
                                     </Form.Text>
@@ -117,7 +117,7 @@ class NewCount extends Component {
                                 <h2>Step 2b - only appears clicking on item:</h2>
                                 <Form.Group controlId="formBasicQuantity">
                                     <Form.Label>Quantity:</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter quantity" />
+                                    <Form.Control type="number" placeholder="Enter quantity" />
                                     <Form.Text className="text-muted">
                                     (Descriptive text here)
                                     </Form.Text>
