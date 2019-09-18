@@ -61,6 +61,9 @@ class MealViewSet(viewsets.ModelViewSet):
         if self.request.method == "POST":
             self.permission_classes = (AllowAny,)
         return super(MealViewSet, self).get_permissions()
+    
+    def create_meal(self, request): 
+        pass 
 
 
 class RecipeViewSet(viewsets.ModelViewSet):

@@ -1,7 +1,8 @@
 import requests 
 import datetime 
 
-
+# importing json library to create object 
+import json 
 
 apple = {"carb" : 14, "fibre" : 2.4 }
 burger = {"carb" : 47, "fibre" : 2 }
@@ -25,14 +26,10 @@ class Calculator():
         net_fibre = calculate_net_fibre(food)
         return net_carb - net_fibre
 
-    print('Net Carb:')
-    print(calculate_net_carb(food))
-    print('Net Fibre:')
-    print(calculate_net_fibre(food))
-    print('Total carb:')
-    print(total_carb(food)) 
+
 
     # calculate the amount of insulin needed for a meal 
+    # check the time of day and which dose to pick 
     def  dose_meal_ratio():
         ratio = 5
         current_hour = datetime.datetime.now().hour
@@ -48,11 +45,9 @@ class Calculator():
         
         return ratio
 
-
+    
     def total_meal_dose(carbs):
         return carbs / dose_meal_ratio()
-
-    print(f"Take {total_meal_dose(56.6)} units of insulin") 
 
 
     def corr_ratio():
@@ -75,11 +70,21 @@ class Calculator():
     def  total_dose(self):
         return total_meal_dose + total_cor_dose 
 
+    
+
+
+
+
+# print hard coded results to test methods 
+    print('Net Carb:')
+    print(calculate_net_carb(food))
+    print('Net Fibre:')
+    print(calculate_net_fibre(food))
+    print('Total carb:')
+    print(total_carb(food)) 
+
+    print(f"Take {total_meal_dose(56.6)} units of insulin") 
+
     print(f"Take {total_cor_dose(5.6)} units of insulin")
-
-
-
-
-
 
 
