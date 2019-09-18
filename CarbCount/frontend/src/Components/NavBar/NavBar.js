@@ -117,11 +117,13 @@ class OurNavBar extends Component {
     return (
         <header>
             <Navbar className="nav" expand="lg">
+                
                 <Link to='/' className="navbar-brand">
                     <img className="logo" src={logo} alt="The CarbCount logo which resembles a glucose molecule." />
                     CarbCount
                     
                 </Link>
+
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

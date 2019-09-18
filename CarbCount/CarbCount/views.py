@@ -6,11 +6,26 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth.models import User
+from rest_framework.decorators import api_view, permission_classes
+
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from rest_framework.response import Response
+from rest_framework import permissions, status, viewsets
+
 from django.shortcuts import render, reverse, redirect, get_object_or_404
+
+
+
+
+
+
+from .models import *
+from .serializers import *
+
+
+
 from django.views.generic import View
 from rest_framework import status, viewsets
-from rest_framework.response import Response
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
     HTTP_404_NOT_FOUND,
@@ -20,7 +35,61 @@ from rest_framework.status import (
 # Adding these - Adam
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view, permission_classes
+
+
+
 from rest_framework.permissions import AllowAny, IsAuthenticated
+
+
+
+
+class DiabeticViewSet(viewsets.ModelViewSet):
+    '''Api endpoint for Diabetic Profile'''
+    queryset = Diabetic.objects.all().order_by('id')
+    serializer_class = DiabeticSerializer
+    permission_classes = [permissions.AllowAny, permissions.IsAuthenticated]
+
+    def get_permissions(self):
+        if self.request.method == "POST":
+            self.permission_classes = (AllowAny,)
+        return super(DiabeticViewSet, self).get_permissions()
+
+
+class PractitionerViewSet(viewsets.ModelViewSet):
+    '''Api endpoint for Practitioner Profile'''
+    queryset = Practitioner.objects.all().order_by('id')
+    serializer_class = PractitonerSerializer
+    permission_classes = [permissions.AllowAny, permissions.IsAuthenticated]
+
+    def get_permissions(self):
+        if self.request.method == "POST":
+            self.permission_classes = (AllowAny,)
+        return super(PractitionerViewSet, self).get_permissions()
+
+
+class MealViewSet(viewsets.ModelViewSet):
+    queryset = Meal.objects.all().order_by('id')
+    serializer_class = MealSerializer
+    permission_classes = [permissions.AllowAny, permissions.IsAuthenticated]
+
+    def get_permissions(self):
+        if self.request.method == "POST":
+            self.permission_classes = (AllowAny,)
+        return super(MealViewSet, self).get_permissions()
+
+
+class RecipeViewSet(viewsets.ModelViewSet):
+    queryset = Recipe.objects.all().order_by('id')
+    serializer_class = RecipeSerializer
+    permission_classes = [permissions.AllowAny, permissions.IsAuthenticated]
+
+    def get_permissions(self):
+        if self.request.method == "POST":
+            self.permission_classes = (AllowAny,)
+        return super(RecipeViewSet, self).get_permissions()
+
+
+
 
 # Also adding these - Adam
 from rest_framework.views import APIView
