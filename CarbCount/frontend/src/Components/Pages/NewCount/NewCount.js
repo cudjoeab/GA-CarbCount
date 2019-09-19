@@ -124,10 +124,8 @@ class NewCount extends Component {
 
                                 <h3>List:</h3>
                                 <ul>
-                                    <li>apple <a href='/'>+</a> <a href='/'>-</a></li>
-                                    <li>bread <a href='/'>+</a> <a href='/'>-</a></li>
-                                    <li>pizza <a href='/'>+</a> <a href='/'>-</a></li>
                                     <li>orange <a href='/'>+</a> <a href='/'>-</a></li>
+                                    <li>a&w restaurant spicy habanero chicken burger <a href='/'>+</a> <a href='/'>-</a></li>
                                 </ul>
 
                                 <Button variant="secondary" type="submit" onClick={this.handleBackClick}>
