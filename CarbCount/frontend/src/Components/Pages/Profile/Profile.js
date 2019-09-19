@@ -25,8 +25,8 @@ class Profile extends Component {
     render() {
         return (
             <section className='borderBox'>
-                <h1>Abigail Cudjoe profile <Button variant="secondary" type="submit" onClick="">Edit</Button></h1>
-                <p>Email: 123@fake.st</p>
+                <h1>Abigail Cudjoe's profile <Button variant="secondary" type="submit" onClick="">Edit</Button></h1>
+                <p>Email: diabeticwithasweettooth@gmail.com</p>
 
                 <div class='profile-table'>
                     <div>
