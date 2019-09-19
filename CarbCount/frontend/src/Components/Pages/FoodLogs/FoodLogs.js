@@ -20,12 +20,12 @@ import './FoodLogs.css';
 
 class FoodLogs extends Component {
     JSONresponse = [
-        { date: 'September 7', food: 'Pizza', carbs: 42, fibre: 15, meal_type: 'Dinner', blood_glucose: 20, insulin_dose: 2  }, 
-        { date: 'September 8', food: 'Hamburger', carbs: 50, fibre: 9, meal_type: 'Dinner', blood_glucose: 15, insulin_dose: 4 }, 
-        { date: 'September 8', food: 'Cereal', carbs: 60, fibre: 16, meal_type: 'Breakfast', blood_glucose: 18, insulin_dose: 3 }, 
-        { date: 'September 8', food: 'Bagel', carbs: 70, fibre: 10, meal_type: 'Lunch', blood_glucose: 16, insulin_dose: 8 }, 
-        { date: 'September 9', food: 'Apple', carbs: 30, fibre: 12, meal_type: 'Snack', blood_glucose: 13, insulin_dose: 1 }, 
-        { date: 'September 10', food: 'Orange', carbs: 40, fibre: 14, meal_type: 'Snack', blood_glucose: 12, insulin_dose: 1 }
+        { date: 'September 7', food: 'Pizza', carbs: 26.08, fibre: 1.6, meal_type: 'Dinner', blood_glucose: 7.6, insulin_dose: 5  }, 
+        { date: 'September 8', food: 'Hamburger', carbs: 26.81, fibre: 1.1, meal_type: 'Dinner', blood_glucose: 11.7, insulin_dose: 11 }, 
+        { date: 'September 8', food: 'Cereal', carbs: 27.4, fibre: 1.7, meal_type: 'Breakfast', blood_glucose: 9.0, insulin_dose: 9 }, 
+        { date: 'September 8', food: 'Bagel', carbs: 53.02, fibre: 2.3, meal_type: 'Lunch', blood_glucose: 16.2, insulin_dose: 18 }, 
+        { date: 'September 9', food: 'Apple', carbs: 19.06, fibre: 3.3, meal_type: 'Snack', blood_glucose: 4.0, insulin_dose: 3 }, 
+        { date: 'September 10', food: 'Orange', carbs: 15.39, fibre: 3.1, meal_type: 'Snack', blood_glucose: 7.0, insulin_dose: 2.5 }
     ];
 
     state = {
@@ -68,13 +68,13 @@ class FoodLogs extends Component {
         const mealElements = this.state.meals.map(
             // (log, id) => <p key={id}><Link to={`/food_logs/${id}`} key={`food_logs/${id}`}>{log.date}</Link> - {log.food} - {log.meal_type}</p>
 
-            (log, id) => <p key={id}><a href={id} onClick={this.handleShow} alt={`A summary of ${log.date} ${log.food}.`} id={id}>{log.date}</a> - {log.meal_type}</p>
+            (log, id) => <p key={id}><a href={id} onClick={this.handleShow} alt={`A summary of ${log.date} ${log.food}.`} id={id}>{log.date}</a> : {log.meal_type}</p>
         )
 
         return (
             <section className='borderBox'>
-                <h1>Food Logs</h1>
-                <p>See all your Food Logs.</p>
+                <h1>Food Log</h1>
+                <p>Get details on your past meals</p>
 
                 {mealElements}
 
@@ -85,12 +85,11 @@ class FoodLogs extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <ul>
-                            <li>{this.state.currItem.food} <FontAwesomeIcon icon={faAppleAlt} /></li>
-                            <li>{this.state.currItem.meal_type}</li>
-                            <li>{this.state.currItem.carbs} carbs <FontAwesomeIcon icon={faBreadSlice} /></li>
-                            <li>{this.state.currItem.fibre} fibre</li>
-                            <li>{this.state.currItem.blood_glucose} blood glucose <FontAwesomeIcon icon={faTint} /></li>
-                            <li>{this.state.currItem.insulin_dose} insulin <FontAwesomeIcon icon={faSyringe} /></li>
+                            <li>{this.state.currItem.meal_type}:</li>
+                            <li><FontAwesomeIcon icon={faAppleAlt} />{this.state.currItem.food} </li>
+                            <li><FontAwesomeIcon icon={faBreadSlice} />: {this.state.currItem.carbs} g of Carb, {this.state.currItem.fibre} g of Fibre  </li>
+                            <li><FontAwesomeIcon icon={faTint} />: {this.state.currItem.blood_glucose} mmol/L </li>
+                            <li><FontAwesomeIcon icon={faSyringe} />: {this.state.currItem.insulin_dose} units </li>
                         </ul>
                     </Modal.Body>
                     <Modal.Footer>

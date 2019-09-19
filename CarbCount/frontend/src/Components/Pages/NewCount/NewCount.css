@@ -1,10 +1,11 @@
+
 .carousel {
     height: auto !important;
     /* background-color: red; */
     display: block;
     min-height: 500px !important;
     position: absolute;
-    /* background-color: light-grey; */
+    /* background-color: #4DCCBD; */
 }
 
 .carousel-indicators {
@@ -18,7 +19,7 @@
     /* background-color: blue; */
     position: absolute;
     display: block;
-    /* background-color: light-grey; */
+    /* background-color: #4DCCBD; */
 }
 
 .carousel-caption {
@@ -31,8 +32,8 @@
     
     display: block;
     background-color: transparent;
-    /* background-color: orange; */
-    color: #000 !important;
+    /* background-color: #4DCCBD; */
+    color: #fff !important;
 }
 
 .carousel-indicators li {
@@ -44,3 +45,4 @@
     background-color: gray;
     top: 200px;
 }
+

@@ -40,5 +40,10 @@
 
 .nav p a {
     /* background-color: red; */
-    color: blue;
+    color: #FFF;
+}
+
+.nav p {
+    margin-bottom: 0px !important;
+    padding: 10px;  
 }

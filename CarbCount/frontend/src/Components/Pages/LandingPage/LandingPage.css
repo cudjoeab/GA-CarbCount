@@ -23,7 +23,8 @@
 }
 
 .landingPageInfo > h2 {
-    font-size: 60px; 
+    text-transform: uppercase;
+    font-size: 40px; 
     font-weight: 900; 
 }
 
