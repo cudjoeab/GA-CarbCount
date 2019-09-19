@@ -34,7 +34,7 @@ class Register extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         const form = event.currentTarget.elements;
 
         if (form.password.value !== form.password2.value) {
@@ -48,7 +48,7 @@ class Register extends Component {
         
 
             axios.post("/register/", {
-                username: form.username.value,
+                email: form.email.value,
                 password: form.password.value
             }).then((response)=> {
                 console.log('Then:', response)
@@ -84,11 +84,11 @@ class Register extends Component {
                 <h1>Get Started with Carb Count</h1>
                 <p>Welcome to Carb Count!  Let's start by creating a free account.  Next, we'll define your goals and create your custom diet plan.</p>
                 <Form onSubmit={this.handleSubmit}>
-                    <Form.Group controlId="username">
-                        <Form.Label>Username</Form.Label>
+                    <Form.Group controlId="email">
+                        <Form.Label>Email</Form.Label>
                         <Form.Control 
-                            type="text" 
-                            placeholder="Enter username" 
+                            type="email" 
+                            placeholder="Enter email" 
                             />
                         <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
