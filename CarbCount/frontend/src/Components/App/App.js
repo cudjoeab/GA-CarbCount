@@ -72,7 +72,7 @@ class App extends Component {
                     <div id='page-container'>
                         <OurNavBar handleLogin={this.handleLogin} handleLogout={this.handleLogout} userName={this.state.userName} />
                         {/* <Main route={route} /> */}
-                        <Main handleLogin={() => this.handleLogin()} />
+                        <Main handleLogin={() => this.handleLogin()} handleLogout={() => this.handleLogout()} />
                     </div>
                     <Footer />
                 </div>
