@@ -9,8 +9,8 @@ import Image from "react-bootstrap/Image";
 import abigail from './Images/abigail_cudjoe.jpeg';
 import mark from './Images/mark_jarvis.jpeg';
 import osemeke from './Images/osemke_nwaak.jpeg';
-import adam from './Images/placeholder.jpg';
-import larry from './Images/placeholder.jpg';
+import adam from './Images/adam_weiler.jpeg';
+import larry from './Images/larry_medina.jpeg';
 
 
 // Call stylesheet last:
@@ -26,7 +26,7 @@ class Contact extends Component {
     render() {
         return (
             <section className='borderBox'>
-                <article>
+                <article className='contactInfo'>
                     <h1>The Web Developers</h1>
                     <section>
                         <h2>Abigail Cudjoe</h2>
@@ -47,7 +47,7 @@ class Contact extends Component {
                         <h2>Mark Jarvis</h2>
                         <p>
                             <img src={mark} className='profile_photo rounded-circle' alt='Mark Jarvis.' align='right' />
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet venenatis nisi in luctus. Vivamus pretium volutpat eleifend. Sed et hendrerit est. Quisque eget vulputate erat. Sed aliquet purus non dui mollis tincidunt. Phasellus urna tellus, suscipit nec facilisis pretium, congue eget lectus.</p>
+                            I’m an adventurous seeker of life in all its myriad forms.  From running my own business to travelling off the beaten path, I relish in overcoming challenges both individually and as a team. I am excited to apply my passionate attitude and hard won skills in the field of full stack web development.</p>
                         <ul>
                             <li>LinkedIn: <a href="https://www.linkedin.com/in/mtgjarvis/" target="_blank">Mark's LinkedIn</a></li>
                             <li>GitHub: <a href="https://github.com/mtgjarvis" target="_blank">Mark's GitHub</a></li>
@@ -57,26 +57,13 @@ class Contact extends Component {
                     </section>
                     <hr/>
 
-                    <section>
-                        <h2>Osemeke Nwaka</h2>
-                        <p>
-                            <img src={osemeke} className='profile_photo rounded-circle' alt='Osemeke Nwaka.' align='left' />
-                            A full-stack web developer that likes learning new things. Living by the principles of fairness and kindness, I believe that I can use my skills to provide positive outcomes for my teammates, my company, and society. 
-                        </p>    
-                        <ul>
-                            <li>LinkedIn: <a href="linksss" target="_blank">Osemeke's LinkedIn</a></li>
-                            <li>GitHub: <a href="https://github.com/Mekenwaka1" target="_blank">Osemeke's GitHub</a></li>
-                            {/* <li>Personal Portfolio: </li> */}
-                            <li>Email: <a href="mailto:oc.hn.waka@gmail.com">o.ch.nwaka@gmail.com</a></li>
-                        </ul>
-                    </section>
-                    <hr/>
+                    
 
                     <section>
                         <h2>Adam Weiler</h2>
                         <p>
-                            <img src={adam} className='profile_photo rounded-circle' alt='Adam Weiler.' align='right' />
-                            After a brief career in health care, I returned to Web Development where I enjoyed learning about the new libraries and techniques that have been created in recent years. As a dedicated self-learner, I am enjoying the challenge of learning new languages while incorporating my previous knowledge. People find me to be a reliable and diligent worker who works independently or in a team. I am an attentive listener who interprets the message behind the words and I have a good eye for details so I can create the best product for my client.</p>
+                            <img src={adam} className='profile_photo rounded-circle' alt='Adam Weiler.' align='left' />
+                            As a dedicated self-learner, I am enjoying the challenge of learning new coding languages. People find me to be a reliable and diligent worker who works independently or in a team. I am an attentive listener and have a good eye for details so I can create the best product for my client.</p>
                         <ul>
                             <li>LinkedIn: <a href="https://www.linkedin.com/in/adamweiler/" target="_blank">Adam's LinkedIn</a></li>
                             <li>GitHub: <a href="https://github.com/adam-weiler" target="_blank">Adam's GitHub</a></li>
@@ -84,15 +71,30 @@ class Contact extends Component {
                             <li>Email: <a href="mailto:adam.weiler3@gmail.com">adam.weiler3@gmail.com</a></li>
                         </ul>
                     </section>
+                    <hr/>
+
+                    <section>
+                        <h2>Osemeke Nwaka</h2>
+                        <p>
+                            <img src={osemeke} className='profile_photo rounded-circle' alt='Osemeke Nwaka.' align='right' />
+                            A full-stack web developer that likes learning new things. Living by the principles of fairness and kindness, I believe that I can use my skills to provide positive outcomes for my teammates, my company, and society. 
+                        </p>    
+                        <ul>
+                            <li>LinkedIn: <a href="https://www.linkedin.com/in/onwaka/" target="_blank">Osemeke's LinkedIn</a></li>
+                            <li>GitHub: <a href="https://github.com/Mekenwaka1" target="_blank">Osemeke's GitHub</a></li>
+                            {/* <li>Personal Portfolio: </li> */}
+                            <li>Email: <a href="mailto:oc.hn.waka@gmail.com">o.ch.nwaka@gmail.com</a></li>
+                        </ul>
+                    </section>
                 </article>
                 <hr/>
                 
-                <article>
+                <article className='contactInfo'>
                     <h2>The UX Designer</h2>
                     <section>
                         <h2>Larry Medina</h2>
                         <p>
-                            <img src={larry} className='profile_photo rounded-circle' alt='Larry Medina.' align='left' />Product manager and social butterfly who is passionate about leveraging proven leadership and strategy skills in an agile environment to grow revenue. Met 80% of revenue goal in fast-paced fashion firm. I love creating user centered designs by using my experience in the design industry and strong business acumen to build meaningful and effective product.</p>
+                            <img src={larry} className='profile_photo rounded-circle' alt='Larry Medina.' align='left' />Product manager and social butterfly who is passionate about leveraging leadership and strategy skills to grow revenue. I love creating user centered designs by using my experience in the design industry and strong business acumen to build meaningful and effective product.</p>
                         <ul>
                             <li>LinkedIn: <a href="https://www.linkedin.com/in/larry-medina/" target="_blank">Larry's LinkedIn</a></li>
                             {/* <li>Personal Portfolio: </li> */}

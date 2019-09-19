@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 // Bootstrap-React components:
-import Jumbotron from "react-bootstrap/Jumbotron";
+// import Jumbotron from "react-bootstrap/Jumbotron";
 
 // All pages:
 import About from '../Pages/About/About.js';
@@ -30,17 +30,23 @@ import './Main.css';
 
 class Main extends Component {
 
-    handleLogin = (event) => {
-        console.log('Lets login!')
+    // handleLogin = (event) => {
+    //     console.log('Lets login!')
 
 
+    // }
+
+    componentDidMount() {
+        console.log('Main Component did mount!');
+        console.log(this.props.handleLogin)
+        window.scrollTo(0, 0); //Brings user to top of page.
     }
 
 
 
     render() {
-        const { route } = this.props;
-        console.log('Main, route is:', route)
+        // const { route } = this.props;
+        console.log('Main, route is:', this.props.handleLogin)
 
         return (
             <main>
@@ -68,7 +74,10 @@ class Main extends Component {
                             {/* : // User is not logged in. */}
                                 {/* <> */}
                                     <Route path="/register" component={Register} /> 
-                                    <Route path="/sign_in" component={SignIn} /> 
+                                    <Route path="/sign_in"
+                                    render = {
+                                        (props) => (<SignIn handleLogin={this.props.handleLogin} />)
+                                    } /> 
                                 {/* </> */}
                         {/* } */}
                     </Switch>
