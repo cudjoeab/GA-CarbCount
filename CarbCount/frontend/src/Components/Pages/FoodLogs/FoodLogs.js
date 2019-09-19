@@ -68,13 +68,13 @@ class FoodLogs extends Component {
         const mealElements = this.state.meals.map(
             // (log, id) => <p key={id}><Link to={`/food_logs/${id}`} key={`food_logs/${id}`}>{log.date}</Link> - {log.food} - {log.meal_type}</p>
 
-            (log, id) => <p key={id}><a href={id} onClick={this.handleShow} alt={`A summary of ${log.date} ${log.food}.`} id={id}>{log.date}</a> - {log.meal_type}</p>
+            (log, id) => <p key={id}><a href={id} onClick={this.handleShow} alt={`A summary of ${log.date} ${log.food}.`} id={id}>{log.date}</a> : {log.meal_type}</p>
         )
 
         return (
             <section className='borderBox'>
                 <h1>Food Log</h1>
-                <p>See your past saved meals </p>
+                <p>Get details on your past meals</p>
 
                 {mealElements}
 
