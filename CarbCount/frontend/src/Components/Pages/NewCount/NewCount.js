@@ -124,7 +124,7 @@ class NewCount extends Component {
 
                                 <h3>List:</h3>
                                 <ul>
-                                    <li>orange <a href='/'>+</a> <a href='/'>-</a></li>
+                                    <li>Valencia California Orange <a href='/'>+</a> <a href='/'>-</a></li>
                                     <li>a&w restaurant spicy habanero chicken burger <a href='/'>+</a> <a href='/'>-</a></li>
                                 </ul>
 
@@ -144,10 +144,11 @@ class NewCount extends Component {
                             <h2>Step 3:</h2>
                             <p>SUMMARY</p>
                             <p>1 Valencia California Orange</p>
-                            <p>Snack</p>
-                            <p><FontAwesomeIcon icon={faBreadSlice} /> Carbs: 14.39g, Fibre: 3g </p>
+                            <p>1 A&W restaurant spicy habanero chicken burger</p>
+                            <p>Lunch</p>
+                            <p><FontAwesomeIcon icon={faBreadSlice} /> Carbs: 61.29g, Fibre: 5.1g </p>
                             <p><FontAwesomeIcon icon={faTint} /> Blood sugar: 5.6mmol/L</p>
-                            <p><FontAwesomeIcon icon={faSyringe} /> Suggested dose: 2.3 units</p>
+                            <p><FontAwesomeIcon icon={faSyringe} /> Suggested dose: 12.3 units</p>
                             <Form>    
                                 <Button variant="secondary" type="submit" onClick={this.handleBackClick}>
                                     Back
