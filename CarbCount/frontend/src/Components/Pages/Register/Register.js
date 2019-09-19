@@ -22,9 +22,9 @@ class Register extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            username: '',
-            password: '',
-            password2: ''
+            email: 'cudjoeab@gmail.com',
+            password: 'doesthiswork',
+            password2: 'doesthiswork'
         };
       }
 
@@ -211,10 +211,12 @@ class Register extends Component {
                             <option>NovoRapid</option>
                         </Form.Control>
                     </Form.Group> */}
-                    
-                    <Button variant="primary" type="submit">
+
+                    {/* <Button variant="primary" onClick>
                         Create My Account
-                    </Button>
+                    </Button> */}
+
+                    <h4><Link to='/homepage'>Create my Account</Link> </h4> 
 
                     <p>By selecting Continue, you agree to the <Link to='/terms'>Terms of Service</Link> and <a href=''>Privacy Policy</a>.</p>
                     <p>Already have an account? <Link to='/sign_in'>Log in here</Link></p>

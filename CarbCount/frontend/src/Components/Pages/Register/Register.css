@@ -1,3 +1,19 @@
 button {
     text-transform: uppercase !important;
 }
+
+p {
+    font-size: 10px; 
+    
+}
+
+h4 a {
+    color: #4DCCBD;
+    background-color: #fff;
+    border-radius: 5px;
+    text-transform: uppercase; 
+    padding: 8px;
+    font-size: 12px; 
+    font-weight: 900; 
+    font:  
+}
