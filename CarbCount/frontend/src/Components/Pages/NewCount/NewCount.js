@@ -77,8 +77,8 @@ class NewCount extends Component {
         )
         return (
             <section className='borderBox'>
-                <h1>New Count</h1>
-                <p>Add a New Count to your Log.</p>
+                <h1>New Carb Count</h1>
+                <p>Calculate the amount of carb for your next meal </p>
 
                 <Carousel activeIndex={this.state.stageOfProcess} controls={false} interval={null} wrap={false} >
                     <Carousel.Item>
@@ -87,16 +87,16 @@ class NewCount extends Component {
                             <Form>
                                 <Form.Group controlId="formBasicGlucose">
                                     <Form.Label>Blood Glucose:</Form.Label>
-                                    <Form.Control type="number" placeholder="Enter glucose (optional)" step='0.001' />
+                                    <Form.Control type="number" placeholder="Enter blood glucose (optional)" step='0.001' />
                                     <Form.Text className="text-muted">
-                                    (Descriptive text here)
+                                    Entering your blood glucose reading (mmol/L) will factor into your suggested dose. 
                                     </Form.Text>
                                 </Form.Group>
                                 <Form.Group controlId="formBasicSearch">
                                     <Form.Label>Search:</Form.Label>
                                     <Form.Control type="text" placeholder="Enter search" />
                                     <Form.Text className="text-muted">
-                                    (Descriptive text here)
+                                    Source: FatSecret 
                                     </Form.Text>
                                 </Form.Group>
                                 <Button variant="primary" type="submit"  onClick={this.handleForwardClick}>
@@ -146,8 +146,7 @@ class NewCount extends Component {
                             <h2>Step 3 - Results:</h2>
                             <p>1 Valencia California Orange</p>
                             <p>Snack</p>
-                            <p><FontAwesomeIcon icon={faBreadSlice} /> Carbs: 14.39g</p>
-                            <p>Fibre: 3g</p>
+                            <p><FontAwesomeIcon icon={faBreadSlice} /> Carbs: 14.39g, Fibre: 3g </p>
                             <p><FontAwesomeIcon icon={faTint} /> Blood sugar: 5.6mmol/L</p>
                             <p><FontAwesomeIcon icon={faSyringe} /> Suggested dose: 2.3 units</p>
                             <Form>    

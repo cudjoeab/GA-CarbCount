@@ -5,7 +5,7 @@
     display: block;
     min-height: 500px !important;
     position: absolute;
-    background-color: #4DCCBD;
+    /* background-color: #4DCCBD; */
 }
 
 .carousel-indicators {
@@ -19,7 +19,7 @@
     /* background-color: blue; */
     position: absolute;
     display: block;
-    background-color: #4DCCBD;
+    /* background-color: #4DCCBD; */
 }
 
 .carousel-caption {
@@ -32,7 +32,7 @@
     
     display: block;
     background-color: transparent;
-    background-color: #4DCCBD;
+    /* background-color: #4DCCBD; */
     color: #fff !important;
 }
 
