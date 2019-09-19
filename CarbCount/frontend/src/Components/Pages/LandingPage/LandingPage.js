@@ -41,7 +41,7 @@ class LandingPage extends Component {
                 <h2>Carb Counting Made Easy:</h2>
                 <br></br>
                 <h3> <FontAwesomeIcon icon={faAppleAlt} />  Carbohydrate info for numerous foods</h3>
-                <p>Access to thousands of foods including brand name and from restaurant chains </p>
+                <p>Access to thousands of foods including brand name and restaurant chains </p>
                 <h3><FontAwesomeIcon icon={faCalculator} /> Rapid Insulin Calculator</h3>
                 <p>Get immediate calculations for your meal time doses without having to use multiple devices </p>
                 <h3><FontAwesomeIcon icon={faBook} /> Keep track of meal history</h3>
