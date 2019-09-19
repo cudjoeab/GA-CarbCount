@@ -13,7 +13,19 @@
 }
 
 .card-columns {
-    background-color: red;
+    /* background-color: red; */
+    margin: 15px; 
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+
+.home-page-links {
+    color: #444444; 
+}
+
+.home-page-links:hover {
+    font-size: 1.2em; 
+    text-decoration: none;
+    color:  #E19C33; 
+
 }

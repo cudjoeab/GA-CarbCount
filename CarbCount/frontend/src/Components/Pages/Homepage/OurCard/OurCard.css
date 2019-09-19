@@ -1,5 +1,5 @@
 .card-header  {
-    color: #fff;
+    color: red;
     text-transform: uppercase; 
 
 }
@@ -10,4 +10,5 @@
 
 .card-text {
     font-size: 16px; 
+    color: black; 
 }
