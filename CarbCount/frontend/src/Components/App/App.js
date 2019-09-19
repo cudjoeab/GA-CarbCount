@@ -15,44 +15,39 @@ import OurNavBar from '../NavBar/NavBar';
 import './App.css';
 
 
-const initialState = {
-    route: 'signin',
-    isSignedIn: false
-}
+// const initialState = {
+//     route: 'signin',
+//     isSignedIn: false
+// }
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
             // route: 'signin',
-            isSignedIn: false,
-            userName: 'Ab8igail'
+            // isSignedIn: false,
+            userName: ''
         }
         this.handleLogin = this.handleLogin.bind(this);
     }
 
     handleLogin = (event) => {
-        // alert('hey!', event)
         // event.preventDefault(); //This doesn't work
         console.log('LOGGING IN USER:')
 
         this.setState({
             userName: 'Abigail'
         })
-        
-        // return <Redirect to='/FAQ' />
     }
 
     handleLogout = (event) => {
-        // alert('hey!', event)
         // event.preventDefault(); //This doesn't work
         console.log('LOGGING OUT USER:')
+        // console.log(event)
 
         this.setState({
             userName: ''
         })
-        
-        // return <Redirect to='/FAQ' />
     }
 
     // onRouteChange = (route) => {
@@ -69,7 +64,7 @@ class App extends Component {
     // }
 
     render() {
-        const { isSignedIn, route } = this.state;
+        // const { isSignedIn, route } = this.state;
     
         return (
             <Router>

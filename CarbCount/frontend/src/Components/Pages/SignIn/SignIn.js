@@ -27,7 +27,7 @@ class SignIn extends Component {
     constructor(props) {
         super(props);
 
-        console.log(this.props.handleLogin)
+        // console.log(this.props.handleLogin)
 
         this.state = {
             username: '',
@@ -43,9 +43,9 @@ class SignIn extends Component {
         window.scrollTo(0, 0); //Brings user to top of page.
     }
 
-    stopReload = (event) => {
-        event.preventDefault();
-    }
+    // stopReload = (event) => {
+    //     event.preventDefault();
+    // }
 
     handleSubmit = (event) => {
         event.preventDefault();
