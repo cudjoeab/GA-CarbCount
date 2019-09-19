@@ -15,6 +15,7 @@ import Homepage from '../Pages/Homepage/Homepage.js';
 import LandingPage from '../Pages/LandingPage/LandingPage.js';
 import NewCount from '../Pages/NewCount/NewCount.js';
 import NewRecipe from '../Pages/NewRecipe/NewRecipe.js';
+import Profile from '../Pages/Profile/Profile.js';
 import Register from '../Pages/Register/Register.js';
 import SavedRecipes from '../Pages/SavedRecipes/SavedRecipes.js';
 import SignIn from '../Pages/SignIn/SignIn.js';
@@ -61,6 +62,7 @@ class Main extends Component {
                         <Route path="/homepage" component={Homepage} /> 
                         <Route path="/new_count" component={NewCount} /> 
                         <Route path="/new_recipe" component={NewRecipe} /> 
+                        <Route path="/Profile" component={Profile} /> 
                         <Route path="/terms" component={Terms} /> 
                         <Route exact path="/" component={LandingPage} />
 

@@ -1,0 +1,18 @@
+.profile-table{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.profile-table div {
+/* margin-top: 150px; */
+margin: 10px auto;
+width: 200px;
+padding: 15px !important;
+max-width: 900px;
+/* background-color: #4DCCBD !important; */
+border: 1px solid #ddd;
+border-radius: 10px;
+color: #fff; 
+font-weight: 800; 
+
+}
