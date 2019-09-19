@@ -9,8 +9,8 @@ import Image from "react-bootstrap/Image";
 import abigail from './Images/abigail_cudjoe.jpeg';
 import mark from './Images/mark_jarvis.jpeg';
 import osemeke from './Images/osemke_nwaak.jpeg';
-import adam from './Images/placeholder.jpg';
-import larry from './Images/placeholder.jpg';
+import adam from './Images/adam_weiler.jpeg';
+import larry from './Images/larry_medina.jpeg';
 
 
 // Call stylesheet last:
@@ -64,7 +64,7 @@ class Contact extends Component {
                             A full-stack web developer that likes learning new things. Living by the principles of fairness and kindness, I believe that I can use my skills to provide positive outcomes for my teammates, my company, and society. 
                         </p>    
                         <ul>
-                            <li>LinkedIn: <a href="linksss" target="_blank">Osemeke's LinkedIn</a></li>
+                            <li>LinkedIn: <a href="https://www.linkedin.com/in/onwaka/" target="_blank">Osemeke's LinkedIn</a></li>
                             <li>GitHub: <a href="https://github.com/Mekenwaka1" target="_blank">Osemeke's GitHub</a></li>
                             {/* <li>Personal Portfolio: </li> */}
                             <li>Email: <a href="mailto:oc.hn.waka@gmail.com">o.ch.nwaka@gmail.com</a></li>

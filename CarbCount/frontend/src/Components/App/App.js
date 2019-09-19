@@ -1,6 +1,7 @@
 // Vanilla React:
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 // Bootstrap-React components:
 // import Jumbotron from "react-bootstrap/Jumbotron";
@@ -23,23 +24,37 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            route: 'signin',
-            isSignedIn: false
+            // route: 'signin',
+            isSignedIn: false,
+            userName: ''
         }
+        this.handleLogin = this.handleLogin.bind(this);
     }
 
-    onRouteChange = (route) => {
-        if (route === 'signout') {
-            this.setState(initialState);
-        } else if (route === 'home') {
-            this.setState({
-                isSignedIn: true 
-            });
-        }
-        this.setState({ 
-            route: route 
-        });
+    handleLogin = (event) => {
+        // alert('hey!', event)
+        // event.preventDefault(); //This doesn't work
+        console.log('LOGGING IN USER:')
+
+        this.setState({
+            userName: 'Abigail'
+        })
+        
+        return <Redirect to='/FAQ' />
     }
+
+    // onRouteChange = (route) => {
+    //     if (route === 'signout') {
+    //         this.setState(initialState);
+    //     } else if (route === 'home') {
+    //         this.setState({
+    //             isSignedIn: true 
+    //         });
+    //     }
+    //     this.setState({ 
+    //         route: route 
+    //     });
+    // }
 
     render() {
         const { isSignedIn, route } = this.state;
@@ -48,8 +63,9 @@ class App extends Component {
             <Router>
                 <div id="App">
                     <div id='page-container'>
-                        <OurNavBar />
-                        <Main route={route} />
+                        <OurNavBar handleLogin={this.handleLogin} userName={this.state.userName} />
+                        {/* <Main route={route} /> */}
+                        <Main handleLogin={() => this.handleLogin()} />
                     </div>
                     <Footer />
                 </div>

@@ -30,17 +30,23 @@ import './Main.css';
 
 class Main extends Component {
 
-    handleLogin = (event) => {
-        console.log('Lets login!')
+    // handleLogin = (event) => {
+    //     console.log('Lets login!')
 
 
+    // }
+
+    componentDidMount() {
+        console.log('Main Component did mount!');
+        console.log(this.props.handleLogin)
+        window.scrollTo(0, 0); //Brings user to top of page.
     }
 
 
 
     render() {
-        const { route } = this.props;
-        console.log('Main, route is:', route)
+        // const { route } = this.props;
+        console.log('Main, route is:', this.props.handleLogin)
 
         return (
             <main>
@@ -68,7 +74,10 @@ class Main extends Component {
                             {/* : // User is not logged in. */}
                                 {/* <> */}
                                     <Route path="/register" component={Register} /> 
-                                    <Route path="/sign_in" component={SignIn} /> 
+                                    <Route path="/sign_in"
+                                    render = {
+                                        (props) => (<SignIn handleLogin={this.props.handleLogin} />)
+                                    } /> 
                                 {/* </> */}
                         {/* } */}
                     </Switch>
