@@ -24,7 +24,7 @@ class Homepage extends Component {
     cardDetails = [
         { title: 'New Count', text: 'Add a New Count to your Log.', link: 'new_count' }, 
         { title: 'New Recipe', text: 'Add a New Recipe to your list.', link: 'new_recipe' }, 
-        { title: 'Food Log', text: 'See all your Food Logs.', link: 'food_logs' }, 
+        { title: 'Food Log', text: 'See your Food Log.', link: 'food_logs' }, 
         { title: 'Saved Recipes', text: 'See all your Saved Recipes.', link: 'saved_recipes' }
     ];
 

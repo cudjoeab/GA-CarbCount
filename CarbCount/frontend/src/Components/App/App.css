@@ -31,7 +31,8 @@ body {
     
     /* max-width: 900px; */
     text-align: left;
-    background-color: transparent !important;
+    /* background: url("/backgroundImage/jumbo-bg.jpg") !important; */
+    background: transparent !important;
 }
 
 .borderBox {
