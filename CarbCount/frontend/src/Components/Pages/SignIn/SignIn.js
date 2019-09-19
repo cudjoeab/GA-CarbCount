@@ -26,15 +26,20 @@ class SignIn extends Component {
     //     super(props, context);
     constructor(props) {
         super(props);
+        this.state = {
+            email: 'cudjoeab@gmail.com',
+            password: 'doesthiswork',
+            password2: 'doesthiswork'
+        };
 
         // console.log(this.props.handleLogin)
 
-        this.state = {
-            username: '',
-            password: '',
-            errorMessage: '',
-            redirectToReferrer: false
-        };
+        // this.state = {
+        //     username: '',
+        //     password: '',
+        //     errorMessage: '',
+        //     redirectToReferrer: false
+        // };
       }
 
     componentDidMount() {

@@ -34,42 +34,47 @@ class Register extends Component {
     }
 
     handleSubmit = (event) => {
-        // event.preventDefault();
-        const form = event.currentTarget.elements;
+        event.preventDefault();
+        // const form = event.currentTarget.elements;
 
-        if (form.password.value !== form.password2.value) {
-            console.log('Error; your passwords are not the same!');
-        } else {
-            console.log('Same!');
+        // if (form.password.value !== form.password2.value) {
+        //     console.log('Error; your passwords are not the same!');
+        // } else {
+        //     console.log('Same!');
 
-            console.log(form)
+        //     console.log(form)
 
-            let userSubmission = 
+        //     let userSubmission = 
         
 
-            axios.post("/register/", {
-                email: form.email.value,
-                password: form.password.value
-            }).then((response)=> {
-                console.log('Then:', response)
-                console.log('Then:', response.data)
+        //     axios.post("/register/", {
+        //         email: form.email.value,
+        //         password: form.password.value
+        //     }).then((response)=> {
+        //         console.log('Then:', response)
+        //         console.log('Then:', response.data)
 
-                localStorage.setItem('user', JSON.stringify(response.data));
+        //         localStorage.setItem('user', JSON.stringify(response.data));
 
-                this.setState({
-                    errorMessage: '',
-                    redirectToReferrer: true
-                });
-            }).catch((error)=> {
-                console.log('Error:', error)
+        //         this.setState({
+        //             errorMessage: '',
+        //             redirectToReferrer: true
+        //         });
+        //     }).catch((error)=> {
+        //         console.log('Error:', error)
 
 
-                //  BAD PATTERN - dont save jsx in state only save a string
-            //     this.setState({
-            //         // errorMessage: <Alert variant="danger">Invalid credentials</Alert>
-            //     });
-            });
-        }
+        //         //  BAD PATTERN - dont save jsx in state only save a string
+        //     //     this.setState({
+        //     //         // errorMessage: <Alert variant="danger">Invalid credentials</Alert>
+        //     //     });
+        //     });
+        // }
+
+        this.setState({
+            errorMessage: '',
+            redirectToReferrer: true
+        });
     }
 
     render() {
@@ -216,7 +221,7 @@ class Register extends Component {
                         Create My Account
                     </Button> */}
 
-                    <h4><Link to='/homepage'>Create my Account</Link> </h4> 
+                    <h4><Link to='/homepage' onClick={this.props.handleLogin}>Create my Account</Link> </h4> 
 
                     <p>By selecting Continue, you agree to the <Link to='/terms'>Terms of Service</Link> and <a href=''>Privacy Policy</a>.</p>
                     <p>Already have an account? <Link to='/sign_in'>Log in here</Link></p>
