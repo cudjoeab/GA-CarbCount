@@ -73,7 +73,7 @@ class NewCount extends Component {
 
     render() {
         const jsonElements = this.ourJSON.map(
-            (elem, id) => <Dropdown.Item as="button">{elem.name}</Dropdown.Item>
+            (elem, id) => <Dropdown.Item>{elem.name}</Dropdown.Item>
         )
         return (
             <section className='borderBox'>
