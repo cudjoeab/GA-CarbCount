@@ -141,11 +141,11 @@ class NewCount extends Component {
 
                     <Carousel.Item>
                         <Carousel.Caption>
-                            <h2>Step 3:</h2>
-                            <p>SUMMARY</p>
+                            <h2>SUMMARY:</h2>
+                            {/* <p>SUMMARY</p> */}
                             <p>1 Valencia California Orange</p>
                             <p>1 A&W restaurant spicy habanero chicken burger</p>
-                            <p>Lunch</p>
+                            <p><strong>Lunch</strong></p>
                             <p><FontAwesomeIcon icon={faBreadSlice} /> Carbs: 61.29g, Fibre: 5.1g </p>
                             <p><FontAwesomeIcon icon={faTint} /> Blood sugar: 5.6mmol/L</p>
                             <p><FontAwesomeIcon icon={faSyringe} /> Suggested dose: 12.3 units</p>

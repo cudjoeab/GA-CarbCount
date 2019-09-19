@@ -35,6 +35,14 @@
     /* background-color: #4DCCBD; */
     color: #fff !important;
 }
+.carousel-caption h2 {
+    font-weight: 900; 
+}
+.carousel-caption p {
+    font-size: 30px; 
+}
+
+
 
 .carousel-indicators li {
     background-color: #000 !important;
