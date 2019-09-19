@@ -8,5 +8,12 @@
 
 .card {
     min-width: 1em;
-    height: 1em;
+    height: 8em;
+    background-color: pink;
+}
+
+.card-columns {
+    background-color: red;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
