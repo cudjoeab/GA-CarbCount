@@ -47,8 +47,8 @@ class LandingPage extends Component {
                 <h3><FontAwesomeIcon icon={faBook} /> Keep track of meal history</h3>
                 <p>Have easy access to your food log, keep track of your favorite meals and share data with your Diabetes Team</p>
                 <section className = 'landingPageCTA'>
-                <h4><Link to='/register'>NEW ACCOUNT</Link></h4> 
-                <h4><Link to='/sign_in'>SIGN IN</Link> </h4>  
+                <h4><Link to='/register'>SIGN UP</Link></h4> 
+                <h4><Link to='/sign_in'>LOG IN</Link> </h4>  
                 </section>
                 
                 
