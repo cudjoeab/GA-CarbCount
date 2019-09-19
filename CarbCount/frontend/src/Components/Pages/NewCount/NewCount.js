@@ -87,7 +87,7 @@ class NewCount extends Component {
                             <Form>
                                 <Form.Group controlId="formBasicGlucose">
                                     <Form.Label>Blood Glucose:</Form.Label>
-                                    <Form.Control type="number" placeholder="Enter blood glucose (optional)" step='0.001' />
+                                    <Form.Control type="text" placeholder="Enter blood glucose (optional)" step='0.001' />
                                     <Form.Text className="text-muted">
                                     Entering your blood glucose reading (mmol/L) will factor into your suggested dose. 
                                     </Form.Text>
@@ -143,7 +143,8 @@ class NewCount extends Component {
 
                     <Carousel.Item>
                         <Carousel.Caption>
-                            <h2>Step 3 - Results:</h2>
+                            <h2>Step 3:</h2>
+                            <p>SUMMARY</p>
                             <p>1 Valencia California Orange</p>
                             <p>Snack</p>
                             <p><FontAwesomeIcon icon={faBreadSlice} /> Carbs: 14.39g, Fibre: 3g </p>
