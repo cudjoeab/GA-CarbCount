@@ -167,7 +167,10 @@ class OurNavBar extends Component {
                         {/* <p>Id:{getUser.userId} --</p>
                         <p>Name: {getUser.userName} --</p> */}
                         {/* <p><a href='' onClick={this.handleClick}>Logout</a></p> */}
-                        <p>{this.props.userName} -- <Link to='/' onClick={this.handleClick} component={LandingPage}>Logout</Link></p>
+                        {/* <p>{this.props.userName} -- <Link to='/' onClick={this.handleClick} component={LandingPage}>Logout</Link></p> */}
+
+                        <p>{this.props.userName} -- <Link to='/' onClick={this.props.handleLogout} component={LandingPage}>Logout</Link></p>
+
                         {/* <p>UserName saved: {getUser.userName}</p> */}
                     </>
                     

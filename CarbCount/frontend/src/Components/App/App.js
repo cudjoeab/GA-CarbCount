@@ -26,7 +26,7 @@ class App extends Component {
         this.state = {
             // route: 'signin',
             isSignedIn: false,
-            userName: ''
+            userName: 'Ab8igail'
         }
         this.handleLogin = this.handleLogin.bind(this);
     }
@@ -40,7 +40,19 @@ class App extends Component {
             userName: 'Abigail'
         })
         
-        return <Redirect to='/FAQ' />
+        // return <Redirect to='/FAQ' />
+    }
+
+    handleLogout = (event) => {
+        // alert('hey!', event)
+        // event.preventDefault(); //This doesn't work
+        console.log('LOGGING OUT USER:')
+
+        this.setState({
+            userName: ''
+        })
+        
+        // return <Redirect to='/FAQ' />
     }
 
     // onRouteChange = (route) => {
@@ -63,7 +75,7 @@ class App extends Component {
             <Router>
                 <div id="App">
                     <div id='page-container'>
-                        <OurNavBar handleLogin={this.handleLogin} userName={this.state.userName} />
+                        <OurNavBar handleLogin={this.handleLogin} handleLogout={this.handleLogout} userName={this.state.userName} />
                         {/* <Main route={route} /> */}
                         <Main handleLogin={() => this.handleLogin()} />
                     </div>
