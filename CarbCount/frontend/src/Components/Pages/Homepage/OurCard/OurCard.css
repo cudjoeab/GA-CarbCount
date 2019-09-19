@@ -1,0 +1,13 @@
+.card-header  {
+    color: #fff;
+    text-transform: uppercase; 
+
+}
+
+.card-header:hover {
+    font-size: 
+}
+
+.card-text {
+    font-size: 16px; 
+}

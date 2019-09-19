@@ -221,7 +221,10 @@ class Register extends Component {
                         Create My Account
                     </Button> */}
 
-                    <h4><Link to='/homepage' onClick={this.props.handleLogin}>Create my Account</Link> </h4> 
+
+
+                    <h4 className="signup-button"><Link to='/homepage' onClick={this.props.handleLogin}>Create my Account</Link> </h4> 
+
 
                     <p>By selecting Continue, you agree to the <Link to='/terms'>Terms of Service</Link> and <a href=''>Privacy Policy</a>.</p>
                     <p>Already have an account? <Link to='/sign_in'>Log in here</Link></p>

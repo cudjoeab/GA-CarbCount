@@ -39,6 +39,7 @@ class Main extends Component {
     componentDidMount() {
         console.log('Main Component did mount!');
         console.log(this.props.handleLogin)
+        console.log(this.props.handleLogout)
         window.scrollTo(0, 0); //Brings user to top of page.
     }
 
@@ -73,7 +74,12 @@ class Main extends Component {
                                 {/* </> */}
                             {/* : // User is not logged in. */}
                                 {/* <> */}
-                                    <Route path="/register" component={Register} /> 
+                                    
+                                    <Route path="/register"
+                                    render = {
+                                        (props) => (<Register handleLogin={this.props.handleLogin} />)
+                                    } /> 
+                                    
                                     <Route path="/sign_in"
                                     render = {
                                         (props) => (<SignIn handleLogin={this.props.handleLogin} />)
