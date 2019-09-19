@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'CarbCount',
+    'rest_auth'
 ]
 
 MIDDLEWARE = [
@@ -137,37 +138,12 @@ STATICFILES_DIRS = [
     os.path.join(REACT_APP_DIR, 'build', 'static'),
 ]
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
-#         'rest_framework.authentication.SessionAuthentication',
-#     ),
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.IsAuthenticated',
-#     ),
-# }
-
-# AUTHENTICATION_BACKENDS = (
-#     'django.contrib.auth.backends.ModelBackend',
-#     'oauth2_provider.backends.OAuth2Backend',
-# )
-
-
-# Adding this - Adam
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'rest_framework.authentication.BasicAuthentication',
-#         'rest_framework.authentication.SessionAuthentication',
-#     ]
-# }
-
-# Trying this one - Adam
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated', )
+    )
 }
+
 
 CSRF_COOKIE_NAME = "csrftoken"
