@@ -1,9 +1,17 @@
-django
-datetimerange
+    # django
+    # datetimerange
+    # django-extensions
+    # django-rest-auth
+    # django-rest-framework
+    # fatsecret
+    # psycopg2
+    # pylint
+    # python-dotenv
+
+
+
+djangorestframework
+djangorestframework_simplejwt
+django-cors-headers
+django-request-logging
 django-extensions
-django-rest-auth
-django-rest-framework
-fatsecret
-psycopg2
-pylint
-python-dotenv

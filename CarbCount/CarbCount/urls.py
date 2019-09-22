@@ -4,13 +4,19 @@ from django.conf.urls import url
 from django.contrib import admin  # We can remove this later on.
 from django.urls import include, path  # Do we need to import path..?
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework import routers
+
 # from rest_framework.authtoken import views as auth_views
 
-# Imports the class DefaultRouter from routers.
-router = routers.DefaultRouter()
-
 from . import views
+
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
+from rest_framework import routers
+
+router = routers.DefaultRouter()  # Imports the class DefaultRouter from routers.
 
 # Register the all CRUD operations with the router
 router.register(r'users', views.UserViewSet)
@@ -31,7 +37,9 @@ urlpatterns = [
     path('api/', include(router.urls)),
     # path('api/it/', views.ApiView.as_view()),
     path('api/it/', csrf_exempt(views.ApiView.as_view())),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    url(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
         # path('api/food_search/', views.food_search),
         # path('api/calculate_dosages/', views.calculate_dosages),
         # url(r'^rest-auth/', include('rest_auth.urls')),

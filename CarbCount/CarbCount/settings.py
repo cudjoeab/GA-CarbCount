@@ -47,11 +47,13 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'request_logging.middleware.LoggingMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsPostCsrfMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -152,12 +154,34 @@ CORS_ORIGIN_WHITELIST = [
 # TODO: See if we're better of handling CSRF stuff by whitelisting our hosts? (local & production)
 # https://github.com/ottoyiu/django-cors-headers#csrf-integration 
 
-    # REST_FRAMEWORK = {
-    #     'DEFAULT_AUTHENTICATION_CLASSES': (
-    #         'rest_framework.authentication.SessionAuthentication',
-    #         'rest_framework.authentication.TokenAuthentication',
-    #     )
-    # }
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000"
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+            # 'rest_framework.authentication.SessionAuthentication',
+            # 'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG',  # change debug level as appropiate
+            'propagate': False,
+        },
+    },
+}
 
 
     # CSRF_COOKIE_NAME = "csrftoken"
