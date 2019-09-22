@@ -40,12 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'rest_framework',
-    'rest_framework.authtoken',
+        # 'rest_framework.authtoken',
     'CarbCount',
-    'rest_auth'
+        # 'rest_auth'
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,6 +81,9 @@ PG_HOST = os.getenv("PG_HOST")
 PG_PORT = os.getenv("PG_PORT")
 UBUNTU_USER_ONLY = os.getenv("UBUNTU_USER_ONLY")
 UBUNTU_PASSWORD_ONLY = os.getenv("UBUNTU_PASSWORD_ONLY")
+
+# Database
+# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -138,12 +143,21 @@ STATICFILES_DIRS = [
     os.path.join(REACT_APP_DIR, 'build', 'static'),
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-    )
-}
+# https://github.com/ottoyiu/django-cors-headers
+# Whitelist the create-react-app development server
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000"
+]
+
+# TODO: See if we're better of handling CSRF stuff by whitelisting our hosts? (local & production)
+# https://github.com/ottoyiu/django-cors-headers#csrf-integration 
+
+    # REST_FRAMEWORK = {
+    #     'DEFAULT_AUTHENTICATION_CLASSES': (
+    #         'rest_framework.authentication.SessionAuthentication',
+    #         'rest_framework.authentication.TokenAuthentication',
+    #     )
+    # }
 
 
-CSRF_COOKIE_NAME = "csrftoken"
+    # CSRF_COOKIE_NAME = "csrftoken"
