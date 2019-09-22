@@ -1,130 +1,84 @@
 // Vanilla React:
     // import React, { Component } from 'react';
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import useGlobalHook from 'use-global-hook';
-import axios from 'axios';
+
         // import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
         // import { Redirect } from 'react-router-dom';
 
 // Bootstrap-React components:
 // import Jumbotron from "react-bootstrap/Jumbotron";
 
-import actions from './actions.js';
+
+import Counters from './Components/Counters';
+import Users from './Components/Users';
+import Home from './Components/Home.js';
+import Login from './Components/Login/Login.js';
+
+import useGlobal from './AppState.js';
 
 // Smaller components:
-import Main from './Components/Main/Main.js';
-import Footer from './Components/Footer/Footer.js';
-import OurNavBar from './Components/NavBar/NavBar.js';
+        // import Main from './Components/Main/Main.js';
+        // import Footer from './Components/Footer/Footer.js';
+        // import OurNavBar from './Components/NavBar/NavBar.js';
 
 // Call stylesheet last:
 import './App.css';
 
-const initialState = {
-    counter: 0,
-    user: null,
-    users: [],
-    verb: null
-};
 
-const useGlobal = useGlobalHook(React, initialState, actions);
-
-const Index = () => {
-    const [store, update] = useGlobal();
+// const Users = () => {
+//     const [store, update] = useGlobal();
   
-    useEffect(()=> {
-        axios.get("/api/it/", {})
-        .then((response) => {
-            update.SET_VERB(response.data.it);
-        }).catch((error) => console.log("Error:", error));
-    }, []);
+//     const username = useRef(null);
+//     const email = useRef(null);
   
-    return (
-        <header className="App-header">
-            <h1>
-            It is {store.verb}.
-            </h1>
-        </header>
-    );
-}
-
-
-const Counters = () => {
-    const [store, update] = useGlobal();
-  
-    return (
-        <>
-            <p>
-            counter:
-            {store.counter}
-            </p>
-            <button type="button" onClick={() => update.INCREMENT(1)}>
-            +1 to global
-            </button>
-            <button type="button" onClick={() => update.DECREMENT(1)}>
-            -1 to global
-            </button>
-            <button type="button" onClick={() => update.SET_USER("josh")}>
-            Set User
-            </button>
-        </>
-    );
-}
-
-
-const Users = () => {
-    const [store, update] = useGlobal();
-  
-    const username = useRef(null);
-    const email = useRef(null);
-  
-    const onSubmit = (event) => {
-        event.preventDefault();
+//     const onSubmit = (event) => {
+//         event.preventDefault();
     
-        axios.post("/api/users/", {
-            "username": username.current.value,
-            "email": email.current.value,
-            "groups": []
-        }).then((response) => {
-            console.log("Create user", response);
-        }).catch((error) => {
-            console.log("Error:", error);
-        });
-    }
+//         axios.post("/api/users/", {
+//             "username": username.current.value,
+//             "email": email.current.value,
+//             "groups": []
+//         }).then((response) => {
+//             console.log("Create user", response);
+//         }).catch((error) => {
+//             console.log("Error:", error);
+//         });
+//     }
   
-    useEffect(()=> {
-        axios.get("/api/users/", {})
-        .then((response) => {
-            update.SET_USERS(response.data);
-        }).catch((error) => {
-            console.log("Error:", error);
-        });
-    }, []);
+//     useEffect(()=> {
+//         axios.get("/api/users/", {})
+//         .then((response) => {
+//             update.SET_USERS(response.data);
+//         }).catch((error) => {
+//             console.log("Error:", error);
+//         });
+//     }, []);
   
-    return (
-      <>
-        <p>
-          user:
-          {store.user}
-        </p>
-        <ul>
-          {
-            store.users.map((user, index) => {
-              return <li key={index}>{user.username} - {user.email}</li>
-            })
-          }
-        </ul>
+//     return (
+//       <>
+//         <p>
+//           user:
+//           {store.user}
+//         </p>
+//         <ul>
+//           {
+//             store.users.map((user, index) => {
+//               return <li key={index}>{user.username} - {user.email}</li>
+//             })
+//           }
+//         </ul>
   
-        <form onSubmit={onSubmit}>
-          <input ref={username}></input>
-          <br/>
-          <input ref={email}></input>
-          <br/>
-          <button type='submit'>Create New User</button>
-        </form>
-      </>
-    )
-}
+//         <form onSubmit={onSubmit}>
+//           <input ref={username}></input>
+//           <br/>
+//           <input ref={email}></input>
+//           <br/>
+//           <button type='submit'>Create New User</button>
+//         </form>
+//       </>
+//     )
+// }
 
 
         // const initialState = {
@@ -134,6 +88,11 @@ const Users = () => {
 
         // class App extends Component {
     const App = () => {
+
+        const [store, update] = useGlobal();
+
+        // TODO: Just straight up drop this implementation in and go from there
+        // https://reacttraining.com/react-router/web/example/auth-workflow
 
         // const [state, setState] = useState();
         // const [users, setUsers] = useState([]);
@@ -230,20 +189,33 @@ const Users = () => {
                     <nav>
                         <ul>
                             <li>
-                            <Link to="/">Home</Link>
+                                <Link to="/">Home</Link>
                             </li>
                             <li>
-                            <Link to="/counters/">Counters</Link>
+                                <Link to="/counters/">Counters</Link>
                             </li>
                             <li>
-                            <Link to="/users/">Users</Link>
+                                <Link to="/users/">Users</Link>
+                            </li>
+                            <li>
+                                <Link to="/login/">Login</Link>
                             </li>
                         </ul>
+                        <h1>
+                            HTTP verb test is: "{store.verb}"
+                        </h1>
+                        <h1>
+                            User is {store.user}.
+                        </h1>
+                        <h1>
+                            Count is {store.counter}.
+                        </h1>
                     </nav>
 
-                    <Route path="/" exact component={Index} />
+                    <Route path="/" exact component={Home} />
                     <Route path="/counters/" component={Counters} />
                     <Route path="/users/" component={Users} />
+                    <Route path="/login/" component={Login} />
                 </Router>
 
 

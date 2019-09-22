@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Login.css';
 
-import AuthService from '../AuthService'
+import AuthService from '../../Services/AuthService.js'
 
 class Login extends Component {
     constructor(){
@@ -59,10 +59,10 @@ class Login extends Component {
         );
     }
 
-    handleChange(e){
+    handleChange(event){
         this.setState(
             {
-                [e.target.name]: e.target.value
+                [event.target.name]: event.target.value
             }
         )
     }
