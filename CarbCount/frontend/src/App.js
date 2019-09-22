@@ -9,9 +9,9 @@ import axios from 'axios';
 // import Jumbotron from "react-bootstrap/Jumbotron";
 
 // Smaller components:
-import Main from '../Main/Main.js';
-import Footer from '../Footer/Footer';
-import OurNavBar from '../NavBar/NavBar';
+import Main from './Components/Main/Main.js';
+import Footer from './Components/Footer/Footer.js';
+import OurNavBar from './Components/NavBar/NavBar.js';
 
 // Call stylesheet last:
 import './App.css';
@@ -27,7 +27,7 @@ import './App.css';
 
         const [state, setState] = useState();
         const [users, setUsers] = useState([]);
-        const [errors, setErrors] = useState({});
+        const [errors, setErrors] = useState([]);
 
         const username = useRef(null);
         const email = useRef(null);
@@ -120,15 +120,15 @@ import './App.css';
 
                     <ul>
                     {
-                        users.map((user) => {
-                        return <li key={user.id}>{user.username} - {user.email}</li>
+                        users.map((user, index) => {
+                            return <li key={index}>{user.username} - {user.email}</li>
                         })
                     } 
                     </ul>
-                    {/* <form onSubmit={onSubmit}>
+                    <form onSubmit={onSubmit}>
                         {
                             errors.map((key, value)=> {
-                            return <li
+                                return <li key={key}>{key} - {value}</li>
                             })
                         }
 
@@ -137,7 +137,7 @@ import './App.css';
                         <input ref={email}></input>
                         <br/>
                         <button type='submit'>Create New User</button>
-                    </form> */}
+                    </form>
 
                         {/* <div id='page-container'> */}
                             {/* <OurNavBar handleLogin={this.handleLogin} handleLogout={this.handleLogout} userName={this.state.userName} /> */}
