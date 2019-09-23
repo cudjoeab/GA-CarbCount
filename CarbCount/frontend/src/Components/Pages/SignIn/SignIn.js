@@ -53,59 +53,49 @@ class SignIn extends Component {
     // }
 
     handleSubmit = (event) => {
+        const user = {
+            username: event.currentTarget.elements.username.value,
+            password: event.currentTarget.elements.password.value,
+        }
+
         event.preventDefault();
-    //     const form = event.currentTarget.elements;
+        console.log('Logging in here', user)
+        const form = event.currentTarget.elements;
 
-    //     axios.post("/login/", {
-    //         username: form.username.value,
-    //         password: form.password.value
-    //     }).then((response)=> {
-    //         console.log('Then:', response)
-    //         // console.log(this.props)
-    //         // redirect etc
-            
-    //         // browserHistory.push("/path-to-link");
-    //         // <Route path="/FAQ" component={FAQ} />
-
-    //         // window.location
-
-    //         // this.props.history.push("/");
-    //         // render (
-    //         //     <Redirect push to="/FAQ"/>
-    //         // )
-
-    //         // return <Redirect to='/FAQ' />
-
-    //         localStorage.setItem('user', JSON.stringify(response.data)); // Is this right?
+        axios.post("/api-token-auth/", user)
+        .then((response)=> {
+            console.log('Then:', response)
+            window.localStorage['token'] = response.data['token']
 
             this.setState({
                 errorMessage: '',
-                redirectToReferrer: true
+                // redirectToReferrer: true
             });
-    //     }).catch((error)=> {
-    //         console.log('Error:', error)
-    //         // this.history.pushState(null, 'homepage');
+        })
+        .catch((error)=> {
+            console.log('Error:', error)
 
     //         this.setState({
     //             errorMessage: <Alert variant="danger">Invalid credentials</Alert>
     //         });
-    //     });
+        });
     }
 
     render() {
-            const { redirectToReferrer } = this.state
+            // const { redirectToReferrer } = this.state
             
 
-            if (redirectToReferrer === true) {
-                return <Redirect to='/homepage?login=success' />
-            }
+            // if (redirectToReferrer === true) {
+            //     return <Redirect to='/homepage?login=success' />
+            // }
 
             return (
             <section className='borderBox'>
                 <h1>Login</h1>
                 <p>Please enter your user and password to login.</p>
-                <Form onSubmit={this.handleSubmit}>
+                {/* <Form onSubmit={this.handleSubmit}> */}
                 {/* <Form onSubmit={this.stopReload}> */}
+                <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="username">
                         <Form.Label>Username</Form.Label>
                         <Form.Control 
@@ -126,7 +116,8 @@ class SignIn extends Component {
                     </Form.Group>
                     {this.state.errorMessage}
 
-                    <Button variant="primary" type="submit" onClick={this.props.handleLogin}>
+                    {/* <Button variant="primary" type="submit" onClick={this.props.handleLogin}> */}
+                    <Button variant="primary" type="submit">
                         Sign In
                     </Button>
                 </Form>

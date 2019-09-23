@@ -264,3 +264,17 @@ class FrontendAppView(View):
                 """,
                 status=501,
             )
+
+
+class ApiView(View):
+
+    def get(self, request):
+        return JsonResponse({
+            "it": "getting"
+        })
+
+    @csrf_exempt
+    def post(self, request):
+        return JsonResponse({
+            "it": "posting"
+        })

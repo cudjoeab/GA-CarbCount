@@ -26,7 +26,9 @@ class App extends Component {
         this.state = {
             // route: 'signin',
             // isSignedIn: false,
-            userName: ''
+            userName: '',
+            password: '',
+            token: '',
         }
         this.handleLogin = this.handleLogin.bind(this);
     }
@@ -34,10 +36,13 @@ class App extends Component {
     handleLogin = (event) => {
         // event.preventDefault(); //This doesn't work
         console.log('LOGGING IN USER:')
+        console.log()
 
-        this.setState({
-            userName: 'Abigail'
-        })
+        // this.setState({
+        //     userName: 'Abigail'
+        // })
+
+        
     }
 
     handleLogout = (event) => {
