@@ -55,6 +55,20 @@ class Register extends Component {
             axios.post("/api/users/", user)
             .then((response)=> {
                 console.log('Then:', response)
+
+                axios.post("/api-token-auth/", user)
+                .then((response)=> {
+                    console.log('Then:', response)
+                    window.localStorage['token'] = response.data['token']
+                    checkLogin();
+
+                    this.setState({
+                        errorMessage: '',
+                        // redirectToReferrer: true
+                    });
+                })
+
+
             })
             .catch((error)=> {
                 console.log('Error:', error)
@@ -63,6 +77,14 @@ class Register extends Component {
 
 
         }
+
+
+
+        const checkLogin = () => {  // If user has a token, redirect to profile page.
+            if (window.localStorage['token'] !== undefined) {
+                window.location.href = '/profile'
+            };
+        };
 
 
         
