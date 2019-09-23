@@ -30,7 +30,7 @@ class App extends Component {
             password: '',
             token: '',
         }
-        this.handleLogin = this.handleLogin.bind(this);
+        // this.handleLogin = this.handleLogin.bind(this);  // Don't need with arrow function.
     }
 
     handleLogin = (event) => {

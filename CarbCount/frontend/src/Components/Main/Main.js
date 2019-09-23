@@ -64,6 +64,7 @@ class Main extends Component {
                         <Route path="/new_recipe" component={NewRecipe} /> 
                         <Route path="/Profile" component={Profile} /> 
                         <Route path="/terms" component={Terms} /> 
+                        <Route path="/landing_page" component={LandingPage} />
                         <Route exact path="/" component={LandingPage} />
 
                         {/* Uncomment these 8 lines when Authentication is working: */}

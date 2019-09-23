@@ -44,21 +44,23 @@ class SignIn extends Component {
 
     componentDidMount() {
         console.log('Signin Component did mount!');
-        console.log(this.props.handleLogin)
+        // console.log(this.props.handleLogin)
         window.scrollTo(0, 0); //Brings user to top of page.
+        this.checkLogin();
     }
 
     // stopReload = (event) => {
     //     event.preventDefault();
     // }
 
-    handleSubmit = (event) => {
+    handleLogin = (event) => {
+        event.preventDefault();
+
         const user = {
             username: event.currentTarget.elements.username.value,
             password: event.currentTarget.elements.password.value,
         }
 
-        event.preventDefault();
         console.log('Logging in here', user)
         const form = event.currentTarget.elements;
 
@@ -66,6 +68,7 @@ class SignIn extends Component {
         .then((response)=> {
             console.log('Then:', response)
             window.localStorage['token'] = response.data['token']
+            this.checkLogin();
 
             this.setState({
                 errorMessage: '',
@@ -81,6 +84,17 @@ class SignIn extends Component {
         });
     }
 
+
+    checkLogin = () => {  // If user has a token, redirect to profile page.
+        if (window.localStorage['token'] !== undefined) {
+            window.location.href = '/profile'
+        };
+    };
+
+
+
+
+
     render() {
             // const { redirectToReferrer } = this.state
             
@@ -93,9 +107,9 @@ class SignIn extends Component {
             <section className='borderBox'>
                 <h1>Login</h1>
                 <p>Please enter your user and password to login.</p>
-                {/* <Form onSubmit={this.handleSubmit}> */}
+                {/* <Form onSubmit={this.handleLogin}> */}
                 {/* <Form onSubmit={this.stopReload}> */}
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleLogin}>
                     <Form.Group controlId="username">
                         <Form.Label>Username</Form.Label>
                         <Form.Control 
