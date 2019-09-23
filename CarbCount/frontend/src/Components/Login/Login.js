@@ -1,54 +1,91 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 
 import AuthService from '../../Services/AuthService.js'
 
-class Login extends Component {
-    constructor(){
-        super();
-        this.handleChange = this.handleChange.bind(this);
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
-        this.Auth = new AuthService();
-    }
+function Login() {
 
-    componentWillMount(){
-    if(this.Auth.loggedIn())
-        this.props.history.replace('/');
-    }
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-    handleFormSubmit(event){
+// class Login extends Component {
+    // constructor(){
+    //     super();
+    //     this.state = {
+    //         username: '',
+    //         password: ''
+    //     }
+        // this.handleChange = this.handleChange.bind(this);
+        // this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        // this.Auth = new AuthService();
+    // }
+
+    // componentWillMount(){
+    // if(this.Auth.loggedIn())
+    //     this.props.history.replace('/');
+    // }
+
+    const handleLogin = (event) => {
         event.preventDefault();
+        const user = {
+            username: username,
+            password: password
+        }
 
-        console.log('User submitting form!')
+        console.log("AXIOS HERE")
+        console.log(username)
+        console.log(password)
 
-        this.Auth.login(this.state.username,this.state.password)
-            .then(res =>{
-               this.props.history.replace('/');
-            })
-            .catch(error =>{
-                alert(error);
-            });
+
+        // axios.post("/api/users/", {
+        //     "username": username.current.value,
+        //     "email": email.current.value,
+        //     "groups": []
+        // }).then((response) => {
+        //     console.log("Create user", response);
+        // }).catch((error) => {
+        //     console.log("Error:", error);
+        // });
+
     }
 
-    render() {
+    // handleFormSubmit(event){
+    //     event.preventDefault();
+
+    //     console.log('User submitting form!')
+
+    //     this.Auth.login(this.state.username,this.state.password)
+    //         .then(res =>{
+    //            this.props.history.replace('/');
+    //         })
+    //         .catch(error =>{
+    //             alert(error);
+    //         });
+    // }
+
+    // render() {
         return (
             <div className="center">
                 <div className="card">
                     <h1>Login</h1>
-                    <form onSubmit={this.handleFormSubmit}>
+                    {/* <form onSubmit={this.handleFormSubmit}> */}
+                    <form onSubmit={handleLogin}>
                         <input
                             className="form-item"
                             placeholder="Username goes here..."
                             name="username"
                             type="text"
-                            onChange={this.handleChange}
+                            onChange = {(e)=> setUsername(e.target.value)}
+                            required
                         />
                         <input
                             className="form-item"
                             placeholder="Password goes here..."
                             name="password"
                             type="password"
-                            onChange={this.handleChange}
+                            onChange = {(e)=> setPassword(e.target.value)}
+                            required
                         />
                         <input
                             className="form-submit"
@@ -61,13 +98,13 @@ class Login extends Component {
         );
     }
 
-    handleChange(event){
-        this.setState(
-            {
-                [event.target.name]: event.target.value
-            }
-        )
-    }
-}
+    // handleChange(event){
+    //     this.setState(
+    //         {
+    //             [event.target.name]: event.target.value
+    //         }
+    //     )
+    // }
+// }
 
 export default Login; 

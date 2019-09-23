@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from . import views
 
 # from rest_framework import routers
-# from rest_framework.authtoken import views as auth_views
+from rest_framework.authtoken import views as auth_views
 from rest_framework.routers import DefaultRouter
 
 from rest_framework_simplejwt.views import (
@@ -43,6 +43,8 @@ urlpatterns = [
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     url(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api-token-auth/', auth_views.obtain_auth_token, name='api-token-auth'),
+    
         # path('api/food_search/', views.food_search),
         # path('api/calculate_dosages/', views.calculate_dosages),
         # url(r'^rest-auth/', include('rest_auth.urls')),

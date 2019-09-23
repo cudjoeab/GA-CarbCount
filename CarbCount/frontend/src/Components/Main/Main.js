@@ -56,15 +56,16 @@ class Main extends Component {
 
                     <Switch>
                         {/* These routes are always available when user is logged in or not. */}
-                        <Route path="/about" component={About} /> 
-                        <Route path="/contact" component={Contact} /> 
-                        <Route path="/FAQ" component={FAQ} /> 
-                        <Route path="/homepage" component={Homepage} /> 
-                        <Route path="/new_count" component={NewCount} /> 
-                        <Route path="/new_recipe" component={NewRecipe} /> 
-                        <Route path="/Profile" component={Profile} /> 
-                        <Route path="/terms" component={Terms} /> 
-                        <Route exact path="/" component={LandingPage} />
+                        <Route path="/" exact component={LandingPage} />
+                        <Route path="/about/" component={About} /> 
+                        <Route path="/contact/" component={Contact} /> 
+                        <Route path="/FAQ/" component={FAQ} /> 
+                        <Route path="/homepage/" component={Homepage} /> 
+                        <Route path="/new_count/" component={NewCount} /> 
+                        <Route path="/new_recipe/" component={NewRecipe} /> 
+                        <Route path="/profile/" component={Profile} /> 
+                        <Route path="/terms/" component={Terms} /> 
+                        
 
                         {/* Uncomment these 8 lines when Authentication is working: */}
                         {/* { route === 'home' */}
