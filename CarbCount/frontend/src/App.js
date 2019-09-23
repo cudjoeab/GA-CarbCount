@@ -126,7 +126,7 @@ import './App.css';
         
             axios.get("/api/users.json", {})
             .then((response) => {
-                console.log("Api Response", response.data)
+                console.log("Users: ", response.data)
                 setUsers(response.data)
             }).catch((error) => {
                 // setErrors(error)
@@ -144,37 +144,37 @@ import './App.css';
 
             axios.get('/api/practitioner.json')
             .then((resp) => {
-                console.log("Api Response", resp.data)
+                console.log("Practitioners: ", resp.data)
                 setPractitioners(resp.data)
             });
 
             axios.get('/api/diabetic.json')
             .then((resp) => {
-                console.log("Api Response", resp.data)
+                console.log("Diabetics: ", resp.data)
                 setDiabetics(resp.data)
             });
 
-            // axios.get('/api/profiles.json')
+            // axios.get('/api/profile.json')
             // .then((resp) => {
-            //     console.log("Api Response", resp.data)
+            //     console.log("Profiles: ", resp.data)
             //     setProfiles(resp.data)
             // });
 
             axios.get('/api/meal.json')
             .then((resp) => {
-                console.log("Api Response", resp.data)
+                console.log("Meals: " , resp.data)
                 setMeals(resp.data)
             });
 
             axios.get('/api/recipe.json')
             .then((resp) => {
-                console.log("Api Response", resp.data)
+                console.log("Recipes: ", resp.data)
                 setRecipes(resp.data)
             });
 
             axios.get('/api/log.json')
             .then((resp) => {
-                console.log("Api Response", resp.data)
+                console.log("Logs: ", resp.data)
                 setLogs(resp.data)
             });
         
@@ -278,14 +278,52 @@ import './App.css';
                             Count is {store.counter}.
                         </h1>
                     </nav>
+                    <hr/>
+                    <h2>Practioners:</h2>
                     <ul>
-          {
-            practitioners.map((practitioner, index) => {
-              return <li key={index}>{practitioner.first_name} {practitioner.last_name} {practitioner.clinic_name}</li>
-            })
-          }
+                    {
+                        practitioners.map((practitioner, index) => {
+                        return <li key={index}>{practitioner.first_name} {practitioner.last_name} {practitioner.clinic_name}</li>
+                        })
+                    }
+                    </ul>
 
-        </ul>
+                    <h2>Diabetics:</h2>
+                    <ul>
+                    {
+                        diabetics.map((diabetic, index) => {
+                        return <li key={index}>{diabetic.first_name} {diabetic.last_name} {diabetic.email}</li>
+                        })
+                    }
+                    </ul>
+
+                    <h2>Recipes:</h2>
+                    <ul>
+                    {
+                        recipes.map((recipe, index) => {
+                        return <li key={index}>{recipe.name} {recipe.total_carbs} {recipe.total_fibre}</li>
+                        })
+                    }
+                    </ul>
+
+                    <h2>Meals:</h2>
+                    <ul>
+                    {
+                        meals.map((meal, index) => {
+                        return <li key={index}>{meal.date} {meal.food} {meal.carbs}</li>
+                        })
+                    }
+                    </ul>
+
+                    <h2>Logs:</h2>
+                    <ul>
+                    {
+                        logs.map((log, index) => {
+                        return <li key={index}>{log.meal_id} {log.diabetic_id}</li>
+                        })
+                    }
+                    </ul>
+                    <hr/>
 
 
                     <Route path="/" exact component={Home} />

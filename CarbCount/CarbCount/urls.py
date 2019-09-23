@@ -1,5 +1,5 @@
 
-from .api import PractitionerViewSet, DiabeticViewSet, MealViewSet, RecipeViewSet, LogViewSet 
+from .api import PractitionerViewSet, DiabeticViewSet, ProfileViewSet, RecipeViewSet, MealViewSet, LogViewSet 
 
 from django.conf.urls import url
 from django.contrib import admin  # We can remove this later on.
@@ -25,8 +25,9 @@ router.register(r'groups', views.GroupViewSet)
     
 router.register('practitioner', PractitionerViewSet, 'practitioner')
 router.register('diabetic', DiabeticViewSet, 'diabetic')
-router.register('meal', MealViewSet, 'meal')
+router.register('profile', ProfileViewSet, 'profile')
 router.register('recipe', RecipeViewSet, 'recipe')
+router.register('meal', MealViewSet, 'meal')
 router.register('log', LogViewSet, 'log')
 
 

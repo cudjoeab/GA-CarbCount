@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+# from django.db.models.signals import post_save
+# from django.dispatch import receiver
 
 from django.core.validators import (
     MinLengthValidator, 
@@ -56,7 +56,7 @@ class Diabetic(models.Model):
 # def save_user_profile(sender, instance, **kwargs):
 #     instance.profile.save()
 
-class Profile(models.Model):
+class Profile(models.Model):  # What is profile, and do we need it?
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     diabetic = models.OneToOneField(Diabetic, on_delete=models.CASCADE)
     Practitioner = models.OneToOneField(Practitioner, on_delete=models.CASCADE)
@@ -154,6 +154,6 @@ class Log(models.Model):
     def __str__(self):
         return f"Log: {self.meal_id} - {self.diabetic_id}"
 
-def token_request(request):  # Adding this - Adam
-    if user_requested_token() and token_request_is_warranted():
-        new_token = Token.objects.create(user=request.user)
+# def token_request(request):  # Adding this - Adam
+#     if user_requested_token() and token_request_is_warranted():
+#         new_token = Token.objects.create(user=request.user)

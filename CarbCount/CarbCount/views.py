@@ -22,8 +22,8 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 # )
 # from rest_framework.views import APIView
 
-from .models import *
-from .serializers import *
+from .models import Practitioner, Diabetic, Profile, Recipe, Meal, Log
+from .serializers import UserSerializer, GroupSerializer, ProfileSerializer, LogSerializer, PractitionerSerializer, RecipeSerializer, DiabeticSerializer, MealSerializer
 
 
 # from dotenv import load_dotenv
@@ -93,7 +93,8 @@ from .serializers import *
 
 
 
-
+# Buy using ModelViewSet, and just passing the serialzer and model for a given table,
+# we are able to import it in our urls.py, and get all the CRUD actions and url routes for free.
 class DiabeticViewSet(viewsets.ModelViewSet):
     '''Api endpoint for Diabetic Profile'''
     queryset = Diabetic.objects.all().order_by('id')
@@ -109,7 +110,7 @@ class DiabeticViewSet(viewsets.ModelViewSet):
 class PractitionerViewSet(viewsets.ModelViewSet):
     '''Api endpoint for Practitioner Profile'''
     queryset = Practitioner.objects.all().order_by('id')
-    serializer_class = PractitonerSerializer
+    serializer_class = PractitionerSerializer
     permission_classes = [permissions.AllowAny, permissions.IsAuthenticated]
 
     def get_permissions(self):
@@ -241,6 +242,8 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
 
 
+# A view that matches any request, and routes it to either the statically built assests, or our
+# live-reload local development environment.
 class FrontendAppView(View):
     """
     Serves the compiled frontend entry point (only works if you have run `yarn
