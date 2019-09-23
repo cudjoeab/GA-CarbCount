@@ -1,6 +1,6 @@
 // Vanilla React:
     // import React, { Component } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
         // import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // Bootstrap-React components:
 // import Jumbotron from "react-bootstrap/Jumbotron";
+
+import axios from 'axios';
 
 
 import Counters from './Components/Counters';
@@ -91,33 +93,98 @@ import './App.css';
 
         const [store, update] = useGlobal();
 
+
+
+
+
         // TODO: Just straight up drop this implementation in and go from there
         // https://reacttraining.com/react-router/web/example/auth-workflow
 
         // const [state, setState] = useState();
-        // const [users, setUsers] = useState([]);
+        const [users, setUsers] = useState([]);
         // const [errors, setErrors] = useState([]);
+
+        const [practitioners, setPractitioners] = useState([]);
+        const [diabetics, setDiabetics] = useState([]);
+        const [profiles, setProfiles] = useState([]);
+        const [recipes, setRecipes] = useState([]);
+        const [meals, setMeals] = useState([]);
+        const [logs, setLogs] = useState([]);
 
         // const username = useRef(null);
         // const email = useRef(null);
 
-        // useEffect(()=> {
-        //     axios.get("/api/it/", {})
-        //     .then((response) => {
+        useEffect(() => {
+            axios.get("/api/it/", {})
+            .then((response) => {
+                console.log(response);
         //       setState(response.data.it)
-        //     }).catch((error) => {
-        //         setErrors(error)
-        //         console.log("Error:", error)
-        //     });
+            }).catch((error) => {
+                // setErrors(error)
+                console.log("Error:", error)
+            });
         
-        //     axios.get("/api/users/", {})
-        //     .then((response) => {
-        //       setUsers(response.data)
-        //     }).catch((error) => {
-        //         setErrors(error)
-        //         console.log("Error:", error)
-        //     });
-        // }, []);
+            axios.get("/api/users.json", {})
+            .then((response) => {
+                console.log("Api Response", response.data)
+                setUsers(response.data)
+            }).catch((error) => {
+                // setErrors(error)
+                console.log("Error:", error)
+            });
+
+            // axios.get("/api/groups.json", {})
+            // .then((response) => {
+                // console.log("Api Response", response.data)
+            //   setGroups(response.data)
+            // }).catch((error) => {
+            //     // setErrors(error)
+            //     console.log("Error:", error)
+            // });
+
+            axios.get('/api/practitioner.json')
+            .then((resp) => {
+                console.log("Api Response", resp.data)
+                setPractitioners(resp.data)
+            });
+
+            axios.get('/api/diabetic.json')
+            .then((resp) => {
+                console.log("Api Response", resp.data)
+                setDiabetics(resp.data)
+            });
+
+            // axios.get('/api/profiles.json')
+            // .then((resp) => {
+            //     console.log("Api Response", resp.data)
+            //     setProfiles(resp.data)
+            // });
+
+            axios.get('/api/meal.json')
+            .then((resp) => {
+                console.log("Api Response", resp.data)
+                setMeals(resp.data)
+            });
+
+            axios.get('/api/recipe.json')
+            .then((resp) => {
+                console.log("Api Response", resp.data)
+                setRecipes(resp.data)
+            });
+
+            axios.get('/api/log.json')
+            .then((resp) => {
+                console.log("Api Response", resp.data)
+                setLogs(resp.data)
+            });
+        
+          }, []);
+
+
+
+        
+        
+        
 
         // const onSubmit = (event) => {
         //     event.preventDefault();
@@ -211,6 +278,15 @@ import './App.css';
                             Count is {store.counter}.
                         </h1>
                     </nav>
+                    <ul>
+          {
+            practitioners.map((practitioner, index) => {
+              return <li key={index}>{practitioner.first_name} {practitioner.last_name} {practitioner.clinic_name}</li>
+            })
+          }
+
+        </ul>
+
 
                     <Route path="/" exact component={Home} />
                     <Route path="/counters/" component={Counters} />

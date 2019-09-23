@@ -1,40 +1,42 @@
 
-# from .api import PractitionerViewSet, DiabeticViewSet, MealViewSet, RecipeViewSet, LogViewSet 
+from .api import PractitionerViewSet, DiabeticViewSet, MealViewSet, RecipeViewSet, LogViewSet 
+
 from django.conf.urls import url
 from django.contrib import admin  # We can remove this later on.
 from django.urls import include, path  # Do we need to import path..?
 from django.views.decorators.csrf import csrf_exempt
 
-# from rest_framework.authtoken import views as auth_views
-
 from . import views
+
+# from rest_framework import routers
+# from rest_framework.authtoken import views as auth_views
+from rest_framework.routers import DefaultRouter
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
 
-from rest_framework import routers
-
-router = routers.DefaultRouter()  # Imports the class DefaultRouter from routers.
+router = DefaultRouter()
 
 # Register the all CRUD operations with the router
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
     
-    # router.register('practitioner', PractitionerViewSet, 'practitioner')
-    # router.register('diabetic', DiabeticViewSet, 'diabetic')
-    # router.register('meal', MealViewSet, 'meal')
-    # router.register('recipe', RecipeViewSet, 'recipe')
-    # router.register('log', LogViewSet, 'log')
+router.register('practitioner', PractitionerViewSet, 'practitioner')
+router.register('diabetic', DiabeticViewSet, 'diabetic')
+router.register('meal', MealViewSet, 'meal')
+router.register('recipe', RecipeViewSet, 'recipe')
+router.register('log', LogViewSet, 'log')
 
 
 
 urlpatterns = [
     # ... the rest of the urlpatterns ...
     # must be catch-all for pushState to work
-    path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls')),
+    path('admin/', admin.site.urls),
     # path('api/it/', views.ApiView.as_view()),
     path('api/it/', csrf_exempt(views.ApiView.as_view())),
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),

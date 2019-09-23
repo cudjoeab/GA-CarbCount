@@ -1,1 +1,1 @@
-MIDDLEWARE.append('myapp.middleware.dev_cors_middleware')
+MIDDLEWARE.append('CarbCount.middleware.dev_cors_middleware')
