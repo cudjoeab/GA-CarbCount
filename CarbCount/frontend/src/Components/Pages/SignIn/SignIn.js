@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { Link, withRouter } from "react-router-dom";
 import {  } from "react-router";
@@ -17,8 +17,7 @@ import './SignIn.css';
 // import axios from 'axios'
 import axios from '../../../axiosConfig'
 
-// axios.defaults.xsrfHeaderName = "X-CSRFToken"
-// axios.defaults.xsrfCookieName = 'csrftoken'
+
 
 
 class SignIn extends Component {
@@ -40,6 +39,8 @@ class SignIn extends Component {
 
 
 
+
+
     componentDidMount() {
         console.log('Signin Component did mount!');
         // console.log(this.props.handleLogin)
@@ -47,16 +48,22 @@ class SignIn extends Component {
         this.checkLogin();
     }
 
-    // stopReload = (event) => {
-    //     event.preventDefault();
-    // }
+
+    onChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+        console.log(event.target.value)
+
+    }
+    
 
     handleLogin = (event) => {
         event.preventDefault();
 
         const user = {
-            username: event.currentTarget.elements.username.value,
-            password: event.currentTarget.elements.password.value,
+            username: this.state.username,
+            password: this.state.password,
         }
 
         console.log('Logging in here', user)
@@ -121,7 +128,11 @@ class SignIn extends Component {
                         <Form.Label>Username</Form.Label>
                         <Form.Control 
                             type="text" 
+                            name="username"
+                            value={this.state.username}
                             placeholder="Enter username" 
+                            onChange = {this.onChange}
+                            required
                             />
                         <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
@@ -132,7 +143,11 @@ class SignIn extends Component {
                         <Form.Label>Password</Form.Label>
                         <Form.Control 
                             type="password" 
+                            name="password"
+                            value={this.state.password}
                             placeholder="Password" 
+                            onChange = {this.onChange}
+                            required
                         />
                     </Form.Group>
                     {this.state.errorMessage}

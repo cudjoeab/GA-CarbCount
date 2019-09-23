@@ -1,6 +1,6 @@
 // Vanilla React:
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Redirect, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch, Link, withRouter } from 'react-router-dom';
 
 
 // Bootstrap-React components:
@@ -48,8 +48,10 @@ class OurNavBar extends Component {
     handleLogout = (event) => {
         event.preventDefault();
         console.log('Handle Logout triggered:');
-        window.localStorage.removeItem('token');
-        window.location.href = '/';
+        // window.localStorage.removeItem('token');     //Don't delete this!!!!!!!!!
+        // window.location.href = '/';
+        // return <Redirect to={{pathname: '/about'}} />
+        this.props.history.push("/");
     }
 
     // handleClick = (event) => {
@@ -195,4 +197,4 @@ class OurNavBar extends Component {
 };
 }
 
-export default OurNavBar
+export default withRouter(OurNavBar)

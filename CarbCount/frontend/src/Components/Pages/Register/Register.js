@@ -19,18 +19,35 @@ axios.defaults.xsrfCookieName = 'csrftoken'
 
 
 class Register extends Component {
-    constructor(props, context) {
-        super(props, context);
+    // constructor(props, context) {
+    //     super(props, context);
         // this.state = {
         //     email: 'cudjoeab@gmail.com',
         //     password: 'doesthiswork',
         //     password2: 'doesthiswork'
         // };
-      }
+    //   }
+
+    state = {
+        username: '',
+        password: '',
+        password2: '',
+        errorMessage: '',
+        redirectNeeded: false
+    };
 
     componentDidMount() {
-        console.log('Component did mount!');
+        console.log('Register Component did mount!');
         window.scrollTo(0, 0); //Brings user to top of page.
+        this.checkLogin();
+    }
+
+    onChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+        console.log(event.target.value)
+
     }
 
     handleRegister = (event) => {
@@ -60,7 +77,7 @@ class Register extends Component {
                 .then((response)=> {
                     console.log('Then:', response)
                     window.localStorage['token'] = response.data['token']
-                    checkLogin();
+                    this.checkLogin();
 
                     this.setState({
                         errorMessage: '',
@@ -80,11 +97,6 @@ class Register extends Component {
 
 
 
-        const checkLogin = () => {  // If user has a token, redirect to profile page.
-            if (window.localStorage['token'] !== undefined) {
-                // window.location.href = '/profile'
-            };
-        };
 
 
         
@@ -134,12 +146,32 @@ class Register extends Component {
         // });
     }
 
+
+        // LOOK AT REDIRECT COMPONENT IN REACT ROUTER
+        checkLogin = () => {  // If user has a token, redirect to profile page.
+            console.log('Check login:')
+            if (window.localStorage['token'] !== undefined) {
+                console.log('Lets redirect:')
+                // return <Redirect to='/profile' />;
+    
+                this.setState({
+                    redirectNeeded: true
+                })
+                // window.location.href = '/profile'
+            };
+        };
+
     render() {
         // const { redirectToReferrer } = this.state
 
         // if (redirectToReferrer === true) {
         //     return <Redirect to='/homepage?register=success' />
         // }
+
+        if (this.state.redirectNeeded === true) {
+            //     return <Redirect to='/homepage?login=success' />
+                return <Redirect to='/profile' />
+            }
 
         return (
             <section className='borderBox'>
@@ -150,8 +182,12 @@ class Register extends Component {
                     <Form.Group controlId="username">
                         <Form.Label>Username</Form.Label>
                         <Form.Control 
-                            type="username" 
+                            type="text" 
+                            name="username"
+                            value={this.state.username}
                             placeholder="Enter username" 
+                            onChange = {this.onChange}
+                            required
                             />
                         <Form.Text className="text-muted">
                         We'll never share your username with anyone else.
@@ -160,12 +196,21 @@ class Register extends Component {
 
                     <Form.Group controlId="password">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Enter password" />
+                        <Form.Control type="password"
+                        name="password"
+                        value={this.state.password}
+                        placeholder="Enter password" 
+                        onChange = {this.onChange}
+                            required/>
                     </Form.Group>
 
                     <Form.Group controlId="password2">
                         <Form.Label>Re-enter Password</Form.Label>
-                        <Form.Control type="password" placeholder="Re-enter password" />
+                        <Form.Control type="password" 
+                        name="password2"
+                        value={this.state.password2}placeholder="Re-enter password" 
+                        onChange = {this.onChange}
+                            required/>
                     </Form.Group>
 
 
@@ -283,6 +328,8 @@ class Register extends Component {
 
                     {/* <h4 className="signup-button"><Link to='/homepage' onClick={this.props.handleLogin}>Create my Account</Link> </h4>  */}
 
+                    {this.state.errorMessage}
+
                     <Button className="signup-button" type="submit">
                         Create my Account
                     </Button>
@@ -290,8 +337,6 @@ class Register extends Component {
 
                     {/* <h4 className="signup-button"><Link to='/homepage'>Create my Account</Link> </h4> */}
 
-
-                    
                 </Form>
                 <p>By selecting Continue, you agree to the <Link to='/terms'>Terms of Service</Link> and <a href=''>Privacy Policy</a>.</p>
                     <p>Already have an account? <Link to='/sign_in'>Log in here</Link></p>
