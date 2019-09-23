@@ -1,3 +1,12 @@
+import logging
+import os
+from django.contrib.auth.models import User, Group
+from django.db.models import Q
+from rest_framework.response import Response
+from rest_framework.decorators import action
+from rest_framework import status, parsers
+
+
 from CarbCount.models import User, Practitioner, Diabetic, Recipe, Meal, Log
 from rest_framework import viewsets, permissions
 from CarbCount.serializers import UserSerializer, PractitionerSerializer, DiabeticSerializer, RecipeSerializer, MealSerializer, LogSerializer
@@ -14,7 +23,12 @@ class UserViewSet(viewsets.ModelViewSet):
         return super(UserViewSet, self).get_permissions()
 
     def list(self, request):
-        queryset = User.objects.filter(Q(username=request.user.username)).all()
+        # This is how to we check for a specific user and create different fiters for the same query
+        if request.user.id == 1:
+            queryset = User.objects.all()
+        else: 
+            queryset = User.objects.filter(Q(username=request.user.username)).all()
+
         serializer = UserSerializer(queryset, many = True)
         return Response(serializer.data)
 
@@ -28,7 +42,7 @@ class PractitionerViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.request.method == "POST":
-            self.permission_classes = (AllowAny,)
+            self.permission_classes = (permissions.AllowAny,)
         return super(PractitionerViewSet, self).get_permissions()
 
 
@@ -40,7 +54,7 @@ class DiabeticViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.request.method == "POST":
-            self.permission_classes = (AllowAny,)
+            self.permission_classes = (permissions.AllowAny,)
         return super(DiabeticViewSet, self).get_permissions()
 
 
@@ -52,7 +66,7 @@ class MealViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.request.method == "POST":
-            self.permission_classes = (AllowAny,)
+            self.permission_classes = (permissions.AllowAny,)
         return super(MealViewSet, self).get_permissions() 
     
 
@@ -63,7 +77,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.request.method == "POST":
-            self.permission_classes = (AllowAny,)
+            self.permission_classes = (permissions.AllowAny,)
         return super(RecipeViewSet, self).get_permissions()
 
 

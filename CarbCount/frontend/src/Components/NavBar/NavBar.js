@@ -48,7 +48,7 @@ class OurNavBar extends Component {
     handleLogout = (event) => {
         event.preventDefault();
         console.log('Handle Logout triggered:');
-        // window.localStorage.removeItem('token');     //Don't delete this!!!!!!!!!
+        window.localStorage.removeItem('token');     //Don't delete this!!!!!!!!!
         // window.location.href = '/';
         // return <Redirect to={{pathname: '/about'}} />
         this.props.history.push("/");

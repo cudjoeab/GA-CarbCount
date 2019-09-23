@@ -150,7 +150,14 @@ class SignIn extends Component {
                             required
                         />
                     </Form.Group>
-                    {this.state.errorMessage}
+                    {
+                        this.state.errorMessage != ''?
+                            <Alert variant="danger">{this.state.errorMessage}</Alert>
+                            :
+                            <> </>
+                    }
+                    
+                    
 
                     {/* <Button variant="primary" type="submit" onClick={this.props.handleLogin}> */}
                     <Button variant="primary" type="submit">
