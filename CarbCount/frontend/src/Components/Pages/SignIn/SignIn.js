@@ -24,13 +24,13 @@ import axios from '../../../axiosConfig'
 class SignIn extends Component {
     // constructor(props, context) {
     //     super(props, context);
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: 'cudjoeab@gmail.com',
-            password: 'doesthiswork',
-            password2: 'doesthiswork'
-        };
+    // constructor(props) {
+    //     super(props);
+        // this.state = {
+        //     email: 'cudjoeab@gmail.com',
+        //     password: 'doesthiswork',
+        //     password2: 'doesthiswork'
+        // };
 
         // console.log(this.props.handleLogin)
 
@@ -40,7 +40,7 @@ class SignIn extends Component {
         //     errorMessage: '',
         //     redirectToReferrer: false
         // };
-      }
+    //   }
 
     componentDidMount() {
         console.log('Signin Component did mount!');
@@ -62,7 +62,7 @@ class SignIn extends Component {
         }
 
         console.log('Logging in here', user)
-        const form = event.currentTarget.elements;
+        // const form = event.currentTarget.elements;
 
         axios.post("/api-token-auth/", user)
         .then((response)=> {

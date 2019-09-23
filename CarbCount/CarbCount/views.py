@@ -113,57 +113,6 @@ def calculate_dosages(request):
     })
 
 
-
-
-
-class DiabeticViewSet(viewsets.ModelViewSet):
-    '''Api endpoint for Diabetic Profile'''
-    queryset = Diabetic.objects.all().order_by('id')
-    serializer_class = DiabeticSerializer
-    permission_classes = [permissions.AllowAny, permissions.IsAuthenticated]
-
-    def get_permissions(self):
-        if self.request.method == "POST":
-            self.permission_classes = (AllowAny,)
-        return super(DiabeticViewSet, self).get_permissions()
-
-
-class PractitionerViewSet(viewsets.ModelViewSet):
-    '''Api endpoint for Practitioner Profile'''
-    queryset = Practitioner.objects.all().order_by('id')
-    serializer_class = PractitonerSerializer
-    permission_classes = [permissions.AllowAny, permissions.IsAuthenticated]
-
-    def get_permissions(self):
-        if self.request.method == "POST":
-            self.permission_classes = (AllowAny,)
-        return super(PractitionerViewSet, self).get_permissions()
-
-
-class MealViewSet(viewsets.ModelViewSet):
-    queryset = Meal.objects.all().order_by('id')
-    serializer_class = MealSerializer
-    permission_classes = [permissions.AllowAny, permissions.IsAuthenticated]
-
-    def get_permissions(self):
-        if self.request.method == "POST":
-            self.permission_classes = (AllowAny,)
-        return super(MealViewSet, self).get_permissions()
-
-
-class RecipeViewSet(viewsets.ModelViewSet):
-    queryset = Recipe.objects.all().order_by('id')
-    serializer_class = RecipeSerializer
-    permission_classes = [permissions.AllowAny, permissions.IsAuthenticated]
-
-    def get_permissions(self):
-        if self.request.method == "POST":
-            self.permission_classes = (AllowAny,)
-        return super(RecipeViewSet, self).get_permissions()
-
-
-
-
 # Also adding these - Adam
 from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
