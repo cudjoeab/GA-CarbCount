@@ -82,7 +82,7 @@ class Register extends Component {
 
         const checkLogin = () => {  // If user has a token, redirect to profile page.
             if (window.localStorage['token'] !== undefined) {
-                window.location.href = '/profile'
+                // window.location.href = '/profile'
             };
         };
 

@@ -26,21 +26,19 @@ class SignIn extends Component {
     //     super(props, context);
     // constructor(props) {
     //     super(props);
-        // this.state = {
-        //     email: 'cudjoeab@gmail.com',
-        //     password: 'doesthiswork',
-        //     password2: 'doesthiswork'
-        // };
 
         // console.log(this.props.handleLogin)
 
-        // this.state = {
-        //     username: '',
-        //     password: '',
-        //     errorMessage: '',
-        //     redirectToReferrer: false
-        // };
     //   }
+
+    state = {
+            username: '',
+            password: '',
+            errorMessage: '',
+            redirectNeeded: false
+        };
+
+
 
     componentDidMount() {
         console.log('Signin Component did mount!');
@@ -85,9 +83,17 @@ class SignIn extends Component {
     }
 
 
+    // LOOK AT REDIRECT COMPONENT IN REACT ROUTER
     checkLogin = () => {  // If user has a token, redirect to profile page.
+        console.log('Check login:')
         if (window.localStorage['token'] !== undefined) {
-            window.location.href = '/profile'
+            console.log('Lets redirect:')
+            // return <Redirect to='/profile' />;
+
+            this.setState({
+                redirectNeeded: true
+            })
+            // window.location.href = '/profile'
         };
     };
 
@@ -99,9 +105,10 @@ class SignIn extends Component {
             // const { redirectToReferrer } = this.state
             
 
-            // if (redirectToReferrer === true) {
+            if (this.state.redirectNeeded === true) {
             //     return <Redirect to='/homepage?login=success' />
-            // }
+                return <Redirect to='/profile' />
+            }
 
             return (
             <section className='borderBox'>

@@ -56,34 +56,34 @@ class Main extends Component {
 
                     <Switch>
                         {/* These routes are always available when user is logged in or not. */}
-                        <Route path="/about" component={About} /> 
-                        <Route path="/contact" component={Contact} /> 
-                        <Route path="/FAQ" component={FAQ} /> 
-                        <Route path="/homepage" component={Homepage} /> 
-                        <Route path="/new_count" component={NewCount} /> 
-                        <Route path="/new_recipe" component={NewRecipe} /> 
-                        <Route path="/Profile" component={Profile} /> 
-                        <Route path="/terms" component={Terms} /> 
-                        <Route path="/landing_page" component={LandingPage} />
+                        <Route exact path="/about" component={About} /> 
+                        <Route exact path="/contact" component={Contact} /> 
+                        <Route exact path="/FAQ" component={FAQ} /> 
+                        <Route exact path="/homepage" component={Homepage} /> 
+                        <Route exact path="/new_count" component={NewCount} /> 
+                        <Route exact path="/new_recipe" component={NewRecipe} /> 
+                        <Route exact path="/profile" component={Profile} /> 
+                        <Route exact path="/terms" component={Terms} /> 
+                        <Route exact path="/landing_page" component={LandingPage} />
                         <Route exact path="/" component={LandingPage} />
 
                         {/* Uncomment these 8 lines when Authentication is working: */}
                         {/* { route === 'home' */}
                             {/* ? // User is logged in. They can access these routes. */}
                                 {/* <> */}
-                                    {/* <Route path="/food_logs/:id" component={FoodLog} />  */}
-                                    <Route path="/food_logs" component={FoodLogs} /> 
-                                    <Route path="/saved_recipes" component={SavedRecipes} /> 
+                                    {/* <Route exact path="/food_logs/:id" component={FoodLog} />  */}
+                                    <Route exact path="/food_logs" component={FoodLogs} /> 
+                                    <Route exact path="/saved_recipes" component={SavedRecipes} /> 
                                 {/* </> */}
                             {/* : // User is not logged in. */}
                                 {/* <> */}
                                     
-                                    <Route path="/register"
+                                    <Route exact path="/register"
                                     render = {
                                         (props) => (<Register handleLogin={this.props.handleLogin} />)
                                     } /> 
                                     
-                                    <Route path="/sign_in"
+                                    <Route exact path="/sign_in"
                                     render = {
                                         (props) => (<SignIn handleLogin={this.props.handleLogin} />)
                                     } /> 

@@ -1,5 +1,3 @@
-
-
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
@@ -18,18 +16,19 @@ import datetime
 
 
 class Practitioner(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    clinic_name = models.CharField(max_length=255)
-    license_id = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(20)], null=False)
+    first_name = models.CharField(max_length=255, null=False)
+    last_name = models.CharField(max_length=255, null=False)
+    clinic_name = models.CharField(max_length=255, null=False)
+    license_id = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(9999999)], null=False)
 
     def __str__(self):
         return f"Practitioner: {self.first_name} - {self.last_name}"
 
 class Diabetic(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    email = models.EmailField(max_length=200)
+    owner = models.OneToOneField(User, on_delete=models.CASCADE, related_name='diabetics_user')
+    # first_name = models.CharField(max_length=255)
+    # last_name = models.CharField(max_length=255)
+    # email = models.EmailField(max_length=200)
     morning_ratio = models.FloatField(validators=[MinValueValidator(0)], null=False, default=0)
     afternoon_ratio = models.FloatField(validators=[MinValueValidator(0)], null=False, default=0)
     evening_ratio = models.FloatField(validators=[MinValueValidator(0)], null=False, default=0)
@@ -42,12 +41,12 @@ class Diabetic(models.Model):
     afternoon_target = models.FloatField(validators=[MinValueValidator(0)], null=False, default=0)
     evening_target = models.FloatField(validators=[MinValueValidator(0)], null=False, default=0)
     night_target = models.FloatField(validators=[MinValueValidator(0)], null=False, default=0)
-    insulin_duration = models.FloatField(default=0)
-    insulin_type = models.CharField(max_length=255)
+    insulin_duration = models.FloatField(validators=[MinValueValidator(0)], blank=True, default=0)
+    insulin_type = models.CharField(max_length=255, blank=True)
     practitioner_id = models.ForeignKey(Practitioner, on_delete=models.CASCADE, blank=True, null=True, related_name="practitioner")
 
     def __str__(self):
-        return f"Diabetic: {self.first_name} - {self.last_name} - {self.email}"
+        return f"Diabetic: {self.owner}"
 
 # @receiver(post_save, sender=User)
 # def create_user_profile(sender, instance, created, **kwargs):
@@ -58,22 +57,22 @@ class Diabetic(models.Model):
 # def save_user_profile(sender, instance, **kwargs):
 #     instance.profile.save()
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    diabetic = models.OneToOneField(Diabetic, on_delete=models.CASCADE)
-    Practitioner = models.OneToOneField(Practitioner, on_delete=models.CASCADE)
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     diabetic = models.OneToOneField(Diabetic, on_delete=models.CASCADE)
+#     Practitioner = models.OneToOneField(Practitioner, on_delete=models.CASCADE)
     
 class Recipe(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, null=False)
     total_carbs = models.FloatField(validators=[MinValueValidator(0)], null=False)
     total_fibre = models.FloatField(validators=[MinValueValidator(0)], null=False)
-    ingredients =ArrayField(models.CharField(max_length=225),default=list)
+    ingredients = ArrayField(models.CharField(max_length=225), default=list)
     total_servings = models.IntegerField(validators=[MinValueValidator(1)])
     description = models.TextField(
         validators=[MinLengthValidator(10), MaxLengthValidator(500)]
     )
-    tags = models.CharField(max_length=255)
-    image_link = models.URLField(max_length=255)
+    tags = models.CharField(max_length=255, blank=True)
+    image_link = models.URLField(max_length=255, blank=True)
     diabetic_id = models.ForeignKey(
         Diabetic, on_delete=models.CASCADE, related_name="Diabetics"
     )
@@ -83,15 +82,15 @@ class Recipe(models.Model):
 
 class Meal(models.Model): 
     date = models.DateField()
-    food = ArrayField(models.CharField(max_length=255, blank=True)) 
+    food = ArrayField(models.CharField(max_length=255, blank=False)) 
     carbs = models.FloatField(validators=[MinValueValidator(0)], null=False)
     fibre = models.FloatField(validators=[MinValueValidator(0)], null=False)
-    meal_type = models.CharField(max_length=255)
-    blood_glucose = models.FloatField(validators=[MinValueValidator(0)], null=True)
-    insulin_dose = models.FloatField(validators=[MinValueValidator(0)], null=False) 
+    meal_type = models.CharField(max_length=255, blank=True)
+    blood_glucose = models.FloatField(validators=[MinValueValidator(0)], null=True, default=0)
+    insulin_dose = models.FloatField(validators=[MinValueValidator(0)], null=False, default=0) 
 
     def __str__(self):
-        return 'TODO: fix - tripple f-strings are wonky?'
+        return f"{self.food} - {self.date} date - {self.carbs} carbs - {self.fibre} fibre"
 
     def calculate_net_carb(self, food):
         net_carb = 0
@@ -110,7 +109,7 @@ class Meal(models.Model):
         net_fibre = calculate_net_fibre(food)
         return net_carb - net_fibre  
 
-    def  dose_meal_ratio(self):
+    def dose_meal_ratio(self):
         ratio = 5
         current_hour = datetime.datetime.now().hour
 
