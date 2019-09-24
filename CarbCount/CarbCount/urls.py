@@ -36,7 +36,7 @@ urlpatterns = [
     # url(r'^rest-auth/', include('rest_auth.urls')),
     # path('login/', views.api_login),
     # path('logout/', views.api_logout),
-    path('api/register/', views.api_register),
+    # path('api/register/', views.api_register),
     # url(r'^login/$', views.api_login),
     
     url(r'^', views.FrontendAppView.as_view()) # This is a catch-all for React.

@@ -68,25 +68,60 @@ class Register extends Component {
                 password: password
             }
 
-
             axios.post("/api/users/", user)
             .then((response)=> {
                 console.log('Then:', response)
 
-                axios.post("/api-token-auth/", user)
-                .then((response)=> {
-                    console.log('Then:', response)
-                    window.localStorage['token'] = response.data['token']
-                    this.checkLogin();
+                
 
-                    this.setState({
-                        errorMessage: '',
-                        // redirectToReferrer: true
-                    });
+                    axios.post("/api-token-auth/", user)
+                    .then((response)=> {
+                        console.log('Then:', response)
+                        window.localStorage['token'] = response.data['token']
+                        this.checkLogin();
+
+                        this.setState({
+                            errorMessage: '',
+                            // redirectToReferrer: true
+                        });
+
+                        return response
+
+                     })
+                    // .then(() => {
+                    //     axios.get('/api/users/', {
+                    //         headers: {
+                    //             Authorization: `Token ${window.localStorage['token']}`
+                    //         }
+                    //     })
+                    .then(res => {
+                        // debugger;
+                        console.log('res in diabetic', res)
+                        const diabetic = {
+                            // owner: res.data[0].id
+                        }
+                    
+                    axios.post("/api/diabetic/", diabetic, {
+                        headers: {
+                            Authorization: `Token ${window.localStorage['token']}`
+                        }
+                    })
                 })
+                    
+                    })
+
+                // })
+
+                // const diabetic = {
+                //     owner: response.data.id
+                // }
+
+                // axios.post("/api/diabetic/", user)
+                // .then((response)=> {
+                //     console.log('Then:', response)
 
 
-            })
+            // })
             .catch((error)=> {
                 console.log('Error:', error)
             })

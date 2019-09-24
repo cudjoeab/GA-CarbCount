@@ -21,6 +21,11 @@ import { faBreadSlice, faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 // Call stylesheet last:
 import './NewCount.css';
 
+// import axios from 'axios'
+import axios, * as others from 'axios';
+axios.defaults.xsrfHeaderName = "X-CSRFToken"
+axios.defaults.xsrfCookieName = 'csrftoken'
+
 
 class NewCount extends Component {
     // ourJSON = {
@@ -31,15 +36,16 @@ class NewCount extends Component {
         {name:'Valencias California Oranges'}, {name:'Florida Oranges'}, {name:'Cara Cara Oranges'}, {name:'Minneola Tangelo Orange'}, {name:'Cara Cara Navel Oranges'}, {name:'Mandarin Oranges'}, {name:'Orange Lemon Drink'}, {name:'Orange Juice'}, {name:'Orange Strawberry Banana Juice'}, {name:'Madarin Orange (Canned or Frozen)'}, {name:'Freshly Squeezed Orange Juice'}
     ]
 
-    constructor() {
-        super();
-        this.state = {
+    // constructor() {
+    //     super();
+        state = {
             stageOfProcess: 0,
-            userGlucose: 0,
-            userSearch: '', 
-            foodList: []
+            bloodGlucose: 0,
+            foodSearch: 'test', 
+            foodList: {},
+            summary: {}
         }
-    }
+    // }
 
     componentDidMount() {
         console.log('Component did mount!');
@@ -53,6 +59,13 @@ class NewCount extends Component {
     //     }
     // }
 
+    onChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+        console.log(event.target.value)
+    }
+
     handleBackClick = (event) => {
         event.preventDefault();
         console.log('Go back!');
@@ -60,6 +73,36 @@ class NewCount extends Component {
         this.setState({
             stageOfProcess: this.state.stageOfProcess-1
         });
+    }
+
+    handleStepOne = (event) => {
+        event.preventDefault();
+
+        const query = { query: this.state.foodSearch }
+
+        if (this.state.foodSearch === '') {
+            console.log('Invalid search ; user input is no good.')
+        } else {
+            console.log('Valid search. Go forwards!');
+
+            axios.post("/api/food_search/", query)
+            .then((response)=> {
+                console.log('Then:', { query: this.state.foodSearch })
+
+            })
+            .catch((error)=> {
+                console.log('Error:', error)
+            })
+
+
+
+
+            this.setState({
+                // stageOfProcess: this.state.stageOfProcess+1
+            });
+        }
+
+
     }
 
     handleForwardClick = (event) => {
@@ -85,21 +128,31 @@ class NewCount extends Component {
                         <Carousel.Caption>
                             <h2>Step 1:</h2>
                             <Form>
-                                <Form.Group controlId="formBasicGlucose">
+                                <Form.Group controlId="bloodGlucose">
                                     <Form.Label>Blood Glucose:</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter blood glucose (optional)" step='0.001' />
+                                    <Form.Control type="number" 
+                                    name="bloodGlucose"
+                                    value={this.state.bloodGlucose}
+                                    placeholder="Enter blood glucose (optional)" step='0.001'
+                                    onChange = {this.onChange}
+                                    />
                                     <Form.Text className="text-muted">
                                     Entering your blood glucose reading (mmol/L) will factor into your suggested dose. 
                                     </Form.Text>
                                 </Form.Group>
-                                <Form.Group controlId="formBasicSearch">
+                                <Form.Group controlId="foodSearch">
                                     <Form.Label>Search:</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter search" />
+                                    <Form.Control type="text"
+                                    name="foodSearch" 
+                                    value={this.state.foodSearch}
+                                    placeholder="Enter search" 
+                                    onChange = {this.onChange}
+                            required />
                                     <Form.Text className="text-muted">
                                     Source: FatSecret 
                                     </Form.Text>
                                 </Form.Group>
-                                <Button variant="primary" type="submit"  onClick={this.handleForwardClick}>
+                                <Button variant="primary" type="submit"  onClick={this.handleStepOne}>
                                     Search for Food
                                 </Button>
                             </Form>
