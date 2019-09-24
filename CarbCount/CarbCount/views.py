@@ -1,40 +1,30 @@
 import logging
 import os
 
-from django.conf import settings
-
-
-
-from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-
+from django.conf import settings
 from django.http import HttpResponse, JsonResponse
-
+from django.shortcuts import render, reverse, redirect, get_object_or_404
+from rest_framework.decorators import api_view, permission_classes
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
 
 from rest_framework import permissions, status, viewsets
-
+from rest_framework.authtoken.models import Token  # Also adding these - Adam
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-
-
-from .models import *
-from .serializers import *
-
-
-
-from django.views.generic import View
-from rest_framework import status, viewsets
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
     HTTP_404_NOT_FOUND,
     HTTP_200_OK
 )
+from rest_framework.views import APIView  # Also adding these - Adam
 
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import api_view, permission_classes
+from .models import *
+from .serializers import *
+
 
 from fatsecret import Fatsecret
 from dotenv import load_dotenv
@@ -54,13 +44,6 @@ def search_recipes(request):
     return json.dumps(results)
 
 
-from rest_framework.permissions import AllowAny, IsAuthenticated
-
-
-
-
-from .models import *
-from .serializers import *
 
 
 # https://pyfatsecret.readthedocs.io/en/latest/api_docs.html
@@ -113,9 +96,6 @@ def calculate_dosages(request):
     })
 
 
-# Also adding these - Adam
-from rest_framework.views import APIView
-from rest_framework.authtoken.models import Token
 
 
 @csrf_exempt
