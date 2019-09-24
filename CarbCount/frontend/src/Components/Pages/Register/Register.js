@@ -19,22 +19,91 @@ axios.defaults.xsrfCookieName = 'csrftoken'
 
 
 class Register extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            email: 'cudjoeab@gmail.com',
-            password: 'doesthiswork',
-            password2: 'doesthiswork'
-        };
-      }
+    // constructor(props, context) {
+    //     super(props, context);
+        // this.state = {
+        //     email: 'cudjoeab@gmail.com',
+        //     password: 'doesthiswork',
+        //     password2: 'doesthiswork'
+        // };
+    //   }
+
+    state = {
+        username: '',
+        password: '',
+        password2: '',
+        errorMessage: '',
+        redirectNeeded: false
+    };
 
     componentDidMount() {
-        console.log('Component did mount!');
+        console.log('Register Component did mount!');
         window.scrollTo(0, 0); //Brings user to top of page.
+        this.checkLogin();
     }
 
-    handleSubmit = (event) => {
+    onChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+        console.log(event.target.value)
+
+    }
+
+    handleRegister = (event) => {
         event.preventDefault();
+        console.log('Lets register a user!')
+
+        let username = event.currentTarget.elements.username.value;
+        let password = event.currentTarget.elements.password.value;
+        let password2 = event.currentTarget.elements.password2.value;
+
+        if ((password != password2) || (password == '')) {
+            console.log('Please check your passwords')
+        } else {
+            console.log('Passwords match, time to go!')
+
+            const user = {
+                username: username,
+                password: password
+            }
+
+
+            axios.post("/api/users/", user)
+            .then((response)=> {
+                console.log('Then:', response)
+
+                axios.post("/api-token-auth/", user)
+                .then((response)=> {
+                    console.log('Then:', response)
+                    window.localStorage['token'] = response.data['token']
+                    this.checkLogin();
+
+                    this.setState({
+                        errorMessage: '',
+                        // redirectToReferrer: true
+                    });
+                })
+
+
+            })
+            .catch((error)=> {
+                console.log('Error:', error)
+            })
+
+
+
+        }
+
+
+
+
+
+        
+        // const user = {
+        //     username: username,
+        //     password: password
+        // }
         // const form = event.currentTarget.elements;
 
         // if (form.password.value !== form.password2.value) {
@@ -47,7 +116,7 @@ class Register extends Component {
         //     let userSubmission = 
         
 
-        //     axios.post("/register/", {
+        //     axios.post("api/register/", {
         //         email: form.email.value,
         //         password: form.password.value
         //     }).then((response)=> {
@@ -71,43 +140,77 @@ class Register extends Component {
         //     });
         // }
 
-        this.setState({
-            errorMessage: '',
-            redirectToReferrer: true
-        });
+        // this.setState({
+        //     errorMessage: '',
+        //     redirectToReferrer: true
+        // });
     }
 
-    render() {
-        const { redirectToReferrer } = this.state
 
-        if (redirectToReferrer === true) {
-            return <Redirect to='/homepage?register=success' />
-        }
+        // LOOK AT REDIRECT COMPONENT IN REACT ROUTER
+        checkLogin = () => {  // If user has a token, redirect to profile page.
+            console.log('Check login:')
+            if (window.localStorage['token'] !== undefined) {
+                console.log('Lets redirect:')
+                // return <Redirect to='/profile' />;
+    
+                this.setState({
+                    redirectNeeded: true
+                })
+                // window.location.href = '/profile'
+            };
+        };
+
+    render() {
+        // const { redirectToReferrer } = this.state
+
+        // if (redirectToReferrer === true) {
+        //     return <Redirect to='/homepage?register=success' />
+        // }
+
+        if (this.state.redirectNeeded === true) {
+            //     return <Redirect to='/homepage?login=success' />
+                return <Redirect to='/profile' />
+            }
 
         return (
             <section className='borderBox'>
                 <h1>Get Started with Carb Count</h1>
                 <p>Welcome to Carb Count!  Let's start by creating a free account.  Next, we'll define your goals and create your custom diet plan.</p>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Group controlId="email">
-                        <Form.Label>Email</Form.Label>
+                {/* <Form onSubmit={this.handleSubmit}> */}
+                <Form onSubmit={this.handleRegister}>
+                    <Form.Group controlId="username">
+                        <Form.Label>Username</Form.Label>
                         <Form.Control 
-                            type="email" 
-                            placeholder="Enter email" 
+                            type="text" 
+                            name="username"
+                            value={this.state.username}
+                            placeholder="Enter username" 
+                            onChange = {this.onChange}
+                            required
                             />
                         <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
+                        We'll never share your username with anyone else.
                         </Form.Text>
                     </Form.Group>
 
                     <Form.Group controlId="password">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Enter password" />
+                        <Form.Control type="password"
+                        name="password"
+                        value={this.state.password}
+                        placeholder="Enter password" 
+                        onChange = {this.onChange}
+                            required/>
                     </Form.Group>
 
                     <Form.Group controlId="password2">
                         <Form.Label>Re-enter Password</Form.Label>
-                        <Form.Control type="password" placeholder="Re-enter password" />
+                        <Form.Control type="password" 
+                        name="password2"
+                        value={this.state.password2}placeholder="Re-enter password" 
+                        onChange = {this.onChange}
+                            required/>
                     </Form.Group>
 
 
@@ -223,12 +326,20 @@ class Register extends Component {
 
 
 
-                    <h4 className="signup-button"><Link to='/homepage' onClick={this.props.handleLogin}>Create my Account</Link> </h4> 
+                    {/* <h4 className="signup-button"><Link to='/homepage' onClick={this.props.handleLogin}>Create my Account</Link> </h4>  */}
+
+                    {this.state.errorMessage}
+
+                    <Button className="signup-button" type="submit">
+                        Create my Account
+                    </Button>
 
 
-                    <p>By selecting Continue, you agree to the <Link to='/terms'>Terms of Service</Link> and <a href=''>Privacy Policy</a>.</p>
-                    <p>Already have an account? <Link to='/sign_in'>Log in here</Link></p>
+                    {/* <h4 className="signup-button"><Link to='/homepage'>Create my Account</Link> </h4> */}
+
                 </Form>
+                <p>By selecting Continue, you agree to the <Link to='/terms'>Terms of Service</Link> and <a href=''>Privacy Policy</a>.</p>
+                    <p>Already have an account? <Link to='/sign_in'>Log in here</Link></p>
             </section>
         );
     }

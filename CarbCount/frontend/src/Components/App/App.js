@@ -26,18 +26,23 @@ class App extends Component {
         this.state = {
             // route: 'signin',
             // isSignedIn: false,
-            userName: ''
+            userName: '',
+            password: '',
+            token: '',
         }
-        this.handleLogin = this.handleLogin.bind(this);
+        // this.handleLogin = this.handleLogin.bind(this);  // Don't need with arrow function.
     }
 
     handleLogin = (event) => {
         // event.preventDefault(); //This doesn't work
         console.log('LOGGING IN USER:')
+        console.log()
 
-        this.setState({
-            userName: 'Abigail'
-        })
+        // this.setState({
+        //     userName: 'Abigail'
+        // })
+
+        
     }
 
     handleLogout = (event) => {
