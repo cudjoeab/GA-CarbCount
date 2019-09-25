@@ -10,6 +10,7 @@
 
 .carousel-indicators {
     top: 0px;
+    z-index: 1 !important;
 }
 
 .carousel-inner {
@@ -51,6 +52,6 @@
 
 .dropdown-menu {
     background-color: gray;
-    top: 200px;
+    top: 800px;
 }
 

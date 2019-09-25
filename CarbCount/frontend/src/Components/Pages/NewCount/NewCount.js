@@ -44,8 +44,8 @@ class NewCount extends Component {
         state = {
             stageOfProcess: 0,
             bloodGlucose: 0,
-            foodSearch: 'test', 
-            foodList: {},
+            foodSearch: 'pineapples', 
+            foodList: [],
             summary: {}
         }
     // }
@@ -118,28 +118,44 @@ class NewCount extends Component {
             stageOfProcess: this.state.stageOfProcess+1
         });
     }
+    
     handleSearchClick = (event) => {
         event.preventDefault();
         let JSONquery = []
         let userQuery = document.querySelector('#foodSearch').value
         axios.get(`/api/food_search/?q=${userQuery}`)
         .then(function (response) {
-            console.log(response);
-            JSONquery= response; 
+            console.log(response.data);
+            JSONquery= response.data; 
         })
         .catch(function (error) {
-        console.log(error);
+            console.log(error);
         });
-        console.log(JSONquery)
+        // console.log(JSONquery)
+        // console.log(JSONquery.food_id)
+        // console.log(JSONquery.food_name)
+
+        this.setState({
+            foodList: JSONquery
+        });
+
+        // console.log(this.state.foodList)
+
         this.handleForwardClick(event); 
     }
 
 
 
     render() {
-        const jsonElements = this.ourJSON.map(
-            (elem, id) => <Dropdown.Item>{elem.name}</Dropdown.Item>
-        )
+        let jsonElements;
+
+        if (this.state.foodList) {
+            jsonElements = this.state.foodList.map(
+                (elem, id) => <Dropdown.Item>{elem.food_name}</Dropdown.Item>
+            )
+        }
+
+        
         return (
             <section className='borderBox'>
                 <h1>New Carb Count</h1>
@@ -159,7 +175,7 @@ class NewCount extends Component {
                                     onChange = {this.onChange}
                                     />
                                     <Form.Text className="text-muted">
-                                    Entering your blood glucose reading (mmol/L) will factor into your suggested dose. 
+                                    Entering your blood glucose reading (mmol/L) will factor into your suggested dose. (Optional.)
                                     </Form.Text>
                                 </Form.Group>
                                 <Form.Group controlId="foodSearch">

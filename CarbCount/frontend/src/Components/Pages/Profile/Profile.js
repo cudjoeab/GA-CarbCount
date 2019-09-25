@@ -35,13 +35,13 @@ class Profile extends Component {
         // })
 
 
-        axios.get("/api/users/")
-        .then((response)=> {
-            console.log('Then:', response.data)
-        })
-        .catch((error)=> {
-            console.log('Error:', error)
-        })
+        // axios.get("/api/users/")
+        // .then((response)=> {
+        //     console.log('Then:', response.data)
+        // })
+        // .catch((error)=> {
+        //     console.log('Error:', error)
+        // })
 
 
     }
