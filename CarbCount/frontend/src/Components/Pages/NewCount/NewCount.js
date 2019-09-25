@@ -85,20 +85,20 @@ class NewCount extends Component {
         } else {
             console.log('Valid search. Go forwards!');
 
-            axios.post("/api/food_search/", query)
-            .then((response)=> {
-                console.log('Then:', { query: this.state.foodSearch })
+            // axios.post("/api/food_search/", query)
+            // .then((response)=> {
+            //     console.log('Then:', { query: this.state.foodSearch })
 
-            })
-            .catch((error)=> {
-                console.log('Error:', error)
-            })
+            // })
+            // .catch((error)=> {
+            //     console.log('Error:', error)
+            // })
 
 
 
 
             this.setState({
-                // stageOfProcess: this.state.stageOfProcess+1
+                stageOfProcess: this.state.stageOfProcess+1
             });
         }
 
