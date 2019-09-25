@@ -60,15 +60,29 @@ class DiabeticViewSet(viewsets.ModelViewSet):
         return super(DiabeticViewSet, self).get_permissions()
 
     def list(self, request):
+        user_id = request.GET.get('user_id', None)
+        # queryset = Diabetic.objects.all()
+
+        print(request)
+        print(request.user)
+        print(request.user.id)
+        print(request.user.username)
+        print(user_id)
+        # print(request.owner_id)
+        print(self)
+        print(self.request)
+        print(self.request.user)
+        # print(self.owner)
+
+
         # This is how to we check for a specific diabetic and create different fiters for the same query
         if request.user.id == 1:  # If user is admin, they can see all User objects.
             print('DiabeticViewSet - Request is ADMIN; see all users.')
             queryset = Diabetic.objects.all()
         else:  # If user is not admin, they can only see their own User objects.
             print('DiabeticViewSet - Request is NOT ADMIN; see only self.')
-            print(request.user)
-            print(request.user.id)
-            queryset = Diabetic.objects.filter(Q(owner_id=2)).all()  # Why is this 2?
+            # queryset = Diabetic.objects.filter(Q(owner_id=2)).all()  # Why is this 2?
+            queryset = Diabetic.objects.filter(Q(owner_id=2)).all()
 
         serializer = DiabeticSerializer(queryset, many = True)
         return Response(serializer.data)
