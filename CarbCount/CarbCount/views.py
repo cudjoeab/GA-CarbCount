@@ -73,7 +73,8 @@ fs = Fatsecret(consumer_key, consumer_secret)
 # Proxy search to FATSECRETS so the frontend can grab the food id's
 @api_view(['GET'])
 def food_search(request):
-    query = request.POST.get("query", "apple")
+    # query = request.POST.get("query", )
+    query = request.GET.urlencode()
     results = fs.foods_search(query)
     return JsonResponse(results, safe=False)
 

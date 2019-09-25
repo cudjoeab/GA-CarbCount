@@ -51,16 +51,7 @@ class NewCount extends Component {
     componentDidMount() {
         console.log('Component did mount!');
         window.scrollTo(0, 0); //Brings user to top of page.
-        let JSONquery = []
-        axios.get('/api/food_search/')
-        .then(function (response) {
-            console.log(response);
-            JSONquery= response; 
-        })
-        .catch(function (error) {
-        console.log(error);
-        });
-        console.log(JSONquery)
+        
     }
 
     // displayCurrentStep(step) {
@@ -78,7 +69,6 @@ class NewCount extends Component {
             stageOfProcess: this.state.stageOfProcess-1
         });
     }
-
     handleForwardClick = (event) => {
         event.preventDefault();
         console.log('Go forwards!');
@@ -87,6 +77,23 @@ class NewCount extends Component {
             stageOfProcess: this.state.stageOfProcess+1
         });
     }
+    handleSearchClick = (event) => {
+        event.preventDefault();
+        let JSONquery = []
+        let userQuery = document.querySelector('#formBasicSearch').value
+        axios.get(`/api/food_search/?q=${userQuery}`)
+        .then(function (response) {
+            console.log(response);
+            JSONquery= response; 
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
+        console.log(JSONquery)
+        this.handleForwardClick(event); 
+    }
+
+
 
     render() {
         const jsonElements = this.ourJSON.map(
@@ -116,7 +123,7 @@ class NewCount extends Component {
                                     (Descriptive text here)
                                     </Form.Text>
                                 </Form.Group>
-                                <Button variant="primary" type="submit"  onClick={this.handleForwardClick}>
+                                <Button variant="primary" type="submit"  onClick={this.handleSearchClick}>
                                     Search for Food
                                 </Button>
                             </Form>
