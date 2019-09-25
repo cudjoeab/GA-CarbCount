@@ -82,7 +82,7 @@ def food_search(request):
 # Gather their nutritional data
 # Perform calculation
 # Return result as JSON for frontend
-@api_view(['POST'])
+@api_view(['GET'])
 def calculate_dosages(request):
     # Gather settings from request user model
     # correction_factor(aka sensitivity) =  1.3
