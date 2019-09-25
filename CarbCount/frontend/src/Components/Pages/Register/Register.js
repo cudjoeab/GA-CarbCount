@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 // Bootstrap-React components:
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -19,90 +20,159 @@ axios.defaults.xsrfCookieName = 'csrftoken'
 
 
 class Register extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            username: '',
-            password: '',
-            password2: ''
-        };
-      }
+    // constructor(props, context) {
+    //     super(props, context);
+        // this.state = {
+        //     email: 'cudjoeab@gmail.com',
+        //     password: 'doesthiswork',
+        //     password2: 'doesthiswork'
+        // };
+    //   }
+
+    state = {
+        username: '',
+        password: '',
+        password2: '',
+        errorMessage: '',
+        redirectNeeded: false
+    };
 
     componentDidMount() {
-        console.log('Component did mount!');
+        console.log('Register Component did mount!');
         window.scrollTo(0, 0); //Brings user to top of page.
+        this.checkLogin();
     }
 
-    handleSubmit = (event) => {
+    onChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+        console.log(event.target.value)
+
+    }
+
+    handleRegister = (event) => {
         event.preventDefault();
-        const form = event.currentTarget.elements;
+        console.log('Lets register a user!')
 
-        if (form.password.value !== form.password2.value) {
-            console.log('Error; your passwords are not the same!');
-        } else {
-            console.log('Same!');
+        let username = event.currentTarget.elements.username.value;
+        let password = event.currentTarget.elements.password.value;
+        let password2 = event.currentTarget.elements.password2.value;
 
-            console.log(form)
+        if ((password != password2) || (password == '')) {
+            this.setState({
+                errorMessage: 'Please check that your passwords match.',
+            });
+        } else {  // The passwords match, signup process continues.
+            const newUser = {
+                username: username,
+                password: password
+            }
 
-            let userSubmission = 
-        
+            axios.post("/api/users/", newUser)  // A new User is created.
+            .then((response)=> {
+                const logInfo = {
+                    username: username,
+                    password: password
+                }             
 
-            axios.post("/register/", {
-                username: form.username.value,
-                password: form.password.value
-            }).then((response)=> {
-                console.log('Then:', response)
-                console.log('Then:', response.data)
+                axios.post("/api-token-auth/", logInfo)  // User is given a token.
+                .then((response)=> {
+                    window.localStorage['token'] = response.data['token']  // Token is stored on machine.
 
-                localStorage.setItem('user', JSON.stringify(response.data));
+                    return response;
+                })
+                .then(res => {
+                    const newDiabetic = {
+                        owner: response.data.id
+                    }
+                
+                    axios.post("/api/diabetic/", newDiabetic, {  // A new Diabetic is created.
+                        headers: {
+                            Authorization: `Token ${window.localStorage['token']}`
+                        }
+                    })
+                    .then(response => {
+                        this.setState({
+                            errorMessage: '',
+                        });
 
-                this.setState({
-                    errorMessage: '',
-                    redirectToReferrer: true
+                        this.checkLogin();  // This will redirect the user if they have a token.
+                    })
                 });
-            }).catch((error)=> {
-                console.log('Error:', error)
-
-
-                //  BAD PATTERN - dont save jsx in state only save a string
-            //     this.setState({
-            //         // errorMessage: <Alert variant="danger">Invalid credentials</Alert>
-            //     });
+            })
+            .catch((error)=> {
+                this.setState({
+                    errorMessage: 'There was an error creating a new account.',
+                });
             });
         }
     }
 
-    render() {
-        const { redirectToReferrer } = this.state
 
-        if (redirectToReferrer === true) {
-            return <Redirect to='/homepage?register=success' />
+    // LOOK AT REDIRECT COMPONENT IN REACT ROUTER
+    checkLogin = () => {  // If user has a token, redirect to profile page.
+        console.log('Check login:')
+        if (window.localStorage['token'] !== undefined) {
+            console.log('Lets redirect:')
+            // return <Redirect to='/profile' />;
+
+            this.setState({
+                redirectNeeded: true
+            })
+            // window.location.href = '/profile'
+        };
+    };
+
+    render() {
+        // const { redirectToReferrer } = this.state
+
+        // if (redirectToReferrer === true) {
+        //     return <Redirect to='/homepage?register=success' />
+        // }
+
+        if (this.state.redirectNeeded === true) {
+            return <Redirect to='/profile' />
         }
 
         return (
             <section className='borderBox'>
                 <h1>Get Started with Carb Count</h1>
                 <p>Welcome to Carb Count!  Let's start by creating a free account.  Next, we'll define your goals and create your custom diet plan.</p>
-                <Form onSubmit={this.handleSubmit}>
+                {/* <Form onSubmit={this.handleSubmit}> */}
+                <Form onSubmit={this.handleRegister}>
                     <Form.Group controlId="username">
                         <Form.Label>Username</Form.Label>
                         <Form.Control 
                             type="text" 
+                            name="username"
+                            value={this.state.username}
                             placeholder="Enter username" 
+                            onChange = {this.onChange}
+                            required
                             />
                         <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
+                        We'll never share your username with anyone else.
                         </Form.Text>
                     </Form.Group>
 
                     <Form.Group controlId="password">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Enter password" />
+                        <Form.Control type="password"
+                        name="password"
+                        value={this.state.password}
+                        placeholder="Enter password" 
+                        onChange = {this.onChange}
+                            required/>
                     </Form.Group>
 
                     <Form.Group controlId="password2">
                         <Form.Label>Re-enter Password</Form.Label>
-                        <Form.Control type="password" placeholder="Re-enter password" />
+                        <Form.Control type="password" 
+                        name="password2"
+                        value={this.state.password2}placeholder="Re-enter password" 
+                        onChange = {this.onChange}
+                            required/>
                     </Form.Group>
 
 
@@ -211,14 +281,32 @@ class Register extends Component {
                             <option>NovoRapid</option>
                         </Form.Control>
                     </Form.Group> */}
-                    
-                    <Button variant="primary" type="submit">
+
+                    {/* <Button variant="primary" onClick>
                         Create My Account
+                    </Button> */}
+
+
+
+                    {/* <h4 className="signup-button"><Link to='/homepage' onClick={this.props.handleLogin}>Create my Account</Link> </h4>  */}
+
+                    {
+                        this.state.errorMessage != ''?
+                            <Alert variant="danger">{this.state.errorMessage}</Alert>
+                            :
+                            <> </>
+                    }
+
+                    <Button className="signup-button" type="submit">
+                        Create my Account
                     </Button>
 
-                    <p>By selecting Continue, you agree to the <Link to='/terms'>Terms of Service</Link> and <a href=''>Privacy Policy</a>.</p>
-                    <p>Already have an account? <Link to='/sign_in'>Log in here</Link></p>
+
+                    {/* <h4 className="signup-button"><Link to='/homepage'>Create my Account</Link> </h4> */}
+
                 </Form>
+                <p>By selecting Continue, you agree to the <Link to='/terms'>Terms of Service</Link> and <a href=''>Privacy Policy</a>.</p>
+                    <p>Already have an account? <Link to='/sign_in'>Log in here</Link></p>
             </section>
         );
     }

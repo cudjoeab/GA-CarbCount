@@ -1,8 +1,21 @@
-from CarbCount.models import Practitioner, Diabetic, Recipe, Meal, Log 
+from CarbCount.models import User, Practitioner, Diabetic, Recipe, Meal, Log 
 from rest_framework import serializers
 
 
-class PractitonerSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = User
+        fields = "__all__"
+
+    def create(self, validated_data):
+        user = super(UserSerializer, self).create(validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
+
+class PractitionerSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Practitioner
@@ -14,6 +27,12 @@ class DiabeticSerializer(serializers.ModelSerializer):
     class Meta:
         model = Diabetic
         fields = "__all__"
+
+    def create(self, validated_data):
+        diabetic = super(DiabeticSerializer, self).create(validated_data)
+        diabetic.save()
+        return diabetic
+
 
 
 class RecipeSerializer(serializers.ModelSerializer):

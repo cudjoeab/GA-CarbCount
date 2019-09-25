@@ -7,6 +7,25 @@
 } */
 
 .card {
-    min-width: 200px;
-    height: 200px;
+    min-width: 1em;
+    height: 8em;
+    background-color: pink;
+}
+
+.card-columns {
+    /* background-color: red; */
+    margin: 15px; 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.home-page-links {
+    color: #444444; 
+}
+
+.home-page-links:hover {
+    font-size: 1.2em; 
+    text-decoration: none;
+    color:  #E19C33; 
+
 }

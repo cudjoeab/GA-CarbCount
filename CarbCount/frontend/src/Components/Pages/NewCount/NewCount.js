@@ -21,6 +21,7 @@ import { faBreadSlice, faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 // Call stylesheet last:
 import './NewCount.css';
 
+
 import axios from 'axios'
 axios.defaults.xsrfHeaderName = "X-CSRFToken"
 axios.defaults.xsrfCookieName = 'csrftoken'
@@ -38,15 +39,16 @@ class NewCount extends Component {
 
     
 
-    constructor() {
-        super();
-        this.state = {
+    // constructor() {
+    //     super();
+        state = {
             stageOfProcess: 0,
-            userGlucose: 0,
-            userSearch: '', 
-            foodList: []
+            bloodGlucose: 0,
+            foodSearch: 'test', 
+            foodList: {},
+            summary: {}
         }
-    }
+    // }
 
     componentDidMount() {
         console.log('Component did mount!');
@@ -61,6 +63,13 @@ class NewCount extends Component {
     //     }
     // }
 
+    onChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+        console.log(event.target.value)
+    }
+
     handleBackClick = (event) => {
         event.preventDefault();
         console.log('Go back!');
@@ -69,6 +78,38 @@ class NewCount extends Component {
             stageOfProcess: this.state.stageOfProcess-1
         });
     }
+
+
+    handleStepOne = (event) => {
+        event.preventDefault();
+
+        const query = { query: this.state.foodSearch }
+
+        if (this.state.foodSearch === '') {
+            console.log('Invalid search ; user input is no good.')
+        } else {
+            console.log('Valid search. Go forwards!');
+
+            axios.post("/api/food_search/", query)
+            .then((response)=> {
+                console.log('Then:', { query: this.state.foodSearch })
+
+            })
+            .catch((error)=> {
+                console.log('Error:', error)
+            })
+
+
+
+
+            this.setState({
+                // stageOfProcess: this.state.stageOfProcess+1
+            });
+        }
+
+
+    }
+    
     handleForwardClick = (event) => {
         event.preventDefault();
         console.log('Go forwards!');
@@ -97,33 +138,47 @@ class NewCount extends Component {
 
     render() {
         const jsonElements = this.ourJSON.map(
-            (elem, id) => <Dropdown.Item as="button">{elem.name}</Dropdown.Item>
+            (elem, id) => <Dropdown.Item>{elem.name}</Dropdown.Item>
         )
         return (
             <section className='borderBox'>
-                <h1>New Count</h1>
-                <p>Add a New Count to your Log.</p>
+                <h1>New Carb Count</h1>
+                <p>Calculate the amount of carb for your next meal </p>
 
                 <Carousel activeIndex={this.state.stageOfProcess} controls={false} interval={null} wrap={false} >
                     <Carousel.Item>
                         <Carousel.Caption>
                             <h2>Step 1:</h2>
                             <Form>
-                                <Form.Group controlId="formBasicGlucose">
+                                <Form.Group controlId="bloodGlucose">
                                     <Form.Label>Blood Glucose:</Form.Label>
-                                    <Form.Control type="number" placeholder="Enter glucose (optional)" step='0.001' />
+                                    <Form.Control type="number" 
+                                    name="bloodGlucose"
+                                    value={this.state.bloodGlucose}
+                                    placeholder="Enter blood glucose (optional)" step='0.001'
+                                    onChange = {this.onChange}
+                                    />
                                     <Form.Text className="text-muted">
-                                    (Descriptive text here)
+                                    Entering your blood glucose reading (mmol/L) will factor into your suggested dose. 
                                     </Form.Text>
                                 </Form.Group>
-                                <Form.Group controlId="formBasicSearch">
+                                <Form.Group controlId="foodSearch">
                                     <Form.Label>Search:</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter search" />
+                                    <Form.Control type="text"
+                                    name="foodSearch" 
+                                    value={this.state.foodSearch}
+                                    placeholder="Enter search" 
+                                    onChange = {this.onChange}
+                            required />
                                     <Form.Text className="text-muted">
-                                    (Descriptive text here)
+                                    Source: FatSecret 
                                     </Form.Text>
                                 </Form.Group>
+
                                 <Button variant="primary" type="submit"  onClick={this.handleSearchClick}>
+
+
+
                                     Search for Food
                                 </Button>
                             </Form>
@@ -148,10 +203,8 @@ class NewCount extends Component {
 
                                 <h3>List:</h3>
                                 <ul>
-                                    <li>apple <a href='/'>+</a> <a href='/'>-</a></li>
-                                    <li>bread <a href='/'>+</a> <a href='/'>-</a></li>
-                                    <li>pizza <a href='/'>+</a> <a href='/'>-</a></li>
-                                    <li>orange <a href='/'>+</a> <a href='/'>-</a></li>
+                                    <li>Valencia California Orange <a href='/'>+</a> <a href='/'>-</a></li>
+                                    <li>a&w restaurant spicy habanero chicken burger <a href='/'>+</a> <a href='/'>-</a></li>
                                 </ul>
 
                                 <Button variant="secondary" type="submit" onClick={this.handleBackClick}>
@@ -167,13 +220,14 @@ class NewCount extends Component {
 
                     <Carousel.Item>
                         <Carousel.Caption>
-                            <h2>Step 3 - Results:</h2>
+                            <h2>SUMMARY:</h2>
+                            {/* <p>SUMMARY</p> */}
                             <p>1 Valencia California Orange</p>
-                            <p>Snack</p>
-                            <p><FontAwesomeIcon icon={faBreadSlice} /> Carbs: 14.39g</p>
-                            <p>Fibre: 3g</p>
+                            <p>1 A&W restaurant spicy habanero chicken burger</p>
+                            <p><strong>Lunch</strong></p>
+                            <p><FontAwesomeIcon icon={faBreadSlice} /> Carbs: 61.29g, Fibre: 5.1g </p>
                             <p><FontAwesomeIcon icon={faTint} /> Blood sugar: 5.6mmol/L</p>
-                            <p><FontAwesomeIcon icon={faSyringe} /> Suggested dose: 2.3 units</p>
+                            <p><FontAwesomeIcon icon={faSyringe} /> Suggested dose: 12.3 units</p>
                             <Form>    
                                 <Button variant="secondary" type="submit" onClick={this.handleBackClick}>
                                     Back

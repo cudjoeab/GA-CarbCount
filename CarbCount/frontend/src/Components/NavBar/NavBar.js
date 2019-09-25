@@ -1,6 +1,6 @@
 // Vanilla React:
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Redirect, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch, Link, withRouter } from 'react-router-dom';
 
 
 // Bootstrap-React components:
@@ -41,77 +41,86 @@ class OurNavBar extends Component {
             username: '',
             password: '',
             errorMessage: '',
-            redirectToReferrer: false
+            // redirectToReferrer: false
         };
-      }
-
-    handleClick = (event) => {
-        event.preventDefault();
-        console.log('User clicked Logout')
-
-        axios.post("/logout/", {
-        //     username: this.getUser.userId
-        }).then((response)=> {
-            console.log('Then:', response)
-        //     // console.log(this.props)
-        //     // redirect etc
-            
-        //     // browserHistory.push("/path-to-link");
-        //     // <Route path="/FAQ" component={FAQ} />
-
-        //     // window.location
-
-        //     // this.props.history.push("/");
-        //     // render (
-        //     //     <Redirect push to="/FAQ"/>
-        //     // )
-
-        //     // return <Redirect to='/FAQ' />
-
-        //     this.setState({
-        //         errorMessage: '',
-        //         // redirectToReferrer: true
-        //     });
-
-            localStorage.removeItem('user'); // Is this right?
-
-            this.setState({
-                errorMessage: '',
-                redirectToReferrer: true
-            });
-
-        }).catch((error)=> {
-            console.log('Error:', error)
-        //     // this.history.pushState(null, 'homepage');
-
-        //     this.setState({
-        //         // errorMessage: <Alert variant="danger">Invalid credentials</Alert>
-        //     });
-        });
-        return false;
     }
+
+    handleLogout = (event) => {
+        event.preventDefault();
+        console.log('Handle Logout triggered:');
+        window.localStorage.removeItem('token');     //Don't delete this!!!!!!!!!
+        // window.location.href = '/';
+        // return <Redirect to={{pathname: '/about'}} />
+        this.props.history.push("/");
+    }
+
+    // handleClick = (event) => {
+    //     event.preventDefault();
+    //     console.log('User clicked Logout')
+
+    //     axios.post("/logout/", {
+    //     //     username: this.getUser.userId
+    //     }).then((response)=> {
+    //         console.log('Then:', response)
+    //     //     // console.log(this.props)
+    //     //     // redirect etc
+            
+    //     //     // browserHistory.push("/path-to-link");
+    //     //     // <Route path="/FAQ" component={FAQ} />
+
+    //     //     // window.location
+
+    //     //     // this.props.history.push("/");
+    //     //     // render (
+    //     //     //     <Redirect push to="/FAQ"/>
+    //     //     // )
+
+    //     //     // return <Redirect to='/FAQ' />
+
+    //     //     this.setState({
+    //     //         errorMessage: '',
+    //     //         // redirectToReferrer: true
+    //     //     });
+
+    //         localStorage.removeItem('user'); // Is this right?
+
+    //         this.setState({
+    //             errorMessage: '',
+    //             redirectToReferrer: true
+    //         });
+
+    //     }).catch((error)=> {
+    //         console.log('Error:', error)
+    //     //     // this.history.pushState(null, 'homepage');
+
+    //     //     this.setState({
+    //     //         // errorMessage: <Alert variant="danger">Invalid credentials</Alert>
+    //     //     });
+    //     });
+    //     return false;
+    // }
 
     
     render() {
-        // const getUser = 7;
+        // const getUser = '';
 
-        const { redirectToReferrer } = this.state
+        // const { redirectToReferrer } = this.state
 
-        if (redirectToReferrer === true) {
-            return <Redirect to='/' />
-        }
+        // if (redirectToReferrer === true) {
+        //     return <Redirect to='/' />
+        // }
 
-        let getUser;
+        // let getUser;
 
-        if (localStorage.getItem('user')) {
-            console.log(localStorage.getItem('user'))
-            getUser = JSON.parse(localStorage.getItem('user'));
-            console.log('a', getUser.userId)
-            console.log('a', getUser.userName)
-        } else {
-            getUser = '';
-            console.log('b')
-        }
+        // if (localStorage.getItem('user')) {
+        //     console.log(localStorage.getItem('user'))
+        //     getUser = JSON.parse(localStorage.getItem('user'));
+        //     console.log('a', getUser.userId)
+        //     console.log('a', getUser.userName)
+        // } else {
+        //     getUser = '';
+        //     console.log('b')
+        // }
     
 
     return (
@@ -153,7 +162,9 @@ class OurNavBar extends Component {
                 </Navbar.Collapse>
                 <Form inline>
 
-                    { getUser === ''
+                    {/* { getUser === '' */}
+                    {/* { this.props.userName === '' */}
+                    { window.localStorage['token'] == null  // If user doesn't have a token, redirect to profile page.
                     ?
                         <>
                             <p>
@@ -163,10 +174,15 @@ class OurNavBar extends Component {
                         </>
                     :
                     <>
-                        <p>Id:{getUser.userId} --</p>
-                        <p>Name: {getUser.userName} --</p>
+                        {/* <p>Id:{getUser.userId} --</p>
+                        <p>Name: {getUser.userName} --</p> */}
                         {/* <p><a href='' onClick={this.handleClick}>Logout</a></p> */}
-                        <p><Link to='/' onClick={this.handleClick} component={LandingPage}>Logout</Link></p>
+                        {/* <p>{this.props.userName} -- <Link to='/' onClick={this.handleClick} component={LandingPage}>Logout</Link></p> */}
+
+                        {/* <p><Link to='/profile'>{this.props.userName}</Link> -- <Link to='/' onClick={this.props.handleLogout} component={LandingPage}>Logout</Link></p> */}
+
+                        <p><Link to='/profile'>{this.props.userName}</Link> -- <Link to='/logout' onClick={this.handleLogout}>Logout</Link></p>
+
                         {/* <p>UserName saved: {getUser.userName}</p> */}
                     </>
                     
@@ -181,4 +197,4 @@ class OurNavBar extends Component {
 };
 }
 
-export default OurNavBar
+export default withRouter(OurNavBar)

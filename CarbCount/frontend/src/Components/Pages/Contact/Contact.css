@@ -1,7 +1,12 @@
+.contactInfo {
+    padding: 20px;
+}
+
 .profile_photo {
     width: 200px;
     height: 200px;
     position: relative;
     display: inline-block;
     background-color: beige;
+    margin: auto 10px;
 }

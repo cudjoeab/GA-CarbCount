@@ -1,0 +1,18 @@
+.borderBox li {
+    list-style-type: none;
+}
+
+    
+.borderBox li a:hover {
+    color: #fff; 
+
+}
+
+.borderBox h1 {
+    font-weight: 900; 
+}
+
+.borderBox p {
+    font-weight: 400; 
+    font-size: 20px; 
+}

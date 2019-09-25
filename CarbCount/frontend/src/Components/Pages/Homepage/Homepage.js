@@ -24,7 +24,7 @@ class Homepage extends Component {
     cardDetails = [
         { title: 'New Count', text: 'Add a New Count to your Log.', link: 'new_count' }, 
         { title: 'New Recipe', text: 'Add a New Recipe to your list.', link: 'new_recipe' }, 
-        { title: 'Food Log', text: 'See all your Food Logs.', link: 'food_logs' }, 
+        { title: 'Food Log', text: 'See your Food Log.', link: 'food_logs' }, 
         { title: 'Saved Recipes', text: 'See all your Saved Recipes.', link: 'saved_recipes' }
     ];
 
@@ -63,8 +63,8 @@ class Homepage extends Component {
                     <OurCard cardTarget='saved_recipes' />
                 </CardDeck> */}
 
-                <CardColumns>
-                    {cardElements}
+                {/* <CardColumns>
+                    {cardElements} */}
                     {/* <OurCard cardTarget='saved_recipes' />
                     <OurCard cardTarget='saved_recipes' />
                     <OurCard cardTarget='saved_recipes' />
@@ -80,7 +80,33 @@ class Homepage extends Component {
                         </Card.Body>
                     </Card> */}
                
-                </CardColumns>
+                {/* </CardColumns> */}
+
+
+                <div class="card-columns">
+                    <div class="card">
+                        
+                            <div class="card-header"><a class="home-page-links" href="/new_count">New Count</a></div>
+                        
+                        <div class="card-body">
+                            <p class="card-text">Add a New Count to your Log.<br/></p>
+                        </div>
+                    </div>
+                    <div class="card bg-light text-white">
+                        
+                        <div class="card-header"><a class="home-page-links" href="/new_recipe">New Recipe</a></div>
+                        <div class="card-body"><p class="card-text">Add a New Recipe to your list.<br/></p></div>
+                        </div>
+                        <div class="card bg-light text-white">
+                            <div class="card-header"><a class="home-page-links" href="/food_logs">Food Log</a></div>
+                            <div class="card-body"><p class="card-text">See your Food Log.<br/></p></div></div>
+                            <div class="card bg-light text-white">
+                                <div class="card-header"><a class="home-page-links" href="/saved_recipes">Saved Recipes</a></div>
+                        <div class="card-body"><p class="card-text">See all your Saved Recipes.<br/>
+                        </p>
+                        </div>
+                        </div>
+                        </div>
             </section>
         );
     }

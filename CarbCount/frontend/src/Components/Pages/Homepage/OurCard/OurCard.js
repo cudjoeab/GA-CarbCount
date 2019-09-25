@@ -14,13 +14,15 @@ import './OurCard.css';
 
 const OurCard = (props) => {
     return (
-        <Card bg="light">
-            <Card.Header>{props.cardTitle}</Card.Header>
+        <Card bg="light" text="white">
+            <Link className = "home-page-links" to={`/${props.cardLink}`}>
+                <Card.Header>{props.cardTitle}</Card.Header>
+            </Link>
+            {/* <Card.Header>{props.cardTitle}</Card.Header> */}
             <Card.Body>
-                <Card.Title>{props.cardTitle}</Card.Title>
+                {/* <Card.Title>{props.cardTitle}</Card.Title> */}
                 <Card.Text>
                     {props.cardText}<br/>
-                    <Link to={`/${props.cardLink}`}>View now</Link>
                 </Card.Text>
             </Card.Body>
         </Card>

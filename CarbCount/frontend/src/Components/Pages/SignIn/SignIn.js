@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { Link, withRouter } from "react-router-dom";
 import {  } from "react-router";
@@ -17,83 +17,129 @@ import './SignIn.css';
 // import axios from 'axios'
 import axios from '../../../axiosConfig'
 
-// axios.defaults.xsrfHeaderName = "X-CSRFToken"
-// axios.defaults.xsrfCookieName = 'csrftoken'
+
 
 
 class SignIn extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
+    // constructor(props, context) {
+    //     super(props, context);
+    // constructor(props) {
+    //     super(props);
+
+        // console.log(this.props.handleLogin)
+
+    //   }
+
+    state = {
             username: '',
             password: '',
             errorMessage: '',
-            redirectToReferrer: false
+            redirectNeeded: false
         };
-      }
+
+
+
+
 
     componentDidMount() {
-        console.log('Component did mount!');
+        console.log('Signin Component did mount!');
+        // console.log(this.props.handleLogin)
         window.scrollTo(0, 0); //Brings user to top of page.
+        this.checkLogin();
     }
 
-    handleSubmit = (event) => {
+
+    onChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+        console.log(event.target.value)
+
+    }
+    
+
+    handleLogin = (event) => {
         event.preventDefault();
-        const form = event.currentTarget.elements;
 
-        axios.post("/login/", {
-            username: form.username.value,
-            password: form.password.value
-        }).then((response)=> {
+        const user = {
+            username: this.state.username,
+            password: this.state.password,
+        }
+
+        console.log('Logging in here', user)
+        // const form = event.currentTarget.elements;
+
+        axios.post("/api-token-auth/", user)
+        .then((response)=> {
             console.log('Then:', response)
-            // console.log(this.props)
-            // redirect etc
-            
-            // browserHistory.push("/path-to-link");
-            // <Route path="/FAQ" component={FAQ} />
-
-            // window.location
-
-            // this.props.history.push("/");
-            // render (
-            //     <Redirect push to="/FAQ"/>
-            // )
-
-            // return <Redirect to='/FAQ' />
-
-            localStorage.setItem('user', JSON.stringify(response.data)); // Is this right?
+            window.localStorage['token'] = response.data['token']
 
             this.setState({
                 errorMessage: '',
-                redirectToReferrer: true
             });
-        }).catch((error)=> {
-            console.log('Error:', error)
-            // this.history.pushState(null, 'homepage');
+
+            this.checkLogin();  // This will redirect the user if they have a token.
+
+
+        })
+        .catch((error)=> {
+            console.log('Error:', error);
 
             this.setState({
-                errorMessage: <Alert variant="danger">Invalid credentials</Alert>
-            });
+                errorMessage: 'Invalid credentials',
+                password: ''
+            })
+
+    //         this.setState({
+    //             errorMessage: <Alert variant="danger">Invalid credentials</Alert>
+    //         });
         });
     }
 
-    render() {
-            const { redirectToReferrer } = this.state
 
-            if (redirectToReferrer === true) {
-                return <Redirect to='/homepage?login=success' />
+    // LOOK AT REDIRECT COMPONENT IN REACT ROUTER
+    checkLogin = () => {  // If user has a token, redirect to profile page.
+        console.log('Check login:')
+        if (window.localStorage['token'] !== undefined) {
+            console.log('Lets redirect:')
+            // return <Redirect to='/profile' />;
+
+            this.setState({
+                redirectNeeded: true
+            })
+            // window.location.href = '/profile'
+        };
+    };
+
+
+
+
+
+    render() {
+            // const { redirectToReferrer } = this.state
+            
+
+            if (this.state.redirectNeeded === true) {
+            //     return <Redirect to='/homepage?login=success' />
+                return <Redirect to='/profile' />
             }
 
             return (
             <section className='borderBox'>
                 <h1>Login</h1>
                 <p>Please enter your user and password to login.</p>
-                <Form onSubmit={this.handleSubmit}>
+                {/* <Form onSubmit={this.handleLogin}> */}
+                {/* <Form onSubmit={this.stopReload}> */}
+                <Form onSubmit={this.handleLogin}>
                     <Form.Group controlId="username">
                         <Form.Label>Username</Form.Label>
                         <Form.Control 
                             type="text" 
+                            name="username"
+                            value={this.state.username}
                             placeholder="Enter username" 
+                            onChange = {this.onChange}
+                            required
                             />
                         <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
@@ -104,11 +150,23 @@ class SignIn extends Component {
                         <Form.Label>Password</Form.Label>
                         <Form.Control 
                             type="password" 
+                            name="password"
+                            value={this.state.password}
                             placeholder="Password" 
+                            onChange = {this.onChange}
+                            required
                         />
                     </Form.Group>
-                    {this.state.errorMessage}
+                    {
+                        this.state.errorMessage != ''?
+                            <Alert variant="danger">{this.state.errorMessage}</Alert>
+                            :
+                            <> </>
+                    }
+                    
+                    
 
+                    {/* <Button variant="primary" type="submit" onClick={this.props.handleLogin}> */}
                     <Button variant="primary" type="submit">
                         Sign In
                     </Button>

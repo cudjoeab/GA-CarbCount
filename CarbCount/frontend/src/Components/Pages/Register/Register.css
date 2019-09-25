@@ -1,3 +1,24 @@
 button {
     text-transform: uppercase !important;
 }
+
+p {
+    font-size: 10px; 
+    
+}
+
+.signup-button {
+    background-color: #fff;
+    border-radius: 5px;
+    text-transform: uppercase; 
+    padding: 8px;
+    font-size: 12px; 
+    font-weight: 900; 
+    width: 18%; 
+      
+}
+
+.signup-button a {
+    color: #4DCCBD;
+    
+}
