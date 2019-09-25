@@ -28,6 +28,12 @@ class DiabeticSerializer(serializers.ModelSerializer):
         model = Diabetic
         fields = "__all__"
 
+    def create(self, validated_data):
+        diabetic = super(DiabeticSerializer, self).create(validated_data)
+        diabetic.save()
+        return diabetic
+
+
 
 class RecipeSerializer(serializers.ModelSerializer):
     

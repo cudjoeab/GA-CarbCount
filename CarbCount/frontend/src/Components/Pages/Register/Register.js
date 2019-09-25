@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 // Bootstrap-React components:
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -60,6 +61,9 @@ class Register extends Component {
 
         if ((password != password2) || (password == '')) {
             console.log('Please check your passwords')
+            this.setState({
+                errorMessage: 'Please check that your passwords match.',
+            });
         } else {
             console.log('Passwords match, time to go!')
 
@@ -70,24 +74,27 @@ class Register extends Component {
 
             axios.post("/api/users/", user)
             .then((response)=> {
-                console.log('Then:', response)
+                console.log('First Then:', response)
 
-                
+                const logInfo = {
+                    username: username,
+                    password: password
+                }             
 
-                    axios.post("/api-token-auth/", user)
-                    .then((response)=> {
-                        console.log('Then:', response)
-                        window.localStorage['token'] = response.data['token']
-                        this.checkLogin();
+                axios.post("/api-token-auth/", logInfo)
+                .then((response)=> {
+                    console.log('Second Then:', response);
+                    window.localStorage['token'] = response.data['token']
+                    // this.checkLogin();
 
-                        this.setState({
-                            errorMessage: '',
-                            // redirectToReferrer: true
-                        });
+                    this.setState({
+                        errorMessage: '',
+                        // redirectToReferrer: true
+                    });
 
-                        return response
+                    return response;
 
-                     })
+                    })
                     // .then(() => {
                     //     axios.get('/api/users/', {
                     //         headers: {
@@ -95,13 +102,18 @@ class Register extends Component {
                     //         }
                     //     })
                     .then(res => {
-                        // debugger;
-                        console.log('res in diabetic', res)
-                        const diabetic = {
-                            // owner: res.data[0].id
+                        console.log('Third Then:', response.data.id);
+
+                        const newDiabetic = {
+                            owner: response.data.id
                         }
+                        // debugger;
+                        // console.log('res in diabetic', res)
+                        // const diabetic = {
+                        //     // owner: res.data[0].id
+                        // }
                     
-                    axios.post("/api/diabetic/", diabetic, {
+                    axios.post("/api/diabetic/", newDiabetic, {
                         headers: {
                             Authorization: `Token ${window.localStorage['token']}`
                         }
@@ -363,7 +375,12 @@ class Register extends Component {
 
                     {/* <h4 className="signup-button"><Link to='/homepage' onClick={this.props.handleLogin}>Create my Account</Link> </h4>  */}
 
-                    {this.state.errorMessage}
+                    {
+                        this.state.errorMessage != ''?
+                            <Alert variant="danger">{this.state.errorMessage}</Alert>
+                            :
+                            <> </>
+                    }
 
                     <Button className="signup-button" type="submit">
                         Create my Account
