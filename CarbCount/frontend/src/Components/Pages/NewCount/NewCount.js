@@ -121,7 +121,7 @@ class NewCount extends Component {
     handleSearchClick = (event) => {
         event.preventDefault();
         let JSONquery = []
-        let userQuery = document.querySelector('#formBasicSearch').value
+        let userQuery = document.querySelector('#foodSearch').value
         axios.get(`/api/food_search/?q=${userQuery}`)
         .then(function (response) {
             console.log(response);
