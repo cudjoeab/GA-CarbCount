@@ -60,153 +60,69 @@ class Register extends Component {
         let password2 = event.currentTarget.elements.password2.value;
 
         if ((password != password2) || (password == '')) {
-            console.log('Please check your passwords')
             this.setState({
                 errorMessage: 'Please check that your passwords match.',
             });
-        } else {
-            console.log('Passwords match, time to go!')
-
-            const user = {
+        } else {  // The passwords match, signup process continues.
+            const newUser = {
                 username: username,
                 password: password
             }
 
-            axios.post("/api/users/", user)
+            axios.post("/api/users/", newUser)  // A new User is created.
             .then((response)=> {
-                console.log('First Then:', response)
-
                 const logInfo = {
                     username: username,
                     password: password
                 }             
 
-                axios.post("/api-token-auth/", logInfo)
+                axios.post("/api-token-auth/", logInfo)  // User is given a token.
                 .then((response)=> {
-                    console.log('Second Then:', response);
-                    window.localStorage['token'] = response.data['token']
-                    // this.checkLogin();
-
-                    this.setState({
-                        errorMessage: '',
-                        // redirectToReferrer: true
-                    });
+                    window.localStorage['token'] = response.data['token']  // Token is stored on machine.
 
                     return response;
-
-                    })
-                    // .then(() => {
-                    //     axios.get('/api/users/', {
-                    //         headers: {
-                    //             Authorization: `Token ${window.localStorage['token']}`
-                    //         }
-                    //     })
-                    .then(res => {
-                        console.log('Third Then:', response.data.id);
-
-                        const newDiabetic = {
-                            owner: response.data.id
-                        }
-                        // debugger;
-                        // console.log('res in diabetic', res)
-                        // const diabetic = {
-                        //     // owner: res.data[0].id
-                        // }
-                    
-                    axios.post("/api/diabetic/", newDiabetic, {
+                })
+                .then(res => {
+                    const newDiabetic = {
+                        owner: response.data.id
+                    }
+                
+                    axios.post("/api/diabetic/", newDiabetic, {  // A new Diabetic is created.
                         headers: {
                             Authorization: `Token ${window.localStorage['token']}`
                         }
                     })
-                })
-                    
+                    .then(response => {
+                        this.setState({
+                            errorMessage: '',
+                        });
+
+                        this.checkLogin();  // This will redirect the user if they have a token.
                     })
-
-                // })
-
-                // const diabetic = {
-                //     owner: response.data.id
-                // }
-
-                // axios.post("/api/diabetic/", user)
-                // .then((response)=> {
-                //     console.log('Then:', response)
-
-
-            // })
-            .catch((error)=> {
-                console.log('Error:', error)
+                });
             })
-
-
-
+            .catch((error)=> {
+                this.setState({
+                    errorMessage: 'There was an error creating a new account.',
+                });
+            });
         }
-
-
-
-
-
-        
-        // const user = {
-        //     username: username,
-        //     password: password
-        // }
-        // const form = event.currentTarget.elements;
-
-        // if (form.password.value !== form.password2.value) {
-        //     console.log('Error; your passwords are not the same!');
-        // } else {
-        //     console.log('Same!');
-
-        //     console.log(form)
-
-        //     let userSubmission = 
-        
-
-        //     axios.post("api/register/", {
-        //         email: form.email.value,
-        //         password: form.password.value
-        //     }).then((response)=> {
-        //         console.log('Then:', response)
-        //         console.log('Then:', response.data)
-
-        //         localStorage.setItem('user', JSON.stringify(response.data));
-
-        //         this.setState({
-        //             errorMessage: '',
-        //             redirectToReferrer: true
-        //         });
-        //     }).catch((error)=> {
-        //         console.log('Error:', error)
-
-
-        //         //  BAD PATTERN - dont save jsx in state only save a string
-        //     //     this.setState({
-        //     //         // errorMessage: <Alert variant="danger">Invalid credentials</Alert>
-        //     //     });
-        //     });
-        // }
-
-        // this.setState({
-        //     errorMessage: '',
-        //     redirectToReferrer: true
-        // });
     }
 
 
-        // LOOK AT REDIRECT COMPONENT IN REACT ROUTER
-        checkLogin = () => {  // If user has a token, redirect to profile page.
-            console.log('Check login:')
-            if (window.localStorage['token'] !== undefined) {
-                console.log('Lets redirect:')
-                // return <Redirect to='/profile' />;
-    
-                this.setState({
-                    redirectNeeded: true
-                })
-                // window.location.href = '/profile'
-            };
+    // LOOK AT REDIRECT COMPONENT IN REACT ROUTER
+    checkLogin = () => {  // If user has a token, redirect to profile page.
+        console.log('Check login:')
+        if (window.localStorage['token'] !== undefined) {
+            console.log('Lets redirect:')
+            // return <Redirect to='/profile' />;
+
+            this.setState({
+                redirectNeeded: true
+            })
+            // window.location.href = '/profile'
         };
+    };
 
     render() {
         // const { redirectToReferrer } = this.state
@@ -216,9 +132,8 @@ class Register extends Component {
         // }
 
         if (this.state.redirectNeeded === true) {
-            //     return <Redirect to='/homepage?login=success' />
-                return <Redirect to='/profile' />
-            }
+            return <Redirect to='/profile' />
+        }
 
         return (
             <section className='borderBox'>
