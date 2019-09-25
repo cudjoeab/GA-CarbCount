@@ -21,8 +21,8 @@ import { faBreadSlice, faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 // Call stylesheet last:
 import './NewCount.css';
 
-// import axios from 'axios'
-import axios, * as others from 'axios';
+
+import axios from 'axios'
 axios.defaults.xsrfHeaderName = "X-CSRFToken"
 axios.defaults.xsrfCookieName = 'csrftoken'
 
@@ -35,6 +35,9 @@ class NewCount extends Component {
     ourJSON = [
         {name:'Valencias California Oranges'}, {name:'Florida Oranges'}, {name:'Cara Cara Oranges'}, {name:'Minneola Tangelo Orange'}, {name:'Cara Cara Navel Oranges'}, {name:'Mandarin Oranges'}, {name:'Orange Lemon Drink'}, {name:'Orange Juice'}, {name:'Orange Strawberry Banana Juice'}, {name:'Madarin Orange (Canned or Frozen)'}, {name:'Freshly Squeezed Orange Juice'}
     ]
+  
+
+    
 
     // constructor() {
     //     super();
@@ -50,6 +53,7 @@ class NewCount extends Component {
     componentDidMount() {
         console.log('Component did mount!');
         window.scrollTo(0, 0); //Brings user to top of page.
+        
     }
 
     // displayCurrentStep(step) {
@@ -74,6 +78,7 @@ class NewCount extends Component {
             stageOfProcess: this.state.stageOfProcess-1
         });
     }
+
 
     handleStepOne = (event) => {
         event.preventDefault();
@@ -104,7 +109,7 @@ class NewCount extends Component {
 
 
     }
-
+    
     handleForwardClick = (event) => {
         event.preventDefault();
         console.log('Go forwards!');
@@ -113,6 +118,23 @@ class NewCount extends Component {
             stageOfProcess: this.state.stageOfProcess+1
         });
     }
+    handleSearchClick = (event) => {
+        event.preventDefault();
+        let JSONquery = []
+        let userQuery = document.querySelector('#formBasicSearch').value
+        axios.get(`/api/food_search/?q=${userQuery}`)
+        .then(function (response) {
+            console.log(response);
+            JSONquery= response; 
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
+        console.log(JSONquery)
+        this.handleForwardClick(event); 
+    }
+
+
 
     render() {
         const jsonElements = this.ourJSON.map(
@@ -152,7 +174,11 @@ class NewCount extends Component {
                                     Source: FatSecret 
                                     </Form.Text>
                                 </Form.Group>
-                                <Button variant="primary" type="submit"  onClick={this.handleStepOne}>
+
+                                <Button variant="primary" type="submit"  onClick={this.handleSearchClick}>
+
+
+
                                     Search for Food
                                 </Button>
                             </Form>
