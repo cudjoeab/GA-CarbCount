@@ -21,6 +21,10 @@ import { faBreadSlice, faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 // Call stylesheet last:
 import './NewCount.css';
 
+import axios from 'axios'
+axios.defaults.xsrfHeaderName = "X-CSRFToken"
+axios.defaults.xsrfCookieName = 'csrftoken'
+
 
 class NewCount extends Component {
     // ourJSON = {
@@ -30,6 +34,9 @@ class NewCount extends Component {
     ourJSON = [
         {name:'Valencias California Oranges'}, {name:'Florida Oranges'}, {name:'Cara Cara Oranges'}, {name:'Minneola Tangelo Orange'}, {name:'Cara Cara Navel Oranges'}, {name:'Mandarin Oranges'}, {name:'Orange Lemon Drink'}, {name:'Orange Juice'}, {name:'Orange Strawberry Banana Juice'}, {name:'Madarin Orange (Canned or Frozen)'}, {name:'Freshly Squeezed Orange Juice'}
     ]
+  
+
+    
 
     constructor() {
         super();
@@ -44,6 +51,16 @@ class NewCount extends Component {
     componentDidMount() {
         console.log('Component did mount!');
         window.scrollTo(0, 0); //Brings user to top of page.
+        let JSONquery = []
+        axios.get('/api/food_search/')
+        .then(function (response) {
+            console.log(response);
+            JSONquery= response; 
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
+        console.log(JSONquery)
     }
 
     // displayCurrentStep(step) {
