@@ -16,10 +16,34 @@ import { faBalanceScale, faBullseye, faChartLine, faClock, faSyringe, faUserMd }
 import './Profile.css';
 
 
+import axios from 'axios'
+axios.defaults.xsrfHeaderName = "X-CSRFToken"
+axios.defaults.xsrfCookieName = 'csrftoken'
+
+
 class Profile extends Component {
     componentDidMount() {
         console.log('Component did mount!');
         window.scrollTo(0, 0); //Brings user to top of page.
+
+        // axios.get("/api/diabetic/")
+        // .then((response)=> {
+        //     console.log('Then:', response.data)
+        // })
+        // .catch((error)=> {
+        //     console.log('Error:', error)
+        // })
+
+
+        axios.get("/api/users/")
+        .then((response)=> {
+            console.log('Then:', response.data)
+        })
+        .catch((error)=> {
+            console.log('Error:', error)
+        })
+
+
     }
 
     render() {

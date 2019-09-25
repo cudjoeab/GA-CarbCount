@@ -73,15 +73,22 @@ class SignIn extends Component {
         .then((response)=> {
             console.log('Then:', response)
             window.localStorage['token'] = response.data['token']
-            this.checkLogin();
 
             this.setState({
                 errorMessage: '',
-                // redirectToReferrer: true
             });
+
+            this.checkLogin();  // This will redirect the user if they have a token.
+
+
         })
         .catch((error)=> {
-            console.log('Error:', error)
+            console.log('Error:', error);
+
+            this.setState({
+                errorMessage: 'Invalid credentials',
+                password: ''
+            })
 
     //         this.setState({
     //             errorMessage: <Alert variant="danger">Invalid credentials</Alert>

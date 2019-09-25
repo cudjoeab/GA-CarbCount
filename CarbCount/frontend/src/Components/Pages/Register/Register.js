@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 // Bootstrap-React components:
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -59,107 +60,69 @@ class Register extends Component {
         let password2 = event.currentTarget.elements.password2.value;
 
         if ((password != password2) || (password == '')) {
-            console.log('Please check your passwords')
-        } else {
-            console.log('Passwords match, time to go!')
-
-            const user = {
+            this.setState({
+                errorMessage: 'Please check that your passwords match.',
+            });
+        } else {  // The passwords match, signup process continues.
+            const newUser = {
                 username: username,
                 password: password
             }
 
-
-            axios.post("/api/users/", user)
+            axios.post("/api/users/", newUser)  // A new User is created.
             .then((response)=> {
-                console.log('Then:', response)
+                const logInfo = {
+                    username: username,
+                    password: password
+                }             
 
-                axios.post("/api-token-auth/", user)
+                axios.post("/api-token-auth/", logInfo)  // User is given a token.
                 .then((response)=> {
-                    console.log('Then:', response)
-                    window.localStorage['token'] = response.data['token']
-                    this.checkLogin();
+                    window.localStorage['token'] = response.data['token']  // Token is stored on machine.
 
-                    this.setState({
-                        errorMessage: '',
-                        // redirectToReferrer: true
-                    });
+                    return response;
                 })
+                .then(res => {
+                    const newDiabetic = {
+                        owner: response.data.id
+                    }
+                
+                    axios.post("/api/diabetic/", newDiabetic, {  // A new Diabetic is created.
+                        headers: {
+                            Authorization: `Token ${window.localStorage['token']}`
+                        }
+                    })
+                    .then(response => {
+                        this.setState({
+                            errorMessage: '',
+                        });
 
-
+                        this.checkLogin();  // This will redirect the user if they have a token.
+                    })
+                });
             })
             .catch((error)=> {
-                console.log('Error:', error)
-            })
-
-
-
+                this.setState({
+                    errorMessage: 'There was an error creating a new account.',
+                });
+            });
         }
-
-
-
-
-
-        
-        // const user = {
-        //     username: username,
-        //     password: password
-        // }
-        // const form = event.currentTarget.elements;
-
-        // if (form.password.value !== form.password2.value) {
-        //     console.log('Error; your passwords are not the same!');
-        // } else {
-        //     console.log('Same!');
-
-        //     console.log(form)
-
-        //     let userSubmission = 
-        
-
-        //     axios.post("api/register/", {
-        //         email: form.email.value,
-        //         password: form.password.value
-        //     }).then((response)=> {
-        //         console.log('Then:', response)
-        //         console.log('Then:', response.data)
-
-        //         localStorage.setItem('user', JSON.stringify(response.data));
-
-        //         this.setState({
-        //             errorMessage: '',
-        //             redirectToReferrer: true
-        //         });
-        //     }).catch((error)=> {
-        //         console.log('Error:', error)
-
-
-        //         //  BAD PATTERN - dont save jsx in state only save a string
-        //     //     this.setState({
-        //     //         // errorMessage: <Alert variant="danger">Invalid credentials</Alert>
-        //     //     });
-        //     });
-        // }
-
-        // this.setState({
-        //     errorMessage: '',
-        //     redirectToReferrer: true
-        // });
     }
 
 
-        // LOOK AT REDIRECT COMPONENT IN REACT ROUTER
-        checkLogin = () => {  // If user has a token, redirect to profile page.
-            console.log('Check login:')
-            if (window.localStorage['token'] !== undefined) {
-                console.log('Lets redirect:')
-                // return <Redirect to='/profile' />;
-    
-                this.setState({
-                    redirectNeeded: true
-                })
-                // window.location.href = '/profile'
-            };
+    // LOOK AT REDIRECT COMPONENT IN REACT ROUTER
+    checkLogin = () => {  // If user has a token, redirect to profile page.
+        console.log('Check login:')
+        if (window.localStorage['token'] !== undefined) {
+            console.log('Lets redirect:')
+            // return <Redirect to='/profile' />;
+
+            this.setState({
+                redirectNeeded: true
+            })
+            // window.location.href = '/profile'
         };
+    };
 
     render() {
         // const { redirectToReferrer } = this.state
@@ -169,9 +132,8 @@ class Register extends Component {
         // }
 
         if (this.state.redirectNeeded === true) {
-            //     return <Redirect to='/homepage?login=success' />
-                return <Redirect to='/profile' />
-            }
+            return <Redirect to='/profile' />
+        }
 
         return (
             <section className='borderBox'>
@@ -328,7 +290,12 @@ class Register extends Component {
 
                     {/* <h4 className="signup-button"><Link to='/homepage' onClick={this.props.handleLogin}>Create my Account</Link> </h4>  */}
 
-                    {this.state.errorMessage}
+                    {
+                        this.state.errorMessage != ''?
+                            <Alert variant="danger">{this.state.errorMessage}</Alert>
+                            :
+                            <> </>
+                    }
 
                     <Button className="signup-button" type="submit">
                         Create my Account
