@@ -62,6 +62,18 @@ def food_search(request):
     return JsonResponse(results, safe=False)
 
 
+
+
+# Proxy search to FATSECRETS so the frontend can grab specific info about 1 food
+@api_view(['GET'])
+def food_get(request):
+    # query = request.POST.get("query", )
+    query = request.GET.urlencode()
+    results = fs.foods_get(query)
+    return JsonResponse(results, safe=False)
+
+
+
 # Take food id's from frontend,
 # Gather their nutritional data
 # Perform calculation
