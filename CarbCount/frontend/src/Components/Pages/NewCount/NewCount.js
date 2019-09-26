@@ -32,9 +32,9 @@ class NewCount extends Component {
     //     'Heirloom oranges':1342, 'Florida Orange':34553, 'Tasty Oranges': 34153
     // }
 
-    ourJSON = [
-        {name:'Valencias California Oranges'}, {name:'Florida Oranges'}, {name:'Cara Cara Oranges'}, {name:'Minneola Tangelo Orange'}, {name:'Cara Cara Navel Oranges'}, {name:'Mandarin Oranges'}, {name:'Orange Lemon Drink'}, {name:'Orange Juice'}, {name:'Orange Strawberry Banana Juice'}, {name:'Madarin Orange (Canned or Frozen)'}, {name:'Freshly Squeezed Orange Juice'}
-    ]
+    // ourJSON = [
+    //     {name:'Valencias California Oranges'}, {name:'Florida Oranges'}, {name:'Cara Cara Oranges'}, {name:'Minneola Tangelo Orange'}, {name:'Cara Cara Navel Oranges'}, {name:'Mandarin Oranges'}, {name:'Orange Lemon Drink'}, {name:'Orange Juice'}, {name:'Orange Strawberry Banana Juice'}, {name:'Madarin Orange (Canned or Frozen)'}, {name:'Freshly Squeezed Orange Juice'}
+    // ]
   
 
     
@@ -42,17 +42,35 @@ class NewCount extends Component {
     // constructor() {
     //     super();
         state = {
-            stageOfProcess: 0,
-            bloodGlucose: 0,
-            foodSearch: 'test', 
-            foodList: {},
-            summary: {}
+            stageOfProcess: 0,  // Which carousel the page is on.
+            bloodGlucose: 0,  //User's blood glucose level. Optional.
+            queryItem: 'banana',  //What the user is searching for.
+            queryResults: [],  //The result of the API search.
+            selectedItems: [],  //Which items the user has selected.
+
+            // extractedData: [], //Need to run Regex on data.
         }
     // }
 
     componentDidMount() {
         console.log('Component did mount!');
         window.scrollTo(0, 0); //Brings user to top of page.
+
+        var string = [
+        {
+            "food_description": "Per 100g - Calories: 89kcal | Fat: 0.33g | Carbs: 22.84g | Protein: 1.09g",
+            "food_id": "5388",
+            "food_name": "Banana",
+            "food_type": "Generic",
+            "food_url": "https://www.fatsecret.com/calories-nutrition/generic/banana-raw"
+          }
+        ]
+
+
+        // var string = "border-radius:10px 20px 30px 40px";
+        var numbers = string[0]['food_description'].match(/[+-]?\d+(?:\.\d+)?/g);
+        console.log('Comp', numbers)
+
         
     }
 
@@ -83,16 +101,16 @@ class NewCount extends Component {
     handleStepOne = (event) => {
         event.preventDefault();
 
-        const query = { query: this.state.foodSearch }
+        const query = { query: this.state.queryItem }
 
-        if (this.state.foodSearch === '') {
+        if (this.state.queryItem === '') {
             console.log('Invalid search ; user input is no good.')
         } else {
             console.log('Valid search. Go forwards!');
 
             // axios.post("/api/food_search/", query)
             // .then((response)=> {
-            //     console.log('Then:', { query: this.state.foodSearch })
+            //     console.log('Then:', { query: this.state.queryItem })
 
             // })
             // .catch((error)=> {
@@ -118,28 +136,134 @@ class NewCount extends Component {
             stageOfProcess: this.state.stageOfProcess+1
         });
     }
+    
+
+
     handleSearchClick = (event) => {
+
+        const self = this
+
         event.preventDefault();
         let JSONquery = []
-        let userQuery = document.querySelector('#foodSearch').value
+        let userQuery = document.querySelector('#queryItem').value;
+
+
+
         axios.get(`/api/food_search/?q=${userQuery}`)
         .then(function (response) {
-            console.log(response);
-            JSONquery= response; 
+            console.log(response.data);
+            JSONquery= response.data; 
+
+
+
+            // let ourForEachList = []
+
+            // JSONquery.forEach(function(element, index) {
+            //     // console.log(index);
+            //     console.log(element);
+            //     // extractedData[index].append(element)
+            //     // ourForEachList.push(element.food_name)
+
+
+
+            //     var numbers = element['food_description'].match(/[+-]?\d+(?:\.\d+)?/g);
+            //     console.log(numbers)
+
+
+            //     ourForEachList.push({'food_name': element.food_name, 'food_id':element.food_id})
+            //   }); 
+
+
+            //   console.log(ourForEachList)
+
+
+
+            self.setState({
+                queryResults: JSONquery
+            //     queryResults: ourForEachList
+            })
+
+            // alert(self.state.queryResults)
+
         })
         .catch(function (error) {
-        console.log(error);
+            console.log(error);
         });
-        console.log(JSONquery)
+        // console.log(JSONquery)
+        // console.log(JSONquery.food_id)
+        // console.log(JSONquery.food_name)
+
+
+        // console.log(JSONquery)
+
+        // this.setState({
+        //     queryResults: JSONquery
+        // });
+
+        console.log(this.state.queryResults)
+
+        // console.log(this.state.queryResults)
+
         this.handleForwardClick(event); 
     }
 
 
 
+    handleAddFood = (event) => {
+        event.preventDefault();
+        
+        // event.target.id is the id of the dropdown link.
+        // It corresponds to the related data in this.state.queryResults.
+        // ie: The first dropdown item can be accessed by this.state.queryResults[0]
+        
+        console.log(event.target.id)
+        console.log(this.state.queryResults[event.target.id])
+
+
+
+
+        let previousList = this.state.selectedItems;
+        previousList.push(this.state.queryResults[event.target.id]);
+
+        this.setState({
+            selectedItems: previousList
+        })
+
+        console.log('here', this.state.selectedItems)
+
+
+
+
+
+
+    }
+
+
+
+    handleSendCalculations() {
+        // Frontend : Items in list, total carbs, total fibre, blood sugar -- Backend returns recommended doses
+    }
+
+
+
     render() {
-        const jsonElements = this.ourJSON.map(
-            (elem, id) => <Dropdown.Item>{elem.name}</Dropdown.Item>
-        )
+        let jsonElements;
+        let selectedElements;
+
+        if (this.state.queryResults) {
+            jsonElements = this.state.queryResults.map(
+                // (elem, id) => <Dropdown.Item id={elem.food_id} key={elem.food_id} onClick={this.handleAddFood}>{elem.food_name}</Dropdown.Item>
+                (elem, id) => <Dropdown.Item id={id} key={elem.food_id} onClick={this.handleAddFood}>{elem.food_name}</Dropdown.Item>
+            )
+        }
+
+        if (this.state.selectedItems) {
+            selectedElements = this.state.selectedItems.map(
+                (elem, id) => <h2>{elem.food_name}</h2>
+            )
+        }
+
+        
         return (
             <section className='borderBox'>
                 <h1>New Carb Count</h1>
@@ -159,14 +283,14 @@ class NewCount extends Component {
                                     onChange = {this.onChange}
                                     />
                                     <Form.Text className="text-muted">
-                                    Entering your blood glucose reading (mmol/L) will factor into your suggested dose. 
+                                    Entering your blood glucose reading (mmol/L) will factor into your suggested dose. (Optional.)
                                     </Form.Text>
                                 </Form.Group>
-                                <Form.Group controlId="foodSearch">
+                                <Form.Group controlId="queryItem">
                                     <Form.Label>Search:</Form.Label>
                                     <Form.Control type="text"
-                                    name="foodSearch" 
-                                    value={this.state.foodSearch}
+                                    name="queryItem" 
+                                    value={this.state.queryItem}
                                     placeholder="Enter search" 
                                     onChange = {this.onChange}
                             required />
@@ -175,7 +299,7 @@ class NewCount extends Component {
                                     </Form.Text>
                                 </Form.Group>
 
-                                <Button variant="primary" type="submit"  onClick={this.handleSearchClick}>
+                                <Button variant="primary" type="submit" onClick={this.handleSearchClick}>
 
 
 
@@ -189,7 +313,7 @@ class NewCount extends Component {
                         <Carousel.Caption>
                             <h2>Step 2:</h2>
                             <Form>    
-                                <DropdownButton variant="info" id="dropdown-item-button" title={'Please choose an Item'}>
+                                <DropdownButton class='overflow-auto' data-boundary="viewport" variant="info" id="dropdown-item-button" title={'Please choose an Item'}>
                                     {/* <Dropdown.Item as="button">{procedureData.title}</Dropdown.Item> */}
                                     {jsonElements}
                                 </DropdownButton>
@@ -202,10 +326,11 @@ class NewCount extends Component {
                                 </Form.Group>
 
                                 <h3>List:</h3>
-                                <ul>
+                                {selectedElements}
+                                {/* <ul>
                                     <li>Valencia California Orange <a href='/'>+</a> <a href='/'>-</a></li>
                                     <li>a&w restaurant spicy habanero chicken burger <a href='/'>+</a> <a href='/'>-</a></li>
-                                </ul>
+                                </ul> */}
 
                                 <Button variant="secondary" type="submit" onClick={this.handleBackClick}>
                                     Back

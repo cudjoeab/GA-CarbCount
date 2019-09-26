@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4320afe4.chunk.css",
+    "main.js": "/static/js/main.e8fe6710.chunk.js",
+    "main.js.map": "/static/js/main.e8fe6710.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.1dc4db23.js",
+    "runtime~main.js.map": "/static/js/runtime~main.1dc4db23.js.map",
+    "static/css/2.266e55a5.chunk.css": "/static/css/2.266e55a5.chunk.css",
+    "static/js/2.76ff960a.chunk.js": "/static/js/2.76ff960a.chunk.js",
+    "static/js/2.76ff960a.chunk.js.map": "/static/js/2.76ff960a.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.33cadfb388bd6e753dcbf251f56f2c6e.js": "/precache-manifest.33cadfb388bd6e753dcbf251f56f2c6e.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.4320afe4.chunk.css.map": "/static/css/main.4320afe4.chunk.css.map",
+    "static/media/1.png": "/static/media/1.726ae638.png",
+    "static/media/2.png": "/static/media/2.0c66fc33.png",
+    "static/media/3.png": "/static/media/3.36103122.png",
+    "static/media/abigail_cudjoe.jpeg": "/static/media/abigail_cudjoe.76d0cd08.jpeg",
+    "static/media/adam_weiler.jpeg": "/static/media/adam_weiler.3943b0c1.jpeg",
+    "static/media/larry_medina.jpeg": "/static/media/larry_medina.d642f681.jpeg",
+    "static/media/logo-03.png": "/static/media/logo-03.21ee0137.png",
+    "static/media/mark_jarvis.jpeg": "/static/media/mark_jarvis.e043cb65.jpeg",
+    "static/media/osemke_nwaak.jpeg": "/static/media/osemke_nwaak.00c45066.jpeg",
+    "static/media/powered_by_fatsecret.svg": "/static/media/powered_by_fatsecret.1bb5d2dd.svg"
+  }
+}
