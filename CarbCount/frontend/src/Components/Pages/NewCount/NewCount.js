@@ -48,7 +48,7 @@ class NewCount extends Component {
             queryResults: [],  //The result of the API search.
             selectedItems: [],  //Which items the user has selected.
 
-            extractedData: [], //Need to run Regex on data.
+            // extractedData: [], //Need to run Regex on data.
         }
     // }
 
@@ -222,19 +222,44 @@ class NewCount extends Component {
 
 
 
+        let previousList = this.state.selectedItems;
+        previousList.push(this.state.queryResults[event.target.id]);
+
+        this.setState({
+            selectedItems: previousList
+        })
+
+        console.log('here', this.state.selectedItems)
+
+
+
+
 
 
     }
 
 
 
+    handleSendCalculations() {
+        // Frontend : Items in list, total carbs, total fibre, blood sugar -- Backend returns recommended doses
+    }
+
+
+
     render() {
         let jsonElements;
+        let selectedElements;
 
         if (this.state.queryResults) {
             jsonElements = this.state.queryResults.map(
                 // (elem, id) => <Dropdown.Item id={elem.food_id} key={elem.food_id} onClick={this.handleAddFood}>{elem.food_name}</Dropdown.Item>
                 (elem, id) => <Dropdown.Item id={id} key={elem.food_id} onClick={this.handleAddFood}>{elem.food_name}</Dropdown.Item>
+            )
+        }
+
+        if (this.state.selectedItems) {
+            selectedElements = this.state.selectedItems.map(
+                (elem, id) => <h2>{elem.food_name}</h2>
             )
         }
 
@@ -301,10 +326,11 @@ class NewCount extends Component {
                                 </Form.Group>
 
                                 <h3>List:</h3>
-                                <ul>
+                                {selectedElements}
+                                {/* <ul>
                                     <li>Valencia California Orange <a href='/'>+</a> <a href='/'>-</a></li>
                                     <li>a&w restaurant spicy habanero chicken burger <a href='/'>+</a> <a href='/'>-</a></li>
-                                </ul>
+                                </ul> */}
 
                                 <Button variant="secondary" type="submit" onClick={this.handleBackClick}>
                                     Back
