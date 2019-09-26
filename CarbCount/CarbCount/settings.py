@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+import django_heroku    # Adding this - Adam
+
 # from dotenv import load_dotenv
 # load_dotenv()
 
@@ -154,3 +156,5 @@ REST_FRAMEWORK = {
 
 
 CSRF_COOKIE_NAME = "csrftoken"  # Do we need this?
+
+django_heroku.settings(locals())  # Also adding this - Adam.
