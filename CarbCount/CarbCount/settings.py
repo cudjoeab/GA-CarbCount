@@ -30,7 +30,7 @@ SECRET_KEY = '5_01p*$ote%l!)3nyb$s+-lxyd-$cucd^6ya_*0!ltm1ur5(7('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['carbcount.herokuapp.com']
 
 
 INSTALLED_APPS = [
