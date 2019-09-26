@@ -42,17 +42,33 @@ class NewCount extends Component {
     // constructor() {
     //     super();
         state = {
-            stageOfProcess: 0,
-            bloodGlucose: 0,
-            foodSearch: 'pineapples', 
-            foodList: [],
-            summary: {}
+            stageOfProcess: 0,  // Which carousel the page is on.
+            bloodGlucose: 0,  //User's blood glucose level. Optional.
+            queryItem: 'banana',  //What the user is searching for.
+            queryResults: [],  //The result of the API search.
+            selectedItems: [],  //Which items the user has selected.
         }
     // }
 
     componentDidMount() {
         console.log('Component did mount!');
         window.scrollTo(0, 0); //Brings user to top of page.
+
+        var string = [
+        {
+            "food_description": "Per 100g - Calories: 89kcal | Fat: 0.33g | Carbs: 22.84g | Protein: 1.09g",
+            "food_id": "5388",
+            "food_name": "Banana",
+            "food_type": "Generic",
+            "food_url": "https://www.fatsecret.com/calories-nutrition/generic/banana-raw"
+          }
+        ]
+
+
+        // var string = "border-radius:10px 20px 30px 40px";
+        var numbers = string[0]['food_description'].match(/[+-]?\d+(?:\.\d+)?/g);
+        console.log('Comp', numbers)
+
         
     }
 
@@ -83,16 +99,16 @@ class NewCount extends Component {
     handleStepOne = (event) => {
         event.preventDefault();
 
-        const query = { query: this.state.foodSearch }
+        const query = { query: this.state.queryItem }
 
-        if (this.state.foodSearch === '') {
+        if (this.state.queryItem === '') {
             console.log('Invalid search ; user input is no good.')
         } else {
             console.log('Valid search. Go forwards!');
 
             // axios.post("/api/food_search/", query)
             // .then((response)=> {
-            //     console.log('Then:', { query: this.state.foodSearch })
+            //     console.log('Then:', { query: this.state.queryItem })
 
             // })
             // .catch((error)=> {
@@ -120,13 +136,21 @@ class NewCount extends Component {
     }
     
     handleSearchClick = (event) => {
+
+        const self = this
+
         event.preventDefault();
         let JSONquery = []
-        let userQuery = document.querySelector('#foodSearch').value
+        let userQuery = document.querySelector('#queryItem').value
         axios.get(`/api/food_search/?q=${userQuery}`)
         .then(function (response) {
             console.log(response.data);
             JSONquery= response.data; 
+
+            self.setState({
+                queryResults: JSONquery
+            })
+
         })
         .catch(function (error) {
             console.log(error);
@@ -135,13 +159,34 @@ class NewCount extends Component {
         // console.log(JSONquery.food_id)
         // console.log(JSONquery.food_name)
 
-        this.setState({
-            foodList: JSONquery
-        });
 
-        // console.log(this.state.foodList)
+        // console.log(JSONquery)
+
+        // this.setState({
+        //     queryResults: JSONquery
+        // });
+
+        console.log(this.state.queryResults)
+
+        // console.log(this.state.queryResults)
 
         this.handleForwardClick(event); 
+    }
+
+
+
+    handleAddFood = (event) => {
+
+        event.preventDefault();
+
+        alert('hi', event, this)
+
+        console.log(event, this)
+
+
+
+
+
     }
 
 
@@ -149,9 +194,9 @@ class NewCount extends Component {
     render() {
         let jsonElements;
 
-        if (this.state.foodList) {
-            jsonElements = this.state.foodList.map(
-                (elem, id) => <Dropdown.Item>{elem.food_name}</Dropdown.Item>
+        if (this.state.queryResults) {
+            jsonElements = this.state.queryResults.map(
+                (elem, id) => <Dropdown.Item key={id} onClick={this.handleAddFood}>{elem.food_name}</Dropdown.Item>
             )
         }
 
@@ -178,11 +223,11 @@ class NewCount extends Component {
                                     Entering your blood glucose reading (mmol/L) will factor into your suggested dose. (Optional.)
                                     </Form.Text>
                                 </Form.Group>
-                                <Form.Group controlId="foodSearch">
+                                <Form.Group controlId="queryItem">
                                     <Form.Label>Search:</Form.Label>
                                     <Form.Control type="text"
-                                    name="foodSearch" 
-                                    value={this.state.foodSearch}
+                                    name="queryItem" 
+                                    value={this.state.queryItem}
                                     placeholder="Enter search" 
                                     onChange = {this.onChange}
                             required />
@@ -191,7 +236,7 @@ class NewCount extends Component {
                                     </Form.Text>
                                 </Form.Group>
 
-                                <Button variant="primary" type="submit"  onClick={this.handleSearchClick}>
+                                <Button variant="primary" type="submit" onClick={this.handleSearchClick}>
 
 
 
@@ -205,7 +250,7 @@ class NewCount extends Component {
                         <Carousel.Caption>
                             <h2>Step 2:</h2>
                             <Form>    
-                                <DropdownButton variant="info" id="dropdown-item-button" title={'Please choose an Item'}>
+                                <DropdownButton class='overflow-auto' data-boundary="viewport" variant="info" id="dropdown-item-button" title={'Please choose an Item'}>
                                     {/* <Dropdown.Item as="button">{procedureData.title}</Dropdown.Item> */}
                                     {jsonElements}
                                 </DropdownButton>
