@@ -9,6 +9,7 @@ from django.shortcuts import render, reverse, redirect, get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
+from django.db import models 
 
 from rest_framework import permissions, status, viewsets
 from rest_framework.authtoken.models import Token  # Also adding these - Adam
@@ -53,13 +54,17 @@ consumer_secret = os.getenv("FATSECRETS_CONSUMER_SECRET")
 fs = Fatsecret(consumer_key, consumer_secret)
 
 
-# Proxy search to FATSECRETS so the frontend can grab the food id's
+# Proxy search to FATSECRET so the frontend can grab the food id's
 @api_view(['GET'])
 def food_search(request):
     query = request.GET.urlencode()
     results = fs.foods_search(query)
     return JsonResponse(results, safe=False)
 
+def food_get(request):
+    id_query = request.GET.urlencode()
+    results = fs.food_get(id_query)
+    return JsonResponse(results,safe=False)
 
 # Take food id's from frontend,
 # Gather their nutritional data
@@ -68,8 +73,8 @@ def food_search(request):
 @api_view(['GET'])
 def calculate_dosages(request):
     # Gather settings from request user model
-    # correction_factor(aka sensitivity) =  1.3
-    # day_time_ratio(aka sensitivity) =  1.3
+    # correction_factor(aka sensitivity) =  1.3 Diabetic.cor_factor 
+    # day_time_ratio(aka insulin carb ratio) = 5 
 
     # 1) Gather user inputs from user
     current_level = request.POST.get("current_level", 5)

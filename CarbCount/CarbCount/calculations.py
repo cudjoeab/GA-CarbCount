@@ -42,7 +42,7 @@ import json
 #     def run(self):
 #         pass
 
-#     @staticmethod
+#     @staticmethod 
 #     def dose_meal_ratio():
 #         ratio = 5
 #         current_hour = datetime.datetime.now().hour
