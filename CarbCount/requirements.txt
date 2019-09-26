@@ -6,4 +6,7 @@ django-rest-framework
 fatsecret
 psycopg2
 pylint
-python-dotenv 
+python-dotenv
+gunicorn
+django_heroku 
+
