@@ -145,7 +145,10 @@ class NewCount extends Component {
 
         event.preventDefault();
         let JSONquery = []
-        let userQuery = document.querySelector('#queryItem').value
+        let userQuery = document.querySelector('#queryItem').value;
+
+
+
         axios.get(`/api/food_search/?q=${userQuery}`)
         .then(function (response) {
             console.log(response.data);
@@ -207,15 +210,14 @@ class NewCount extends Component {
 
 
     handleAddFood = (event) => {
-
         event.preventDefault();
-
-        // alert('hi', event, this)
-
-        // console.log(event, this)
-        // console.log(event.id)
-        // console.log(this.key)
+        
+        // event.target.id is the id of the dropdown link.
+        // It corresponds to the related data in this.state.queryResults.
+        // ie: The first dropdown item can be accessed by this.state.queryResults[0]
+        
         console.log(event.target.id)
+        console.log(this.state.queryResults[event.target.id])
 
 
 
@@ -232,7 +234,7 @@ class NewCount extends Component {
         if (this.state.queryResults) {
             jsonElements = this.state.queryResults.map(
                 // (elem, id) => <Dropdown.Item id={elem.food_id} key={elem.food_id} onClick={this.handleAddFood}>{elem.food_name}</Dropdown.Item>
-                (elem, id) => <Dropdown.Item id={elem} key={elem.food_id} onClick={this.handleAddFood}>{elem.food_name}</Dropdown.Item>
+                (elem, id) => <Dropdown.Item id={id} key={elem.food_id} onClick={this.handleAddFood}>{elem.food_name}</Dropdown.Item>
             )
         }
 
@@ -286,10 +288,10 @@ class NewCount extends Component {
                         <Carousel.Caption>
                             <h2>Step 2:</h2>
                             <Form>    
-                                {/* <DropdownButton class='overflow-auto' data-boundary="viewport" variant="info" id="dropdown-item-button" title={'Please choose an Item'}> */}
+                                <DropdownButton class='overflow-auto' data-boundary="viewport" variant="info" id="dropdown-item-button" title={'Please choose an Item'}>
                                     {/* <Dropdown.Item as="button">{procedureData.title}</Dropdown.Item> */}
                                     {jsonElements}
-                                {/* </DropdownButton> */}
+                                </DropdownButton>
                                 <Form.Group controlId="formBasicQuantity">
                                     <Form.Label>Quantity:</Form.Label>
                                     <Form.Control type="number" placeholder="Enter quantity" />
