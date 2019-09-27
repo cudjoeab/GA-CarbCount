@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'CarbCount',
-    'rest_auth'
+    'rest_auth',
+    'webpack_loader'
 ]
 
 MIDDLEWARE = [
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'CarbCount.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -159,3 +160,11 @@ REST_FRAMEWORK = {
 CSRF_COOKIE_NAME = "csrftoken"  # Do we need this?
 
 # django_heroku.settings(locals())  # Also adding this - Adam.
+
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'dist/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}
