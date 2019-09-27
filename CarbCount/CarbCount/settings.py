@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'CarbCount',
     'rest_auth',
-    'webpack_loader'
+    # 'webpack_loader'
 ]
 
 MIDDLEWARE = [
@@ -162,9 +162,9 @@ CSRF_COOKIE_NAME = "csrftoken"  # Do we need this?
 # django_heroku.settings(locals())  # Also adding this - Adam.
 
 
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'dist/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
-    }
-}
+# WEBPACK_LOADER = {
+#     'DEFAULT': {
+#         'BUNDLE_DIR_NAME': 'dist/',
+#         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+#     }
+# }

@@ -11,3 +11,4 @@ psycopg2
 pylint
 python-dotenv
 django_heroku 
+
