@@ -1,4 +1,7 @@
-django
+django>=2.1.2
+gunicorn==19.7.1
+whitenoise==3.3.1
+
 datetimerange
 django-extensions
 django-rest-auth
@@ -6,4 +9,6 @@ django-rest-framework
 fatsecret
 psycopg2
 pylint
-python-dotenv 
+python-dotenv
+django_heroku 
+

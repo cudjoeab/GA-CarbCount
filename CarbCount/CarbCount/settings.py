@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-import django_heroku    # Adding this - Adam
+# import django_heroku    # Adding this - Adam
 
 # from dotenv import load_dotenv
 # load_dotenv()
@@ -20,6 +20,8 @@ import django_heroku    # Adding this - Adam
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Adding this - Adam
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -30,7 +32,7 @@ SECRET_KEY = '5_01p*$ote%l!)3nyb$s+-lxyd-$cucd^6ya_*0!ltm1ur5(7('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['carbcount.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 INSTALLED_APPS = [
@@ -44,7 +46,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'CarbCount',
-    'rest_auth'
+    'rest_auth',
+    # 'webpack_loader'
 ]
 
 MIDDLEWARE = [
@@ -62,7 +65,7 @@ ROOT_URLCONF = 'CarbCount.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,7 +133,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Adding this - Adam
 STATIC_URL = '/static/'
 
 
@@ -157,4 +159,12 @@ REST_FRAMEWORK = {
 
 CSRF_COOKIE_NAME = "csrftoken"  # Do we need this?
 
-django_heroku.settings(locals())  # Also adding this - Adam.
+# django_heroku.settings(locals())  # Also adding this - Adam.
+
+
+# WEBPACK_LOADER = {
+#     'DEFAULT': {
+#         'BUNDLE_DIR_NAME': 'dist/',
+#         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+#     }
+# }
